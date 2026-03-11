@@ -2,11 +2,14 @@ import SwiftUI
 
 @main
 struct QuickTunerApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(width: 440, height: 600)
         }
+        .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
-        .defaultSize(width: 400, height: 500)
     }
 }
