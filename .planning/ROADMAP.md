@@ -13,7 +13,7 @@ QuickTuner is built bottom-up in four phases: first the real-time audio pipeline
 Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Pitch Detection and Audio Engine** - Real-time audio capture and sub-cent pitch detection via YIN + FFT
-- [ ] **Phase 2: Tuner Interface and String Workflow** - Circular gauge, string navigation, and in-tune detection UI
+- [x] **Phase 2: Tuner Interface and String Workflow** - Circular gauge, string navigation, and in-tune detection UI
 - [ ] **Phase 3: Tuning Library, Settings, and Persistence** - Instrument modes, preset/custom tunings, reference pitch, and persistent preferences
 - [ ] **Phase 4: Window, Design Language, and Polish** - Floating window, Liquid Glass design, spring animations, and typography
 
@@ -32,11 +32,11 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 5 plans in 5 waves
 
 Plans:
-- [ ] 01-01: Models and NoteClassifier — Data structures and Hz-to-note classification with tests
-- [ ] 01-02: YIN Pitch Detector — Full YIN algorithm with cubic interpolation and unit tests
-- [ ] 01-03: AudioEngine and RingBuffer — Three-layer threading with lock-free ring buffer
-- [ ] 01-04: Audio Device Manager — Core Audio enumeration with Objective-C++ bridge
-- [ ] 01-05: Integration and Tests — TunerViewModel, basic UI, integration tests
+- [x] 01-01: Models and NoteClassifier - Data structures and Hz-to-note classification with tests
+- [x] 01-02: YIN Pitch Detector - Full YIN algorithm with cubic interpolation and unit tests
+- [x] 01-03: AudioEngine and RingBuffer - Three-layer threading with lock-free ring buffer
+- [x] 01-04: Audio Device Manager - Core Audio enumeration with Objective-C++ bridge
+- [x] 01-05: Integration and Tests - TunerViewModel, basic UI, integration tests
 
 ### Phase 2: Tuner Interface and String Workflow
 **Goal**: User sees a fully functional tuning interface with gauge, note display, cents readout, and can navigate string-by-string through the tuning process
@@ -51,11 +51,11 @@ Plans:
 **Plans**: 5 plans in 5 waves
 
 Plans:
-- [x] 02-01: ViewModel and Models — TunerViewModel, StringInfo, EMA smoothing with tests
-- [x] 02-02: Gauge Component — Canvas-based TunerGaugeView, CentsReadoutView, NoteDisplayView
-- [ ] 02-03: String Rail and Navigation — StringRailView with keyboard (arrows + 1-6), click handling
-- [ ] 02-04: In-Tune Logic and Visuals — 200ms hold state machine, checkmarks, green glow
-- [ ] 02-05: Integration and "All Tuned" Flow — TunerView integration, badge, reset functionality
+- [x] 02-01: ViewModel and Models - TunerViewModel, StringInfo, EMA smoothing with tests
+- [x] 02-02: Gauge Component - Canvas-based TunerGaugeView, CentsReadoutView, NoteDisplayView
+- [x] 02-03: String Rail and Navigation - StringRailView with keyboard (arrows + 1-6), click handling
+- [x] 02-04: In-Tune Logic and Visuals - 200ms hold state machine, checkmarks, green glow
+- [x] 02-05: Integration and "All Tuned" Flow - TunerView integration, badge, reset functionality
 
 ### Phase 3: Tuning Library, Settings, and Persistence
 **Goal**: User can choose instruments, select from a comprehensive tuning library, create custom tunings, adjust reference pitch, and have all preferences remembered across launches
@@ -97,6 +97,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Pitch Detection and Audio Engine | 5/5 | Complete | 2026-03-11 |
-| 2. Tuner Interface and String Workflow | 2/5 | In Progress | 2026-03-11 |
+| 2. Tuner Interface and String Workflow | 5/5 | Complete | 2026-03-11 |
 | 3. Tuning Library, Settings, and Persistence | 0/? | Not started | - |
 | 4. Window, Design Language, and Polish | 0/? | Not started | - |
