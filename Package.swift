@@ -30,7 +30,7 @@ let package = Package(
             name: "QuickTuner",
             dependencies: ["AudioBridge"],
             path: "Sources",
-            exclude: ["AudioBridge"],
+            exclude: ["AudioBridge", "App"],
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ],
