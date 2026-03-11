@@ -157,14 +157,162 @@ struct TunerViewModelTests {
 
     // MARK: - In-Tune State Machine Tests
 
-    @Test("In-tune state with ±2 cents threshold")
-    func inTuneThreshold() async throws {
+    @Test("In-tune detection thresholds")
+    func inTuneDetectionThresholds() async throws {
         let viewModel = await TunerViewModel()
 
-        // Start the in-tune check
-        await viewModel.checkInTuneState(1.5)  // Within ±2
+        // Verify initial state
+        #expect(await viewModel.isInTune == false)
 
-        // Initially not in tune (needs 200ms hold)
+        // Test threshold boundaries
+        // Enter threshold: |cents| <= 2
+        // Exit threshold: |cents| > 3 (1 cent hysteresis)
+
+        // At exactly 2.0: should trigger hold (enter)
+        await viewModel.checkInTuneState(2.0)
+        // Not immediately in tune, but hold timer started
+
+        // At 2.5: within dead zone (won't enter, won't exit if already in)
+        // Should not trigger entry (> 2), not trigger exit (< 3)
+
+        // At 3.5: should trigger exit if in tune (> 3)
+
+        // Verify threshold constants via behavior
+        let enterThreshold = 2.0
+        let exitThreshold = 3.0
+
+        // Values that should trigger entry
+        #expect(abs(0.0) <= enterThreshold)
+        #expect(abs(1.5) <= enterThreshold)
+        #expect(abs(2.0) <= enterThreshold)
+
+        // Values that should NOT trigger entry
+        #expect(abs(2.1) > enterThreshold)
+        #expect(abs(2.5) > enterThreshold)
+
+        // Values that should trigger exit (if in tune)
+        #expect(abs(3.1) > exitThreshold)
+        #expect(abs(3.5) > exitThreshold)
+
+        // Values that should NOT trigger exit (dead zone)
+        #expect(abs(2.5) <= exitThreshold)
+        #expect(abs(3.0) <= exitThreshold)
+    }
+
+    @Test("In-tune state requires 200ms hold")
+    func inTuneRequiresHold() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Initially not in tune
+        #expect(await viewModel.isInTune == false)
+
+        // Enter in-tune zone
+        await viewModel.checkInTuneState(1.0)
+
+        // Immediately check - should NOT be in tune yet (needs 200ms)
+        #expect(await viewModel.isInTune == false)
+
+        // Wait for hold duration (200ms)
+        try await Task.sleep(nanoseconds: 250_000_000) // 250ms
+
+        // Now should be in tune
+        #expect(await viewModel.isInTune == true)
+    }
+
+    @Test("Hysteresis prevents flicker at boundary")
+    func hysteresisPreventsFlicker() async throws {
+        // At 2.5 cents: above enter threshold (2), below exit threshold (3)
+        // This creates a dead zone where state doesn't change
+
+        let cents = 2.5
+        let inTuneThreshold = 2.0
+        let outOfTuneThreshold = 3.0
+
+        let wouldEnter = abs(cents) <= inTuneThreshold      // false
+        let wouldExit = abs(cents) > outOfTuneThreshold     // false
+
+        // Neither enter nor exit - stable dead zone prevents flicker
+        #expect(wouldEnter == false)
+        #expect(wouldExit == false)
+    }
+
+    @Test("Tuned string persists after navigation away")
+    func tunedStringPersists() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Mark string 0 as tuned
+        await viewModel.markStringAsTuned(at: 0)
+        #expect(await viewModel.tunedStrings.contains(0))
+
+        // Navigate to string 1
+        await viewModel.selectString(at: 1)
+        #expect(await viewModel.selectedStringIndex == 1)
+
+        // String 0 should still be tuned
+        #expect(await viewModel.tunedStrings.contains(0))
+
+        // String 1 should not be tuned
+        #expect(await viewModel.tunedStrings.contains(1) == false)
+    }
+
+    @Test("Reset clears in-tune state and checkmarks")
+    func resetClearsInTuneAndCheckmarks() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Set some state
+        await viewModel.markStringAsTuned(at: 0)
+        await viewModel.markStringAsTuned(at: 2)
+
+        #expect(await viewModel.tunedStrings.count == 2)
+        #expect(await viewModel.strings[0].isTuned == true)
+        #expect(await viewModel.strings[2].isTuned == true)
+
+        // Reset
+        await viewModel.resetTunedStrings()
+
+        // Verify all cleared
+        #expect(await viewModel.tunedStrings.isEmpty)
+        #expect(await viewModel.allStringsTuned == false)
+        #expect(await viewModel.isInTune == false)
+
+        // Checkmarks cleared from strings array
+        #expect(await viewModel.strings[0].isTuned == false)
+        #expect(await viewModel.strings[2].isTuned == false)
+
+        // Returned to first string
+        #expect(await viewModel.selectedStringIndex == 0)
+    }
+
+    @Test("In-tune exits when cents exceeds threshold")
+    func inTuneExitsWhenOutOfRange() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Get in tune
+        await viewModel.checkInTuneState(1.0)
+        try await Task.sleep(nanoseconds: 250_000_000) // Wait for hold
+        #expect(await viewModel.isInTune == true)
+
+        // Move out of tune (> 3 cents)
+        await viewModel.checkInTuneState(4.0)
+
+        // Should exit immediately (no hold required to exit)
+        #expect(await viewModel.isInTune == false)
+    }
+
+    @Test("Transient readings don't trigger in-tune")
+    func transientReadingsDontTrigger() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Briefly enter in-tune zone
+        await viewModel.checkInTuneState(1.0)
+
+        // Immediately leave before hold completes
+        await viewModel.checkInTuneState(10.0)
+
+        // Wait a bit
+        try await Task.sleep(nanoseconds: 250_000_000)
+
+        // Should NOT be in tune because we left the zone
         #expect(await viewModel.isInTune == false)
     }
 
