@@ -83,6 +83,9 @@ final class TunerViewModel {
     /// Timestamp when in-tune threshold was first reached
     private var inTuneStartTime: Date?
 
+    /// Task for 500ms delay before showing All Tuned badge
+    private var allTunedDelayTask: Task<Void, Never>?
+
     /// Threshold for entering in-tune state (cents)
     private let inTuneThreshold: Double = 2.0
 
@@ -91,6 +94,9 @@ final class TunerViewModel {
 
     /// Required hold time before confirming in-tune (seconds)
     private let inTuneHoldDuration: TimeInterval = 0.2
+
+    /// Delay before showing All Tuned badge (nanoseconds)
+    private let allTunedDelayNanoseconds: UInt64 = 500_000_000
 
     // MARK: - EMA Smoothing State (PITCH-02)
 
@@ -120,6 +126,7 @@ final class TunerViewModel {
         audioTask?.cancel()
         levelTask?.cancel()
         inTuneHoldTask?.cancel()
+        allTunedDelayTask?.cancel()
     }
 
     // MARK: - Lifecycle
@@ -334,16 +341,28 @@ final class TunerViewModel {
         }
     }
 
-    /// Check if all strings are tuned and update badge state
+    /// Check if all strings are tuned and update badge state with 500ms delay
     private func checkAllStringsTuned() {
-        if tunedStrings.count == strings.count {
-            // All strings tuned - show badge after 500ms delay
-            Task { @MainActor [weak self] in
-                try? await Task.sleep(nanoseconds: UInt64(0.5 * 1_000_000_000)) // 500ms
-                guard let self = self else { return }
-                if self.tunedStrings.count == self.strings.count {
-                    self.showAllTunedBadge = true
-                }
+        // Cancel any existing delay task
+        allTunedDelayTask?.cancel()
+        allTunedDelayTask = nil
+
+        guard tunedStrings.count == strings.count else {
+            // Not all tuned - badge stays hidden
+            return
+        }
+
+        // All strings tuned - start 500ms delay before showing badge
+        allTunedDelayTask = Task { @MainActor [weak self] in
+            guard let self = self else { return }
+
+            try? await Task.sleep(nanoseconds: self.allTunedDelayNanoseconds)
+
+            guard !Task.isCancelled else { return }
+
+            // Still all tuned after delay - show badge
+            if self.tunedStrings.count == self.strings.count {
+                self.showAllTunedBadge = true
             }
         }
     }
@@ -393,6 +412,8 @@ final class TunerViewModel {
         inTuneHoldTask?.cancel()
         inTuneHoldTask = nil
         showAllTunedBadge = false
+        allTunedDelayTask?.cancel()
+        allTunedDelayTask = nil
     }
 
     /// Dismiss the "All Tuned" badge
