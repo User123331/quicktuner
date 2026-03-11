@@ -39,31 +39,21 @@ struct StringButton: View {
     let isSelected: Bool
 
     var body: some View {
-        VStack(spacing: 4) {
-            Text("\(targetNote.name)\(targetNote.octave)")
-                .font(.system(size: 16, weight: .regular, design: .rounded))
-                .fontWeight(.medium)
-
-            Text("\(stringNumber)")
-                .font(.system(size: 14, weight: .regular, design: .rounded))
-                .foregroundStyle(.secondary)
-
-            // Tuning indicator
-            Circle()
-                .fill(isTuned ? Color("InTuneGreen") : Color.clear)
-                .stroke(isTuned ? Color("InTuneGreen") : Color.secondary, lineWidth: 1)
-                .frame(width: 8, height: 8)
-        }
-        .frame(minWidth: 44)
-        .padding(.horizontal, 16)
-        .padding(.vertical, 8)
-        .background(isSelected ? Color.accentColor.opacity(0.2) : Color.clear)
-        .glassButton(cornerRadius: 16)  // Glass button styling
-        .scaleEffect(isSelected ? 1.05 : 1.0)
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
-        )
+        Text("\(targetNote.name)\(targetNote.octave)")
+            .font(.system(size: 14, weight: isSelected ? .semibold : .medium, design: .rounded))
+            .foregroundStyle(isSelected ? .primary : .secondary)
+            .frame(minWidth: 36, minHeight: 36)
+            .padding(.horizontal, 12)
+            .padding(.vertical, 8)
+            .background(
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(isSelected ? Color.primary.opacity(0.15) : Color.primary.opacity(0.05))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(isTuned ? Color("InTuneGreen") : (isSelected ? Color.primary.opacity(0.3) : Color.clear), lineWidth: 1.5)
+            )
+            .scaleEffect(isSelected ? 1.05 : 1.0)
     }
 }
 

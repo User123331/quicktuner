@@ -7,7 +7,7 @@ let package = Package(
         .macOS(.v15)
     ],
     products: [
-        .library(
+        .executable(
             name: "QuickTuner",
             targets: ["QuickTuner"]
         )
@@ -26,11 +26,11 @@ let package = Package(
             ]
         ),
         // Main Swift package
-        .target(
+        .executableTarget(
             name: "QuickTuner",
             dependencies: ["AudioBridge"],
             path: "Sources",
-            exclude: ["AudioBridge", "App"],
+            exclude: ["AudioBridge"],
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ],

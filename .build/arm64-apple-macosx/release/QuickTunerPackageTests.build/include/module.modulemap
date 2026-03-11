@@ -1,0 +1,3 @@
+module QuickTunerPackageTests {
+    header "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/include/QuickTunerPackageTests-Swift.h"
+}

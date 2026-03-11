@@ -1,0 +1,13 @@
+{
+  "": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/QuickTunerPackageTests.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/QuickTunerPackageTests.o",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/master.swiftdeps"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.derived/runner.swift": {
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/runner.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/release/QuickTunerPackageTests.build/runner.dia"
+  }
+}

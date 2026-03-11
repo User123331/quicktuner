@@ -30,13 +30,7 @@ struct TunerGaugeView: View {
                     y: size.height - 40  // Position near bottom for semicircle
                 )
 
-                // Draw background arc
-                drawBackgroundArc(in: &context, center: center)
-
-                // Draw color zones (green ±2¢, yellow ±25¢ markers)
-                drawColorZones(in: &context, center: center)
-
-                // Draw tick marks at key positions
+                // Draw tick marks at key positions (subtle, no background arc)
                 drawTickMarks(in: &context, center: center)
 
                 // Draw needle based on animated cents value

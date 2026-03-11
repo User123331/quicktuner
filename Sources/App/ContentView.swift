@@ -7,9 +7,9 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            // Material background layer
+            // Material background layer - ultra thin for subtle effect
             Color.clear
-                .background(.thinMaterial)
+                .background(.ultraThinMaterial)
                 .ignoresSafeArea()
 
             // Main content
