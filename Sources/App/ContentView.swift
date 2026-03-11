@@ -8,6 +8,7 @@ struct ContentView: View {
             // Material background layer
             Color.clear
                 .background(.thinMaterial)
+                .ignoresSafeArea()
 
             // Main content
             TunerView()
