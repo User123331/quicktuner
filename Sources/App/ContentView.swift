@@ -9,7 +9,10 @@ struct ContentView: View {
         ZStack {
             // Material background layer - ultra thin for subtle effect
             Color.clear
-                .background(.ultraThinMaterial)
+                .background(
+                    .ultraThinMaterial
+                        .opacity(0.4)  // Ultra-thin liquid glass
+                )
                 .ignoresSafeArea()
 
             // Main content
