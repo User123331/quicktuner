@@ -22,28 +22,25 @@ struct TunerGaugeView: View {
     @State private var glowOpacity: Double = 0
 
     var body: some View {
-        // Wrap Canvas in a glass card container (NOT applying glass directly to Canvas)
-        VStack {
-            Canvas { context, size in
-                let center = CGPoint(
-                    x: size.width / 2,
-                    y: size.height - 40  // Position near bottom for semicircle
-                )
+        // Canvas as root view - no container, floats directly on window background
+        Canvas { context, size in
+            let center = CGPoint(
+                x: size.width / 2,
+                y: size.height - 40  // Position near bottom for semicircle
+            )
 
-                // Draw tick marks at key positions (subtle, no background arc)
-                drawTickMarks(in: &context, center: center)
+            // Draw tick marks at key positions (subtle, no background arc)
+            drawTickMarks(in: &context, center: center)
 
-                // Draw needle based on animated cents value
-                drawNeedle(in: &context, center: center, cents: animatedCents)
+            // Draw needle based on animated cents value
+            drawNeedle(in: &context, center: center, cents: animatedCents)
 
-                // Draw in-tune glow with animated opacity
-                if isInTune {
-                    drawInTuneGlow(in: &context, center: center, opacity: glowOpacity)
-                }
+            // Draw in-tune glow with animated opacity
+            if isInTune {
+                drawInTuneGlow(in: &context, center: center, opacity: glowOpacity)
             }
-            .frame(width: 300, height: 180)
         }
-        .glassCard(cornerRadius: 24)  // Glass effect on container, not Canvas
+        .frame(width: 300, height: 180)
         .onChange(of: cents) { oldValue, newValue in
             withAnimation(AnimationStyles.needle) {
                 animatedCents = newValue
