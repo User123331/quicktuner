@@ -398,6 +398,9 @@ final class TunerViewModel {
         guard index >= 0 && index < strings.count else { return }
         tunedStrings.insert(index)
         strings[index].isTuned = true
+
+        // Check if all strings are tuned
+        checkAllStringsTuned()
     }
 
     /// Reset all tuned strings and return to String 1

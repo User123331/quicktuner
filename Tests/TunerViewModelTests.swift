@@ -324,6 +324,107 @@ struct TunerViewModelTests {
         #expect(await viewModel.centsDisplay == "--")
     }
 
+    // MARK: - All Tuned Badge Tests
+
+    @Test("All tuned badge appears after 500ms delay when all strings tuned")
+    func allTunedBadgeAppearsWithDelay() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Initially no badge
+        #expect(await viewModel.showAllTunedBadge == false)
+
+        // Mark all strings as tuned
+        for i in 0..<6 {
+            await viewModel.markStringAsTuned(at: i)
+        }
+
+        // Badge should NOT appear immediately (500ms delay)
+        #expect(await viewModel.showAllTunedBadge == false)
+
+        // Wait for the delay (550ms to be safe)
+        try await Task.sleep(nanoseconds: 550_000_000)
+
+        // Now badge should appear
+        #expect(await viewModel.showAllTunedBadge == true)
+    }
+
+    @Test("All tuned badge does not appear if not all strings tuned")
+    func allTunedBadgeRequiresAllStrings() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Mark only some strings
+        await viewModel.markStringAsTuned(at: 0)
+        await viewModel.markStringAsTuned(at: 3)
+
+        // Wait longer than the delay
+        try await Task.sleep(nanoseconds: 600_000_000)
+
+        // Badge should NOT appear
+        #expect(await viewModel.showAllTunedBadge == false)
+    }
+
+    @Test("All tuned badge can be dismissed")
+    func allTunedBadgeDismissible() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Mark all strings
+        for i in 0..<6 {
+            await viewModel.markStringAsTuned(at: i)
+        }
+
+        try await Task.sleep(nanoseconds: 550_000_000)
+        #expect(await viewModel.showAllTunedBadge == true)
+
+        // Dismiss
+        await viewModel.dismissAllTunedBadge()
+        #expect(await viewModel.showAllTunedBadge == false)
+    }
+
+    @Test("Reset clears all tuned badge")
+    func resetClearsAllTunedBadge() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Mark all strings
+        for i in 0..<6 {
+            await viewModel.markStringAsTuned(at: i)
+        }
+
+        try await Task.sleep(nanoseconds: 550_000_000)
+        #expect(await viewModel.showAllTunedBadge == true)
+
+        // Reset
+        await viewModel.resetTunedStrings()
+        #expect(await viewModel.showAllTunedBadge == false)
+    }
+
+    @Test("All tuned badge delay cancels if string becomes untuned")
+    func allTunedBadgeDelayCancelsOnUntune() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Mark all strings
+        for i in 0..<6 {
+            await viewModel.markStringAsTuned(at: i)
+        }
+
+        // Wait partial delay (200ms)
+        try await Task.sleep(nanoseconds: 200_000_000)
+
+        // Untune one string before delay completes
+        await viewModel.resetTunedStrings()
+        await viewModel.markStringAsTuned(at: 0)
+        await viewModel.markStringAsTuned(at: 1)
+        await viewModel.markStringAsTuned(at: 2)
+        await viewModel.markStringAsTuned(at: 3)
+        await viewModel.markStringAsTuned(at: 4)
+        // String 5 not tuned
+
+        // Wait remaining time
+        try await Task.sleep(nanoseconds: 400_000_000)
+
+        // Badge should NOT appear (not all tuned)
+        #expect(await viewModel.showAllTunedBadge == false)
+    }
+
     // MARK: - Display Properties Tests
 
     @Test("Note name display with no signal")
