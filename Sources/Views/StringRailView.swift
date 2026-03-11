@@ -41,17 +41,17 @@ struct StringButton: View {
     var body: some View {
         VStack(spacing: 4) {
             Text("\(targetNote.name)\(targetNote.octave)")
-                .font(.system(.caption, design: .monospaced))
+                .font(.system(size: 16, weight: .regular, design: .rounded))
                 .fontWeight(.medium)
 
             Text("\(stringNumber)")
-                .font(.caption2)
+                .font(.system(size: 14, weight: .regular, design: .rounded))
                 .foregroundStyle(.secondary)
 
             // Tuning indicator
             Circle()
-                .fill(isTuned ? Color.green : Color.clear)
-                .stroke(isTuned ? Color.green : Color.secondary, lineWidth: 1)
+                .fill(isTuned ? Color("InTuneGreen") : Color.clear)
+                .stroke(isTuned ? Color("InTuneGreen") : Color.secondary, lineWidth: 1)
                 .frame(width: 8, height: 8)
         }
         .frame(minWidth: 44)

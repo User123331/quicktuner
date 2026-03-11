@@ -5,33 +5,30 @@ import SwiftUI
 struct CentsReadoutView: View {
     let cents: Double?
 
+    private var centsColor: Color {
+        guard let cents = cents else { return .secondary }
+        let absCents = abs(Int(round(cents)))
+        if absCents < 5 { return Color("InTuneGreen") }
+        if absCents < 20 { return Color("WarningOrange") }
+        return Color("ErrorRed")
+    }
+
     var body: some View {
         Group {
             if let cents = cents {
                 let intCents = Int(round(cents))
                 let sign = intCents > 0 ? "+" : ""
                 Text("\(sign)\(intCents)")
-                    .font(.system(.title2, design: .monospaced).weight(.medium))
-                    .foregroundColor(colorForCents(intCents))
+                    .font(.system(size: 24, weight: .regular, design: .monospaced))
+                    .foregroundColor(centsColor)
             } else {
                 Text("--")
-                    .font(.system(.title2, design: .monospaced).weight(.medium))
+                    .font(.system(size: 24, weight: .regular, design: .monospaced))
                     .foregroundColor(.secondary)
             }
         }
         .frame(minWidth: 60)
         .monospacedDigit()
-    }
-
-    private func colorForCents(_ cents: Int) -> Color {
-        let absCents = abs(cents)
-        if absCents <= 2 {
-            return .green
-        } else if absCents <= 25 {
-            return .yellow
-        } else {
-            return .red
-        }
     }
 }
 

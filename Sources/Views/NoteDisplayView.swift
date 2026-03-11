@@ -10,11 +10,11 @@ struct NoteDisplayView: View {
         Group {
             if let noteName = noteName, !noteName.isEmpty {
                 Text(noteName)
-                    .font(.system(size: 72, weight: .bold, design: .rounded))
-                    .foregroundColor(isInTune ? .green : .primary)
+                    .font(.system(size: 64, weight: .medium, design: .rounded))
+                    .foregroundColor(isInTune ? Color("InTuneGreen") : .primary)
             } else {
                 Text("--")
-                    .font(.system(size: 72, weight: .bold, design: .rounded))
+                    .font(.system(size: 64, weight: .medium, design: .rounded))
                     .foregroundColor(.secondary)
             }
         }

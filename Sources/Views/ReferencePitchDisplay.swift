@@ -7,7 +7,7 @@ struct ReferencePitchDisplay: View {
 
     var body: some View {
         Text("A4 = \(referencePitch, specifier: "%.1f") Hz")
-            .font(.system(.caption, design: .monospaced))
+            .font(.system(size: 14, weight: .regular, design: .monospaced))
             .foregroundStyle(.secondary)
     }
 }
