@@ -52,7 +52,7 @@ Plans:
 
 Plans:
 - [x] 02-01: ViewModel and Models — TunerViewModel, StringInfo, EMA smoothing with tests
-- [ ] 02-02: Gauge Component — Canvas-based TunerGaugeView, CentsReadoutView, NoteDisplayView
+- [x] 02-02: Gauge Component — Canvas-based TunerGaugeView, CentsReadoutView, NoteDisplayView
 - [ ] 02-03: String Rail and Navigation — StringRailView with keyboard (arrows + 1-6), click handling
 - [ ] 02-04: In-Tune Logic and Visuals — 200ms hold state machine, checkmarks, green glow
 - [ ] 02-05: Integration and "All Tuned" Flow — TunerView integration, badge, reset functionality
@@ -97,6 +97,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Pitch Detection and Audio Engine | 5/5 | Complete | 2026-03-11 |
-| 2. Tuner Interface and String Workflow | 1/5 | In Progress | 2026-03-11 |
+| 2. Tuner Interface and String Workflow | 2/5 | In Progress | 2026-03-11 |
 | 3. Tuning Library, Settings, and Persistence | 0/? | Not started | - |
 | 4. Window, Design Language, and Polish | 0/? | Not started | - |
