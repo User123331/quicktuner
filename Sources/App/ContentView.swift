@@ -4,13 +4,27 @@ import SwiftUI
 /// Shows pitch, note, cents, level meter, and device selection
 struct ContentView: View {
     @State private var viewModel = TunerViewModel()
+    @State private var showingSettings = false
 
     var body: some View {
         VStack(spacing: 20) {
-            // Header
-            Text("QuickTuner")
-                .font(.largeTitle)
-                .padding(.top)
+            // Header with settings button
+            HStack {
+                Text("QuickTuner")
+                    .font(.largeTitle)
+
+                Spacer()
+
+                Button(action: { showingSettings = true }) {
+                    Image(systemName: "gear")
+                        .font(.title2)
+                }
+                .buttonStyle(.borderless)
+                .keyboardShortcut(",", modifiers: .command)
+                .help("Settings (⌘,)")
+            }
+            .padding(.horizontal)
+            .padding(.top)
 
             // Main display
             VStack(spacing: 10) {
@@ -126,6 +140,10 @@ struct ContentView: View {
             .padding(.bottom)
         }
         .frame(minWidth: 400, minHeight: 500)
+        .sheet(isPresented: $showingSettings) {
+            SettingsView(viewModel: viewModel)
+                .frame(minWidth: 500, minHeight: 400)
+        }
         .task {
             await viewModel.refreshDevices()
             await viewModel.start()
