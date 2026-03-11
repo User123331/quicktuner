@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** Phase 3 COMPLETE - Tuning Library, Settings, and Persistence
+**Current focus:** Phase 4 Plan 1 COMPLETE - Window Configuration with floating window and position persistence
 
 ## Current Position
 
-Phase: 3 of 4 (Tuning Library, Settings, and Persistence)
-Plan: 5 of 5 in current phase **COMPLETE**
-Status: **Phase 3 Complete - Ready for Phase 4**
-Last activity: 2026-03-12 -- Completed Tuning Selector and Integration (03-05)
+Phase: 4 of 4 (Window, Design Language, and Polish)
+Plan: 1 of 5 in current phase **COMPLETE**
+Status: **Phase 4 Plan 1 Complete - Window Configuration**
+Last activity: 2026-03-12 -- Completed Window Configuration (04-01) with floating window and position persistence
 
-Progress: [██████████] 100% (Phase 3)
+Progress: [██░░░░░░░░] 20% (Phase 4)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 8
-- Average duration: 11 minutes
-- Total execution time: 1.4 hours
+- Total plans completed: 9
+- Average duration: 10 minutes
+- Total execution time: 1.5 hours
 
 **By Phase:**
 
@@ -29,10 +29,11 @@ Progress: [██████████] 100% (Phase 3)
 |-------|-------|-------|----------|
 | 02-tuner-interface | 5 | 5 | 12 min |
 | 03-tuning-library | 5 | 5 | 10 min |
+| 04-window-design | 1 | 5 | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-05 (15 min), 03-04 (5 min), 03-03 (8 min), 03-02 (5 min), 03-01 (15 min)
-- Trend: consistent velocity
+- Last 5 plans: 04-01 (3 min), 03-05 (15 min), 03-04 (5 min), 03-03 (8 min), 03-02 (5 min)
+- Trend: faster for infrastructure plans
 
 *Updated after each plan completion*
 
@@ -42,6 +43,9 @@ Progress: [██████████] 100% (Phase 3)
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [Phase 4-01]: @MainActor required on WindowManager for NSWindow concurrency safety (Swift 6)
+- [Phase 4-01]: NSKeyedArchiver used for frame persistence (not @AppStorage - cannot store NSRect)
 
 - [Phase 3-05]: TuningNote properties changed to var to support SwiftUI bindings in CustomTuningCreator
 - [Phase 3-05]: String rail displays low-to-high (standard guitar orientation) by reversing notes array
@@ -63,6 +67,7 @@ Recent decisions affecting current work:
 
 ### Completed Requirements
 
+- UI-01: Floating window always on top
 - PITCH-02: EMA smoothing for gauge needle (alpha=0.3)
 - PITCH-03: Note name and octave display
 - PITCH-04: Numeric cents offset as integer
@@ -100,7 +105,7 @@ All Phase 3 requirements completed:
 
 ### Pending Todos
 
-None - Phase 3 complete. Ready for Phase 4: Visual Polish.
+Ready for Phase 4 Plan 02: Liquid Glass Implementation
 
 ### Blockers/Concerns
 
@@ -109,10 +114,20 @@ None - Phase 3 complete. Ready for Phase 4: Visual Polish.
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 3 COMPLETE -- Tuning Selector and Integration with 137 tests passing
-Resume file: Phase 4 Plan 01
+Stopped at: Phase 4 Plan 1 COMPLETE -- Window Configuration with floating window and position persistence
+Resume file: Phase 4 Plan 02
 
-## Phase 3 Summary
+## Phase 4 Plan 1 Summary
+
+**Components Built:**
+- WindowManager with NSKeyedArchiver frame persistence
+- AppDelegate with NSPanel floating configuration
+- QuickTunerApp updated with hidden title bar and AppDelegate adaptor
+- Multi-monitor support with screen validation
+- Dock restore handling
+- Screen change observer with position clamping
+
+**Build Status:** Passing (137 tests)
 
 **Components Built:**
 - TuningNote, TuningCategory, InstrumentType, Tuning models
