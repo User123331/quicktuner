@@ -135,31 +135,52 @@ struct TunerGaugeView: View {
     }
 
     private func drawNeedle(in context: inout GraphicsContext, center: CGPoint, cents: Double) {
+        drawRefinedNeedle(in: &context, center: center, cents: cents)
+    }
+
+    private func drawRefinedNeedle(in context: inout GraphicsContext, center: CGPoint, cents: Double) {
         let clampedCents = max(minCents, min(maxCents, cents))
         let angle = angleForCents(clampedCents)
 
-        // Calculate needle tip position
+        // Triangle needle dimensions
+        let needleBaseWidth: CGFloat = 8
+
+        // Calculate tip position
         let tipX = center.x + cos(angle) * needleLength
         let tipY = center.y + sin(angle) * needleLength
 
-        var needlePath = Path()
-        needlePath.move(to: center)
-        needlePath.addLine(to: CGPoint(x: tipX, y: tipY))
+        // Perpendicular angle for base width
+        let perpAngle = angle + .pi / 2
 
-        // Color based on animated cents deviation
+        // Base points (at center, perpendicular to needle direction)
+        let baseLeftX = center.x + cos(perpAngle) * (needleBaseWidth / 2)
+        let baseLeftY = center.y + sin(perpAngle) * (needleBaseWidth / 2)
+        let baseRightX = center.x - cos(perpAngle) * (needleBaseWidth / 2)
+        let baseRightY = center.y - sin(perpAngle) * (needleBaseWidth / 2)
+
+        // Create triangle path
+        var needlePath = Path()
+        needlePath.move(to: CGPoint(x: baseLeftX, y: baseLeftY))
+        needlePath.addLine(to: CGPoint(x: tipX, y: tipY))
+        needlePath.addLine(to: CGPoint(x: baseRightX, y: baseRightY))
+        needlePath.closeSubpath()
+
+        // Needle color based on cents deviation
         let needleColor: Color = {
             if abs(cents) <= 2 { return Color("InTuneGreen") }
             if abs(cents) <= 25 { return Color("WarningOrange") }
             return Color("ErrorRed")
         }()
 
-        context.stroke(
-            needlePath,
-            with: .color(needleColor),
-            lineWidth: needleLineWidth
-        )
+        // Draw shadow first (offset slightly for depth)
+        var shadowPath = needlePath
+        shadowPath = shadowPath.offsetBy(dx: 1, dy: 2)
+        context.fill(shadowPath, with: .color(.black.opacity(0.3)))
 
-        // Draw center pivot dot
+        // Draw needle
+        context.fill(needlePath, with: .color(needleColor))
+
+        // Draw center pivot
         let pivotSize: CGFloat = 10
         let pivotRect = CGRect(
             x: center.x - pivotSize/2,
@@ -170,6 +191,13 @@ struct TunerGaugeView: View {
         context.fill(
             Path(ellipseIn: pivotRect),
             with: .color(.primary)
+        )
+
+        // Pivot shadow ring for depth
+        context.stroke(
+            Path(ellipseIn: pivotRect.insetBy(dx: -2, dy: -2)),
+            with: .color(.black.opacity(0.2)),
+            lineWidth: 2
         )
     }
 
