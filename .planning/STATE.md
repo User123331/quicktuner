@@ -10,17 +10,17 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 4 of 4 (Window, Design Language, and Polish)
-Plan: GAP-02 Complete - Remove Focus Rings
-Status: **Phase 4 GAP-02 Complete - Focus effects disabled on ContentView and StringPill**
-Last activity: 2026-03-12 -- Completed GAP-02 with .focusEffectDisabled(true) on root view and buttons
+Plan: GAP-04 Complete - Settings Button Added
+Status: **Phase 4 GAP-04 Complete - Settings gear button visible in top-right corner**
+Last activity: 2026-03-12 -- Completed GAP-04 with settings button overlay and sheet presentation
 
-Progress: [████░░░░░░] 40% (Phase 4)
+Progress: [██████░░░░] 60% (Phase 4)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 10
-- Average duration: 9 minutes
+- Total plans completed: 11
+- Average duration: 8 minutes
 - Total execution time: 1.5 hours
 
 **By Phase:**
@@ -29,10 +29,10 @@ Progress: [████░░░░░░] 40% (Phase 4)
 |-------|-------|-------|----------|
 | 02-tuner-interface | 5 | 5 | 12 min |
 | 03-tuning-library | 5 | 5 | 10 min |
-| 04-window-design | 3 | 5 | 4 min |
+| 04-window-design | 4 | 5 | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-GAP-02 (1 min), 04-GAP-01 (5 min), 04-01 (3 min), 03-05 (15 min), 03-04 (5 min)
+- Last 5 plans: 04-GAP-04 (3 min), 04-GAP-02 (1 min), 04-GAP-01 (5 min), 04-01 (3 min), 03-05 (15 min)
 - Trend: faster for focused gap fixes
 
 *Updated after each plan completion*
@@ -43,6 +43,10 @@ Progress: [████░░░░░░] 40% (Phase 4)
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [Phase 4-GAP-04]: Settings button uses overlay approach (toolbar not visible with hidden title bar)
+- [Phase 4-GAP-04]: Separate TunerViewModel instance for SettingsView avoids conflicts with TunerView's @State model
+- [Phase 4-GAP-04]: Glass button styling with .ultraThinMaterial background and circular clip shape
 
 - [Phase 4-GAP-02]: .focusEffectDisabled(true) applied at root (ContentView) and button level (StringPill) to eliminate macOS focus rings
 - [Phase 4-GAP-02]: Modifier propagates down view hierarchy, covers all child views
@@ -121,8 +125,22 @@ Ready for Phase 4 Plan 03: Typography and Animation Polish
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 4 GAP-02 COMPLETE -- Removed focus rings with .focusEffectDisabled
+Stopped at: Phase 4 GAP-04 COMPLETE -- Settings gear button with overlay and sheet presentation
 Resume file: Phase 4 Plan 03
+
+---
+
+## Phase 4 GAP-04 Summary
+
+**Components Added:**
+- Settings gear button in top-right corner using VStack/HStack/Spacer overlay pattern
+- Glass styling: .ultraThinMaterial background with circular clip shape
+- Sheet presentation for SettingsView with separate TunerViewModel instance
+
+**Files Modified:**
+- Sources/App/ContentView.swift
+
+**Build Status:** Passing
 
 ## Phase 4 GAP-02 Summary
 
