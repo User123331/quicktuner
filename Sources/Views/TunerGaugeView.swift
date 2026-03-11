@@ -202,32 +202,46 @@ struct TunerGaugeView: View {
     }
 
     private func drawInTuneGlow(in context: inout GraphicsContext, center: CGPoint, opacity: Double) {
-        // Green glow on gauge rim when in-tune
-        // Opacity animates via AnimationStyles.inTunePulse
-        let arcPath = Path { path in
-            path.addArc(
-                center: center,
-                radius: arcRadius,
-                startAngle: .degrees(-90),
-                endAngle: .degrees(90),
-                clockwise: false
+        guard opacity > 0 else { return }
+
+        let glowColor = Color("InTuneGreen")
+
+        // Multiple glow rings for depth - inner bright to outer ambient
+        let glowLayers: [(radius: CGFloat, width: CGFloat, alpha: Double)] = [
+            (arcRadius - 4, arcLineWidth + 8, 0.8),   // Inner bright
+            (arcRadius, arcLineWidth + 16, 0.5),      // Middle glow
+            (arcRadius + 8, arcLineWidth + 24, 0.3),  // Outer aura
+            (arcRadius + 16, arcLineWidth + 40, 0.15) // Ambient
+        ]
+
+        for layer in glowLayers {
+            let arcPath = Path { path in
+                path.addArc(
+                    center: center,
+                    radius: layer.radius,
+                    startAngle: .degrees(-90),
+                    endAngle: .degrees(90),
+                    clockwise: false
+                )
+            }
+
+            context.stroke(
+                arcPath,
+                with: .color(glowColor.opacity(opacity * layer.alpha)),
+                lineWidth: layer.width
             )
         }
 
-        // Main glow stroke - opacity controlled by animation
-        let glowColor = Color("InTuneGreen")
-
-        context.stroke(
-            arcPath,
-            with: .color(glowColor.opacity(opacity)),
-            lineWidth: arcLineWidth + 4
+        // Add center highlight point for extra glow at the top
+        let highlightRect = CGRect(
+            x: center.x - 20,
+            y: center.y - arcRadius - 10,
+            width: 40,
+            height: 40
         )
-
-        // Outer glow halo (wider, more transparent)
-        context.stroke(
-            arcPath,
-            with: .color(glowColor.opacity(opacity * 0.5)),
-            lineWidth: arcLineWidth + 12
+        context.fill(
+            Path(ellipseIn: highlightRect),
+            with: .color(glowColor.opacity(opacity * 0.4))
         )
     }
 
