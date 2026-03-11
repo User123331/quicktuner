@@ -28,6 +28,7 @@ struct StringRailView: View {
             }
         }
         .padding(.vertical, 24)  // Spacing above/below rail per CONTEXT.md
+        .animation(AnimationStyles.stringSelection, value: viewModel.selectedStringIndex)
     }
 }
 
@@ -56,7 +57,9 @@ struct StringButton: View {
         .frame(minWidth: 44)
         .padding(.horizontal, 16)
         .padding(.vertical, 8)
+        .background(isSelected ? Color.accentColor.opacity(0.2) : Color.clear)
         .glassButton(cornerRadius: 16)  // Glass button styling
+        .scaleEffect(isSelected ? 1.05 : 1.0)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)

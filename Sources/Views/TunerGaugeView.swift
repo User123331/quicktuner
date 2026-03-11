@@ -17,6 +17,10 @@ struct TunerGaugeView: View {
     private let needleLength: CGFloat = 100
     private let needleLineWidth: CGFloat = 3
 
+    // Animation state - use animated values for Canvas rendering
+    @State private var animatedCents: Double = 0
+    @State private var glowOpacity: Double = 0
+
     var body: some View {
         // Wrap Canvas in a glass card container (NOT applying glass directly to Canvas)
         VStack {
@@ -35,17 +39,36 @@ struct TunerGaugeView: View {
                 // Draw tick marks at key positions
                 drawTickMarks(in: &context, center: center)
 
-                // Draw needle based on current cents
-                drawNeedle(in: &context, center: center)
+                // Draw needle based on animated cents value
+                drawNeedle(in: &context, center: center, cents: animatedCents)
 
-                // Draw in-tune indicator
+                // Draw in-tune glow with animated opacity
                 if isInTune {
-                    drawInTuneGlow(in: &context, center: center)
+                    drawInTuneGlow(in: &context, center: center, opacity: glowOpacity)
                 }
             }
             .frame(width: 300, height: 180)
         }
         .glassCard(cornerRadius: 24)  // Glass effect on container, not Canvas
+        .onChange(of: cents) { oldValue, newValue in
+            withAnimation(AnimationStyles.needle) {
+                animatedCents = newValue
+            }
+        }
+        .onChange(of: isInTune) { _, newValue in
+            if newValue {
+                withAnimation(AnimationStyles.inTunePulse) {
+                    glowOpacity = 1.0
+                }
+            } else {
+                // Stop animation and reset immediately
+                glowOpacity = 0.0
+            }
+        }
+        .onAppear {
+            animatedCents = cents
+            glowOpacity = isInTune ? 1.0 : 0.0
+        }
     }
 
     // MARK: - Drawing Functions
@@ -111,7 +134,7 @@ struct TunerGaugeView: View {
         }
     }
 
-    private func drawNeedle(in context: inout GraphicsContext, center: CGPoint) {
+    private func drawNeedle(in context: inout GraphicsContext, center: CGPoint, cents: Double) {
         let clampedCents = max(minCents, min(maxCents, cents))
         let angle = angleForCents(clampedCents)
 
@@ -123,7 +146,7 @@ struct TunerGaugeView: View {
         needlePath.move(to: center)
         needlePath.addLine(to: CGPoint(x: tipX, y: tipY))
 
-        // Color based on cents deviation
+        // Color based on animated cents deviation
         let needleColor: Color = {
             if abs(cents) <= 2 { return .green }
             if abs(cents) <= 25 { return .yellow }
@@ -150,8 +173,9 @@ struct TunerGaugeView: View {
         )
     }
 
-    private func drawInTuneGlow(in context: inout GraphicsContext, center: CGPoint) {
-        // Phase 2: Green stroke as placeholder for Phase 4 Liquid Glass glow
+    private func drawInTuneGlow(in context: inout GraphicsContext, center: CGPoint, opacity: Double) {
+        // Green glow on gauge rim when in-tune
+        // Opacity animates via AnimationStyles.inTunePulse
         let arcPath = Path { path in
             path.addArc(
                 center: center,
@@ -161,10 +185,22 @@ struct TunerGaugeView: View {
                 clockwise: false
             )
         }
+
+        // Main glow stroke - opacity controlled by animation
+        // Using Color.green as fallback since InTuneGreen asset will be added in Wave 5
+        let glowColor = Color.green
+
         context.stroke(
             arcPath,
-            with: .color(.green.opacity(0.8)),
+            with: .color(glowColor.opacity(opacity)),
             lineWidth: arcLineWidth + 4
+        )
+
+        // Outer glow halo (wider, more transparent)
+        context.stroke(
+            arcPath,
+            with: .color(glowColor.opacity(opacity * 0.5)),
+            lineWidth: arcLineWidth + 12
         )
     }
 
