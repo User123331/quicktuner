@@ -14,7 +14,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 1: Pitch Detection and Audio Engine** - Real-time audio capture and sub-cent pitch detection via YIN + FFT
 - [x] **Phase 2: Tuner Interface and String Workflow** - Circular gauge, string navigation, and in-tune detection UI
-- [ ] **Phase 3: Tuning Library, Settings, and Persistence** - Instrument modes, preset/custom tunings, reference pitch, and persistent preferences
+- [x] **Phase 3: Tuning Library, Settings, and Persistence** - Instrument modes, preset/custom tunings, reference pitch, and persistent preferences
 - [ ] **Phase 4: Window, Design Language, and Polish** - Floating window, Liquid Glass design, spring animations, and typography
 
 ## Phase Details
@@ -86,8 +86,8 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 04-01: TBD
-- [ ] 04-02: TBD
+- [x] 04-GAP-01: Fix Missing Liquid Glass Effects - Window transparency and ignoresSafeArea for material visibility
+- [x] 04-01: Window Configuration - Floating panel, position persistence, multi-monitor support
 
 ## Progress
 
@@ -98,5 +98,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Pitch Detection and Audio Engine | 5/5 | Complete | 2026-03-11 |
 | 2. Tuner Interface and String Workflow | 5/5 | Complete | 2026-03-11 |
-| 3. Tuning Library, Settings, and Persistence | 2/? | In Progress | 2026-03-12 |
-| 4. Window, Design Language, and Polish | 0/? | Not started | - |
+| 3. Tuning Library, Settings, and Persistence | 5/5 | Complete | 2026-03-12 |
+| 4. Window, Design Language, and Polish | 2/? | In Progress | 2026-03-12 |

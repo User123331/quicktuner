@@ -10,17 +10,17 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 4 of 4 (Window, Design Language, and Polish)
-Plan: 1 of 5 in current phase **COMPLETE**
-Status: **Phase 4 Plan 1 Complete - Window Configuration**
-Last activity: 2026-03-12 -- Completed Window Configuration (04-01) with floating window and position persistence
+Plan: GAP-02 Complete - Remove Focus Rings
+Status: **Phase 4 GAP-02 Complete - Focus effects disabled on ContentView and StringPill**
+Last activity: 2026-03-12 -- Completed GAP-02 with .focusEffectDisabled(true) on root view and buttons
 
-Progress: [██░░░░░░░░] 20% (Phase 4)
+Progress: [████░░░░░░] 40% (Phase 4)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 10 minutes
+- Total plans completed: 10
+- Average duration: 9 minutes
 - Total execution time: 1.5 hours
 
 **By Phase:**
@@ -29,11 +29,11 @@ Progress: [██░░░░░░░░] 20% (Phase 4)
 |-------|-------|-------|----------|
 | 02-tuner-interface | 5 | 5 | 12 min |
 | 03-tuning-library | 5 | 5 | 10 min |
-| 04-window-design | 1 | 5 | 3 min |
+| 04-window-design | 3 | 5 | 4 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-01 (3 min), 03-05 (15 min), 03-04 (5 min), 03-03 (8 min), 03-02 (5 min)
-- Trend: faster for infrastructure plans
+- Last 5 plans: 04-GAP-02 (1 min), 04-GAP-01 (5 min), 04-01 (3 min), 03-05 (15 min), 03-04 (5 min)
+- Trend: faster for focused gap fixes
 
 *Updated after each plan completion*
 
@@ -43,6 +43,11 @@ Progress: [██░░░░░░░░] 20% (Phase 4)
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [Phase 4-GAP-02]: .focusEffectDisabled(true) applied at root (ContentView) and button level (StringPill) to eliminate macOS focus rings
+- [Phase 4-GAP-02]: Modifier propagates down view hierarchy, covers all child views
+- [Phase 4-GAP-01]: Window transparency (isOpaque = false, backgroundColor = .clear) required for material/vibrancy effects
+- [Phase 4-GAP-01]: ignoresSafeArea() required on material background to fill entire window
 
 - [Phase 4-01]: @MainActor required on WindowManager for NSWindow concurrency safety (Swift 6)
 - [Phase 4-01]: NSKeyedArchiver used for frame persistence (not @AppStorage - cannot store NSRect)
@@ -67,6 +72,8 @@ Recent decisions affecting current work:
 
 ### Completed Requirements
 
+- UI-02: Focus effects disabled (.focusEffectDisabled) for clean glass aesthetic
+- UI-02: Liquid Glass material background with window transparency
 - UI-01: Floating window always on top
 - PITCH-02: EMA smoothing for gauge needle (alpha=0.3)
 - PITCH-03: Note name and octave display
@@ -114,8 +121,22 @@ Ready for Phase 4 Plan 02: Liquid Glass Implementation
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 4 Plan 1 COMPLETE -- Window Configuration with floating window and position persistence
+Stopped at: Phase 4 GAP-01 COMPLETE -- Fixed missing Liquid Glass effects with window transparency
 Resume file: Phase 4 Plan 02
+
+## Phase 4 GAP-01 Summary
+
+**Components Fixed:**
+- ContentView material background with ignoresSafeArea()
+- AppDelegate window transparency (isOpaque = false, backgroundColor = .clear)
+
+**Files Modified:**
+- Sources/App/ContentView.swift
+- Sources/App/AppDelegate.swift
+
+**Build Status:** Code compiles, changes ready for visual verification
+
+---
 
 ## Phase 4 Plan 1 Summary
 
