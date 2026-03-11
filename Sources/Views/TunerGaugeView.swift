@@ -107,7 +107,7 @@ struct TunerGaugeView: View {
         }
         context.stroke(
             inTunePath,
-            with: .color(.green.opacity(0.6)),
+            with: .color(Color("InTuneGreen").opacity(0.6)),
             lineWidth: arcLineWidth
         )
 
@@ -115,7 +115,7 @@ struct TunerGaugeView: View {
         for tickCents in [-25, 25] {
             let angle = angleForCents(Double(tickCents))
             let tickPath = tickPath(at: angle, center: center, radius: arcRadius)
-            context.stroke(tickPath, with: .color(.yellow.opacity(0.7)), lineWidth: 3)
+            context.stroke(tickPath, with: .color(Color("WarningOrange").opacity(0.7)), lineWidth: 3)
         }
     }
 
@@ -148,9 +148,9 @@ struct TunerGaugeView: View {
 
         // Color based on animated cents deviation
         let needleColor: Color = {
-            if abs(cents) <= 2 { return .green }
-            if abs(cents) <= 25 { return .yellow }
-            return .red
+            if abs(cents) <= 2 { return Color("InTuneGreen") }
+            if abs(cents) <= 25 { return Color("WarningOrange") }
+            return Color("ErrorRed")
         }()
 
         context.stroke(
@@ -187,8 +187,7 @@ struct TunerGaugeView: View {
         }
 
         // Main glow stroke - opacity controlled by animation
-        // Using Color.green as fallback since InTuneGreen asset will be added in Wave 5
-        let glowColor = Color.green
+        let glowColor = Color("InTuneGreen")
 
         context.stroke(
             arcPath,
