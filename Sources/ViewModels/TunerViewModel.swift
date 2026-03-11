@@ -17,6 +17,44 @@ final class TunerViewModel {
     private var levelTask: Task<Void, Never>?
     private var isStopping = false
 
+    // MARK: - Phase 3: Tuning Library and Persistence
+
+    /// Tuning library for instrument/tuning management
+    let tuningLibrary: TuningLibrary
+
+    /// Persistence service for custom tunings
+    private let persistenceService: PersistenceService
+
+    /// Reference pitch for A4 (user-configurable, 420-444 Hz)
+    /// Persisted via @AppStorage
+    var referencePitch: Double {
+        didSet {
+            // Normalize and save when changed
+            let normalized = ReferencePitchConstants.normalize(referencePitch)
+            if normalized != referencePitch {
+                referencePitch = normalized
+            }
+            UserDefaults.standard.set(referencePitch, forKey: PersistenceKeys.referencePitch)
+        }
+    }
+
+    /// Currently selected instrument type
+    /// Persisted via custom setter
+    var selectedInstrument: InstrumentType {
+        didSet {
+            tuningLibrary.selectedInstrument = selectedInstrument
+            UserDefaults.standard.set(selectedInstrument.rawValue, forKey: PersistenceKeys.selectedInstrument)
+        }
+    }
+
+    /// Currently selected tuning ID for persistence restoration
+    /// Persisted via custom restoration logic
+    private var selectedTuningId: String? {
+        didSet {
+            UserDefaults.standard.set(selectedTuningId, forKey: PersistenceKeys.selectedTuningId)
+        }
+    }
+
     // MARK: - Display State (PITCH-03, PITCH-04)
 
     /// Current detected frequency in Hz (0 if no pitch)
@@ -54,11 +92,6 @@ final class TunerViewModel {
 
     /// Noise gate threshold in dB (user-configurable)
     var noiseGateThresholdDb: Float = Float(YINConfig.defaultNoiseGateDb)
-
-    /// Reference pitch for A4 (user-configurable, 420-444 Hz)
-    var referencePitch: Double = 440.0
-
-    // MARK: - String Navigation State (NAV-01, NAV-02, NAV-04)
 
     /// Currently selected string index (0-based, default: 0 for String 1)
     var selectedStringIndex: Int = 0
@@ -109,16 +142,44 @@ final class TunerViewModel {
     // MARK: - Initialization
 
     /// Initialize with default audio engine
-    init() {
+    init(
+        tuningLibrary: TuningLibrary = TuningLibrary(),
+        persistenceService: PersistenceService = .shared
+    ) {
         self.audioEngine = AudioEngine()
         self.deviceManager = AudioDeviceManager()
+        self.tuningLibrary = tuningLibrary
+        self.persistenceService = persistenceService
 
-        // Load saved settings
-        noiseGateThresholdDb = UserDefaults.standard.float(forKey: Keys.noiseGateThreshold)
-        if noiseGateThresholdDb == 0 { noiseGateThresholdDb = Float(YINConfig.defaultNoiseGateDb) }
+        // Load saved settings from UserDefaults
+        let savedNoiseGate = UserDefaults.standard.float(forKey: PersistenceKeys.noiseGateThreshold)
+        if savedNoiseGate == 0 {
+            self.noiseGateThresholdDb = Float(YINConfig.defaultNoiseGateDb)
+        } else {
+            self.noiseGateThresholdDb = savedNoiseGate
+        }
 
-        referencePitch = UserDefaults.standard.double(forKey: Keys.referencePitch)
-        if referencePitch == 0 { referencePitch = 440.0 }
+        let savedRefPitch = UserDefaults.standard.double(forKey: PersistenceKeys.referencePitch)
+        if savedRefPitch == 0 {
+            self.referencePitch = ReferencePitchConstants.default
+        } else {
+            self.referencePitch = ReferencePitchConstants.normalize(savedRefPitch)
+        }
+
+        // Restore saved instrument
+        if let savedInstrumentRaw = UserDefaults.standard.string(forKey: PersistenceKeys.selectedInstrument),
+           let savedInstrument = InstrumentType(rawValue: savedInstrumentRaw) {
+            self.selectedInstrument = savedInstrument
+        } else {
+            self.selectedInstrument = .guitar6
+        }
+        self.tuningLibrary.selectedInstrument = self.selectedInstrument
+
+        // Load custom tunings and restore selected tuning
+        Task {
+            await loadCustomTunings()
+            await restoreSelectedTuning()
+        }
     }
 
     func prepareForDeinit() {
@@ -444,7 +505,46 @@ final class TunerViewModel {
     /// Set noise gate threshold
     func setNoiseGateThreshold(_ db: Float) {
         noiseGateThresholdDb = db
-        UserDefaults.standard.set(db, forKey: Keys.noiseGateThreshold)
+        UserDefaults.standard.set(db, forKey: PersistenceKeys.noiseGateThreshold)
+    }
+
+    // MARK: - Persistence Methods
+
+    /// Load custom tunings from persistence
+    private func loadCustomTunings() async {
+        let customTunings = await persistenceService.loadCustomTunings()
+        for tuning in customTunings {
+            tuningLibrary.addCustomTuning(tuning)
+        }
+    }
+
+    /// Restore selected tuning from saved ID
+    private func restoreSelectedTuning() async {
+        if let savedTuningId = UserDefaults.standard.string(forKey: PersistenceKeys.selectedTuningId),
+           let uuid = UUID(uuidString: savedTuningId) {
+            tuningLibrary.selectTuning(id: uuid)
+            selectedTuningId = savedTuningId
+        }
+    }
+
+    /// Select a tuning and persist the selection
+    func selectTuning(_ tuning: Tuning) {
+        tuningLibrary.selectTuning(tuning)
+        selectedTuningId = tuning.id.uuidString
+    }
+
+    /// Save a custom tuning and persist to disk
+    func saveCustomTuning(_ tuning: Tuning) async throws {
+        tuningLibrary.addCustomTuning(tuning)
+        let allCustom = tuningLibrary.customTunings
+        try await persistenceService.saveCustomTunings(allCustom)
+    }
+
+    /// Delete a custom tuning and persist changes
+    func deleteCustomTuning(id: UUID) async throws {
+        tuningLibrary.removeCustomTuning(id: id)
+        let allCustom = tuningLibrary.customTunings
+        try await persistenceService.saveCustomTunings(allCustom)
     }
 
     // MARK: - Private Methods
@@ -454,13 +554,6 @@ final class TunerViewModel {
         // On macOS, permission is handled via entitlements + Info.plist
         // Return true for now; actual permission prompt happens on first mic access
         return true
-    }
-
-    // MARK: - UserDefaults Keys
-
-    private enum Keys {
-        static let noiseGateThreshold = "NoiseGateThresholdDb"
-        static let referencePitch = "ReferencePitch"
     }
 }
 
