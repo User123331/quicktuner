@@ -19,6 +19,9 @@ let package = Package(
             path: "Sources",
             swiftSettings: [
                 .swiftLanguageMode(.v6)
+            ],
+            linkerSettings: [
+                .linkedFramework("AVFAudio")
             ]
         ),
         .testTarget(
