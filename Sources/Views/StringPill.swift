@@ -47,6 +47,7 @@ struct StringPill: View {
             )
         }
         .buttonStyle(.plain)
+        .focusEffectDisabled(true)  // Disable blue focus ring on string pills
     }
 }
 
