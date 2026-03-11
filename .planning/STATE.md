@@ -5,32 +5,33 @@
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** Phase 2 - Tuner Interface and String Workflow **COMPLETE**
+**Current focus:** Phase 3 - Tuning Library, Settings, and Persistence
 
 ## Current Position
 
-Phase: 2 of 4 (Tuner Interface and String Workflow)
-Plan: 5 of 5 in current phase
-Status: **Phase 2 COMPLETE**
-Last activity: 2026-03-11 -- Completed Integration and All Tuned Flow
+Phase: 3 of 4 (Tuning Library, Settings, and Persistence)
+Plan: 2 of ? in current phase
+Status: **In Progress**
+Last activity: 2026-03-12 -- Completed Persistence Service (03-02)
 
-Progress: [██████████] 100%
+Progress: [██░░░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 12 minutes
-- Total execution time: 1.0 hours
+- Total plans completed: 7
+- Average duration: 11 minutes
+- Total execution time: 1.3 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 02-tuner-interface | 5 | 5 | 12 min |
+| 03-tuning-library | 2 | ? | 10 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-05 (8 min), 02-04 (2 min), 02-03 (13 min), 02-02 (5 min), 02-01 (19 min)
+- Last 5 plans: 03-02 (5 min), 03-01 (15 min), 02-05 (8 min), 02-04 (2 min), 02-03 (13 min)
 - Trend: consistent velocity
 
 *Updated after each plan completion*
@@ -42,6 +43,9 @@ Progress: [██████████] 100%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [Phase 3]: Used explicit UserDefaults instead of @AppStorage for more control over persistence timing
+- [Phase 3]: Actor-based PersistenceService for thread-safe file operations
+- [Phase 3]: Atomic file writes (temp then move) to prevent corruption
 - [Phase 2]: EMA smoothing alpha = 0.3 for optimal responsiveness/smoothing balance
 - [Phase 2]: In-tune threshold ±2 cents with 1 cent hysteresis (PITCH-05)
 - [Phase 2]: In-tune requires 200ms hold before confirming
@@ -63,32 +67,34 @@ Recent decisions affecting current work:
 - NAV-02: Number keys 1-6 for direct string selection
 - NAV-04: Track tuned strings with visual confirmation
 - NAV-05: All Tuned badge with 500ms delay
+- PREF-01: Reference pitch persistence (420-444 Hz range)
+- PREF-02: Instrument selection persistence
+- PREF-03: Custom tunings persistence to JSON
 
 ### Pending Todos
 
-None - Phase 2 is complete. Ready for Phase 3.
+None - continuing with Phase 3.
 
 ### Blockers/Concerns
 
-- None -- Phase 2 complete, ready to proceed
+- None
 
 ## Session Continuity
 
-Last session: 2026-03-11
-Stopped at: Phase 2 COMPLETE -- All 5 plans finished, 71 tests passing
-Resume file: Phase 3 planning
+Last session: 2026-03-12
+Stopped at: Phase 3 Plan 02 COMPLETE -- Persistence Service with 137 tests passing
+Resume file: Phase 3 Plan 03
 
-## Phase 2 Summary
+## Phase 3 Summary
 
 **Components Built:**
-- TunerGaugeView - Canvas-based gauge with needle and color zones
-- CentsReadoutView - Integer cents with color coding
-- NoteDisplayView - Large note name with octave
-- StringRailView - Pill navigation with keyboard support
-- StringPill - Individual string button with checkmark
-- AllTunedBadgeView - Completion badge with minimal text
-- TunerView - Complete integration of all components
+- TuningNote, TuningCategory, InstrumentType, Tuning models
+- TuningLibrary service with 37 preset tunings
+- PresetTunings data with comprehensive tuning library
+- Constants.swift with persistence keys and reference pitch constants
+- PersistenceService with atomic JSON writes
+- TunerViewModel persistence integration
 
-**Tests:** 71 total
+**Tests:** 137 total
 **Build Status:** Passing
 **Integration:** Complete

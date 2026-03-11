@@ -70,8 +70,8 @@ Plans:
 **Plans**: TBD
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [x] 03-01: Tuning Models and Library - Tuning, TuningNote, InstrumentType, TuningLibrary with 37 presets
+- [x] 03-02: Persistence Service - Constants, PersistenceService, TunerViewModel integration
 
 ### Phase 4: Window, Design Language, and Polish
 **Goal**: The app looks and feels like a native macOS precision instrument with Liquid Glass design, smooth animations, and a compact floating window
@@ -98,5 +98,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 |-------|----------------|--------|-----------|
 | 1. Pitch Detection and Audio Engine | 5/5 | Complete | 2026-03-11 |
 | 2. Tuner Interface and String Workflow | 5/5 | Complete | 2026-03-11 |
-| 3. Tuning Library, Settings, and Persistence | 0/? | Not started | - |
+| 3. Tuning Library, Settings, and Persistence | 2/? | In Progress | 2026-03-12 |
 | 4. Window, Design Language, and Polish | 0/? | Not started | - |
