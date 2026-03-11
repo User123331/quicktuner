@@ -91,31 +91,63 @@ struct TunerGaugeView: View {
     }
 
     private func drawColorZones(in context: inout GraphicsContext, center: CGPoint) {
-        // Green zone: ±2 cents (in-tune range)
+        // In-tune zone with gradient-style effect (multi-segment for smooth appearance)
         let inTuneAngle = 2.0 / 50.0 * 90.0  // 3.6 degrees from center
-        let inTuneStart = Angle.degrees(-inTuneAngle)
-        let inTuneEnd = Angle.degrees(inTuneAngle)
 
-        let inTunePath = Path { path in
-            path.addArc(
-                center: center,
-                radius: arcRadius,
-                startAngle: inTuneStart,
-                endAngle: inTuneEnd,
-                clockwise: false
+        // Create multi-segment gradient effect for in-tune zone
+        // Opacity varies from center (bright) to edges (faded)
+        let segments = 5
+        for i in 0..<segments {
+            let t = Double(i) / Double(segments - 1)  // 0 to 1
+            let segmentAngle = inTuneAngle * 2 / Double(segments)
+            let startAngle = Angle.degrees(-inTuneAngle + Double(i) * segmentAngle)
+            let endAngle = Angle.degrees(-inTuneAngle + Double(i + 1) * segmentAngle)
+
+            // Opacity varies from center (0.8) to edges (0.4)
+            let opacity = 0.4 + 0.4 * (1 - abs(t - 0.5) * 2)
+
+            let segmentPath = Path { path in
+                path.addArc(
+                    center: center,
+                    radius: arcRadius,
+                    startAngle: startAngle,
+                    endAngle: endAngle,
+                    clockwise: false
+                )
+            }
+
+            context.stroke(
+                segmentPath,
+                with: .color(Color("InTuneGreen").opacity(opacity)),
+                lineWidth: arcLineWidth
             )
         }
-        context.stroke(
-            inTunePath,
-            with: .color(Color("InTuneGreen").opacity(0.6)),
-            lineWidth: arcLineWidth
-        )
 
-        // Yellow zone markers: ±25 cents
+        // Warning zone markers: ±25 cents - draw as small arc segments
         for tickCents in [-25, 25] {
             let angle = angleForCents(Double(tickCents))
-            let tickPath = tickPath(at: angle, center: center, radius: arcRadius)
-            context.stroke(tickPath, with: .color(Color("WarningOrange").opacity(0.7)), lineWidth: 3)
+
+            // Draw warning indicator as a small arc segment
+            let warnAngleDegrees = 5.0  // degrees
+            let warnStart = Angle.radians(angle - warnAngleDegrees * .pi / 180)
+            let warnEnd = Angle.radians(angle + warnAngleDegrees * .pi / 180)
+
+            let warnPath = Path { path in
+                path.addArc(
+                    center: center,
+                    radius: arcRadius,
+                    startAngle: warnStart,
+                    endAngle: warnEnd,
+                    clockwise: false
+                )
+            }
+
+            // Gradient-style warning indicator
+            context.stroke(
+                warnPath,
+                with: .color(Color("WarningOrange").opacity(0.6)),
+                lineWidth: arcLineWidth
+            )
         }
     }
 
@@ -126,11 +158,17 @@ struct TunerGaugeView: View {
             let angle = angleForCents(Double(tickCents))
             let tickPath = tickPath(at: angle, center: center, radius: arcRadius)
 
-            // Center tick (0 cents) is white, others are gray
-            let color: Color = tickCents == 0 ? .primary : .secondary
-            let lineWidth: CGFloat = tickCents == 0 ? 3 : 2
+            // Center tick is brighter and more prominent, others fade toward edges
+            let isCenter = tickCents == 0
+            let color: Color = isCenter ? .primary : .secondary
+            let lineWidth: CGFloat = isCenter ? 3 : 2
+            let opacity: Double = isCenter ? 1.0 : 0.7
 
-            context.stroke(tickPath, with: .color(color), lineWidth: lineWidth)
+            context.stroke(
+                tickPath,
+                with: .color(color.opacity(opacity)),
+                lineWidth: lineWidth
+            )
         }
     }
 
