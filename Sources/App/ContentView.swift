@@ -42,6 +42,10 @@ struct ContentView: View {
                         .font(.system(.title2, design: .monospaced))
                         .foregroundStyle(centsColor)
                 }
+
+                // Reference pitch display (Phase 3-04)
+                ReferencePitchDisplay(referencePitch: viewModel.referencePitch)
+                    .padding(.top, 4)
             }
             .frame(height: 150)
 

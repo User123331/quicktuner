@@ -26,7 +26,7 @@ final class TunerViewModel {
     private let persistenceService: PersistenceService
 
     /// Reference pitch for A4 (user-configurable, 420-444 Hz)
-    /// Persisted via @AppStorage
+    /// Persisted via custom setter
     var referencePitch: Double {
         didSet {
             // Normalize and save when changed
@@ -35,6 +35,16 @@ final class TunerViewModel {
                 referencePitch = normalized
             }
             UserDefaults.standard.set(referencePitch, forKey: PersistenceKeys.referencePitch)
+
+            // Recalculate current note with new reference pitch (immediate update)
+            if frequency > 0 {
+                note = NoteClassifier.classify(frequency: frequency, referencePitch: referencePitch)
+                if let currentNote = note {
+                    let smoothedCents = applyEMA(currentNote.cents)
+                    self.cents = smoothedCents
+                    updateCentsDisplay(smoothedCents)
+                }
+            }
         }
     }
 
