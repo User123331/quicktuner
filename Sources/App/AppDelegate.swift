@@ -3,6 +3,7 @@ import SwiftUI
 
 /// AppDelegate for configuring the window as a floating panel
 /// Handles window level, title bar, drag behavior, and position persistence
+@MainActor
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var windowObserver: NSObjectProtocol?
 
@@ -37,11 +38,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             panel.level = .floating
             panel.hidesOnDeactivate = false
             panel.collectionBehavior = [.fullScreenAuxiliary, .canJoinAllSpaces]
+            // Enable transparency for vibrancy/material effects
+            panel.isOpaque = false
+            panel.backgroundColor = .clear
         } else {
             // Fallback: configure NSWindow properties
             window.level = .floating
             window.hidesOnDeactivate = false
             window.collectionBehavior = [.fullScreenAuxiliary, .canJoinAllSpaces]
+            // Enable transparency for vibrancy/material effects
+            window.isOpaque = false
+            window.backgroundColor = .clear
         }
 
         // Hide title bar completely
