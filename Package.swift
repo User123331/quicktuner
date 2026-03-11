@@ -13,15 +13,30 @@ let package = Package(
         )
     ],
     targets: [
+        // Objective-C++ bridge for Core Audio
         .target(
-            name: "QuickTuner",
-            dependencies: [],
-            path: "Sources",
+            name: "AudioBridge",
+            path: "Sources/AudioBridge",
+            publicHeadersPath: ".",
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ],
             linkerSettings: [
-                .linkedFramework("AVFAudio")
+                .linkedFramework("CoreAudio")
+            ]
+        ),
+        // Main Swift package
+        .target(
+            name: "QuickTuner",
+            dependencies: ["AudioBridge"],
+            path: "Sources",
+            exclude: ["AudioBridge"],
+            swiftSettings: [
+                .swiftLanguageMode(.v6)
+            ],
+            linkerSettings: [
+                .linkedFramework("AVFAudio"),
+                .linkedFramework("CoreAudio")
             ]
         ),
         .testTarget(
