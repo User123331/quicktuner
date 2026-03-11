@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Main tuner view integrating all components
-/// Displays note, cents, gauge, string rail, and all-tuned badge with keyboard navigation
+/// Displays note, cents, gauge, tuning selector, string rail, and all-tuned badge with keyboard navigation
 struct TunerView: View {
     @State private var viewModel: TunerViewModel
 
@@ -12,7 +12,7 @@ struct TunerView: View {
     var body: some View {
         ZStack {
             // Main content
-            VStack(spacing: 24) {
+            VStack(spacing: 0) {
                 // Note display
                 NoteDisplayView(
                     noteName: viewModel.noteNameText,
@@ -27,29 +27,17 @@ struct TunerView: View {
                     cents: viewModel.cents,
                     isInTune: viewModel.isInTune
                 )
+                .frame(maxHeight: .infinity)
 
-                // String rail
-                StringRailView(
-                    selectedIndex: Binding(
-                        get: { viewModel.selectedStringIndex },
-                        set: { viewModel.selectString(at: $0) }
-                    ),
-                    strings: viewModel.strings,
-                    tunedIndices: viewModel.tunedStrings
-                )
+                // Tuning selector (always visible - Phase 3 requirement)
+                TuningSelector(viewModel: viewModel)
+                    .padding(.horizontal)
+                    .padding(.vertical, 8)
 
-                // Reset button with keyboard shortcut
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        viewModel.resetTunedStrings()
-                    }) {
-                        Label("Reset", systemImage: "arrow.counterclockwise")
-                            .font(.caption)
-                    }
-                    .buttonStyle(.bordered)
-                    .keyboardShortcut("r", modifiers: .command)
-                }
+                // String rail showing target notes for selected tuning
+                StringRailView(viewModel: viewModel)
+                    .padding(.horizontal)
+                    .padding(.bottom, 16)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 24)

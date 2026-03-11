@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 3 of 4 (Tuning Library, Settings, and Persistence)
-Plan: 3 of ? in current phase
+Plan: 4 of ? in current phase
 Status: **In Progress**
-Last activity: 2026-03-12 -- Completed Settings UI (03-03)
+Last activity: 2026-03-12 -- Completed Reference Pitch UI (03-04)
 
-Progress: [████░░░░░░] 30%
+Progress: [████░░░░░░] 40%
 
 ## Performance Metrics
 
@@ -28,10 +28,10 @@ Progress: [████░░░░░░] 30%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 02-tuner-interface | 5 | 5 | 12 min |
-| 03-tuning-library | 3 | ? | 9 min |
+| 03-tuning-library | 4 | ? | 8 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-03 (8 min), 03-02 (5 min), 03-01 (15 min), 02-05 (8 min), 02-04 (2 min)
+- Last 5 plans: 03-04 (5 min), 03-03 (8 min), 03-02 (5 min), 03-01 (15 min), 02-05 (8 min)
 - Trend: consistent velocity
 
 *Updated after each plan completion*
@@ -71,6 +71,9 @@ Recent decisions affecting current work:
 - PREF-01: Reference pitch persistence (420-444 Hz range)
 - PREF-02: Instrument selection persistence
 - PREF-03: Custom tunings persistence to JSON
+- TUNE-03: Reference pitch adjustment UI
+- TUNE-04: Reference pitch presets (440, 432, 420)
+- TUNE-05: Reference pitch display on main UI
 
 ### Pending Todos
 
@@ -83,8 +86,8 @@ None - continuing with Phase 3.
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 3 Plan 03 COMPLETE -- Settings UI with 137 tests passing
-Resume file: Phase 3 Plan 04
+Stopped at: Phase 3 Plan 04 COMPLETE -- Reference Pitch UI with 137 tests passing
+Resume file: Phase 3 Plan 05
 
 ## Phase 3 Summary
 
@@ -100,6 +103,8 @@ Resume file: Phase 3 Plan 04
 - TuningLibrarySettings with instrument picker and tuning list
 - AudioSettings with noise gate slider
 - AboutSettings with app info
+- ReferencePitchDisplay component for main UI
+- Immediate recalculation on reference pitch change
 
 **Tests:** 137 total
 **Build Status:** Passing

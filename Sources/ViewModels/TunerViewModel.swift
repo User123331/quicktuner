@@ -54,6 +54,7 @@ final class TunerViewModel {
         didSet {
             tuningLibrary.selectedInstrument = selectedInstrument
             UserDefaults.standard.set(selectedInstrument.rawValue, forKey: PersistenceKeys.selectedInstrument)
+            updateStringsFromTuning()
         }
     }
 
@@ -541,6 +542,7 @@ final class TunerViewModel {
     func selectTuning(_ tuning: Tuning) {
         tuningLibrary.selectTuning(tuning)
         selectedTuningId = tuning.id.uuidString
+        updateStringsFromTuning()
     }
 
     /// Save a custom tuning and persist to disk
@@ -555,6 +557,38 @@ final class TunerViewModel {
         tuningLibrary.removeCustomTuning(id: id)
         let allCustom = tuningLibrary.customTunings
         try await persistenceService.saveCustomTunings(allCustom)
+    }
+
+    /// Update strings array based on selected tuning
+    func updateStringsFromTuning() {
+        guard let tuning = tuningLibrary.selectedTuning else { return }
+
+        // Create StringInfo array from tuning notes
+        // notes are ordered String 1 (high) to String N (low)
+        strings = tuning.notes.enumerated().map { index, note in
+            let frequency = calculateFrequency(for: note)
+            return StringInfo(
+                id: index + 1,
+                note: Note(name: note.name, octave: note.octave, cents: 0, frequency: frequency),
+                isTuned: tunedStrings.contains(index)
+            )
+        }
+    }
+
+    /// Calculate frequency for a tuning note based on reference pitch
+    private func calculateFrequency(for note: TuningNote) -> Double {
+        // Find the MIDI note number for this note
+        let noteNames = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
+        guard let noteIndex = noteNames.firstIndex(of: note.name) else { return 0 }
+
+        // A4 is MIDI note 69, so calculate offset from A4
+        // C4 is MIDI 60, so: MIDI = 12 * (octave + 1) + noteIndex
+        let midiNote = 12 * (note.octave + 1) + noteIndex
+        let a4Midi: Double = 69
+
+        // Calculate frequency using equal temperament formula
+        // f = referencePitch * 2^((midiNote - 69) / 12)
+        return referencePitch * pow(2.0, (Double(midiNote) - a4Midi) / 12.0)
     }
 
     // MARK: - Private Methods
@@ -606,6 +640,11 @@ extension TunerViewModel {
     /// Whether all strings are tuned
     var allStringsTuned: Bool {
         tunedStrings.count == strings.count
+    }
+
+    /// Check if a specific string index is tuned
+    func isStringTuned(stringIndex: Int) -> Bool {
+        tunedStrings.contains(stringIndex)
     }
 
     /// The currently selected string info
