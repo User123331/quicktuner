@@ -1,0 +1,4 @@
+module AudioBridge {
+    umbrella header "AudioDeviceManagerBridge.h"
+    export *
+}
