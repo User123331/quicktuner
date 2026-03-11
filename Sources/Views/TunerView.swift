@@ -1,6 +1,6 @@
 import SwiftUI
 
-/// Main tuner view integrating all components
+/// Main tuner view integrating all components with glass styling
 /// Displays note, cents, gauge, tuning selector, string rail, and all-tuned badge with keyboard navigation
 struct TunerView: View {
     @State private var viewModel: TunerViewModel
@@ -13,21 +13,27 @@ struct TunerView: View {
         ZStack {
             // Main content
             VStack(spacing: 0) {
-                // Note display
-                NoteDisplayView(
-                    noteName: viewModel.noteNameText,
-                    isInTune: viewModel.isInTune
-                )
-
-                // Cents readout
-                CentsReadoutView(cents: viewModel.note != nil ? viewModel.cents : nil)
-
-                // Gauge
+                // Gauge section with top spacing
                 TunerGaugeView(
                     cents: viewModel.cents,
                     isInTune: viewModel.isInTune
                 )
-                .frame(maxHeight: .infinity)
+                .padding(.top, 40)  // Gauge top to window: 40pt
+
+                // Note display below gauge
+                NoteDisplayView(
+                    noteName: viewModel.noteNameText,
+                    isInTune: viewModel.isInTune
+                )
+                .padding(.top, 16)  // Note display below gauge: 16pt
+
+                // Cents readout below note
+                CentsReadoutView(cents: viewModel.note != nil ? viewModel.cents : nil)
+                .padding(.top, 8)  // Cents below note: 8pt
+
+                // Reference pitch display
+                ReferencePitchDisplay(referencePitch: viewModel.referencePitch)
+                .padding(.top, 12)  // Reference pitch below cents: 12pt
 
                 // Tuning selector (always visible - Phase 3 requirement)
                 TuningSelector(viewModel: viewModel)
@@ -37,11 +43,10 @@ struct TunerView: View {
                 // String rail showing target notes for selected tuning
                 StringRailView(viewModel: viewModel)
                     .padding(.horizontal)
-                    .padding(.bottom, 16)
+                    // String rail spacing: 24pt above/below handled in StringRailView
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(.horizontal, 24)
-            .padding(.vertical, 16)
+            .padding(.horizontal, 24)  // Outer padding from CONTEXT.md
 
             // All Tuned badge overlay
             if viewModel.showAllTunedBadge {

@@ -18,30 +18,34 @@ struct TunerGaugeView: View {
     private let needleLineWidth: CGFloat = 3
 
     var body: some View {
-        Canvas { context, size in
-            let center = CGPoint(
-                x: size.width / 2,
-                y: size.height - 40  // Position near bottom for semicircle
-            )
+        // Wrap Canvas in a glass card container (NOT applying glass directly to Canvas)
+        VStack {
+            Canvas { context, size in
+                let center = CGPoint(
+                    x: size.width / 2,
+                    y: size.height - 40  // Position near bottom for semicircle
+                )
 
-            // Draw background arc
-            drawBackgroundArc(in: &context, center: center)
+                // Draw background arc
+                drawBackgroundArc(in: &context, center: center)
 
-            // Draw color zones (green ±2¢, yellow ±25¢ markers)
-            drawColorZones(in: &context, center: center)
+                // Draw color zones (green ±2¢, yellow ±25¢ markers)
+                drawColorZones(in: &context, center: center)
 
-            // Draw tick marks at key positions
-            drawTickMarks(in: &context, center: center)
+                // Draw tick marks at key positions
+                drawTickMarks(in: &context, center: center)
 
-            // Draw needle based on current cents
-            drawNeedle(in: &context, center: center)
+                // Draw needle based on current cents
+                drawNeedle(in: &context, center: center)
 
-            // Draw in-tune indicator
-            if isInTune {
-                drawInTuneGlow(in: &context, center: center)
+                // Draw in-tune indicator
+                if isInTune {
+                    drawInTuneGlow(in: &context, center: center)
+                }
             }
+            .frame(width: 300, height: 180)
         }
-        .frame(width: 300, height: 180)
+        .glassCard(cornerRadius: 24)  // Glass effect on container, not Canvas
     }
 
     // MARK: - Drawing Functions

@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// String rail showing target notes for selected tuning with glass button styling
 struct StringRailView: View {
     @Bindable var viewModel: TunerViewModel
 
@@ -14,19 +15,19 @@ struct StringRailView: View {
             ForEach(reversedNotes, id: \.offset) { index, note in
                 let displayStringNumber = notes.count - index
                 let stringIndex = notes.count - index - 1
+                let isSelected = viewModel.selectedStringIndex == stringIndex
                 StringButton(
                     stringNumber: displayStringNumber,
                     targetNote: note,
-                    isTuned: viewModel.isStringTuned(stringIndex: stringIndex)
+                    isTuned: viewModel.isStringTuned(stringIndex: stringIndex),
+                    isSelected: isSelected
                 )
                 .onTapGesture {
                     viewModel.selectString(at: stringIndex)
                 }
             }
         }
-        .padding()
-        .background(.ultraThinMaterial)
-        .cornerRadius(12)
+        .padding(.vertical, 24)  // Spacing above/below rail per CONTEXT.md
     }
 }
 
@@ -34,6 +35,7 @@ struct StringButton: View {
     let stringNumber: Int
     let targetNote: TuningNote
     let isTuned: Bool
+    let isSelected: Bool
 
     var body: some View {
         VStack(spacing: 4) {
@@ -52,12 +54,12 @@ struct StringButton: View {
                 .frame(width: 8, height: 8)
         }
         .frame(minWidth: 44)
+        .padding(.horizontal, 16)
         .padding(.vertical, 8)
-        .background(isTuned ? Color.green.opacity(0.1) : Color.clear)
-        .cornerRadius(8)
+        .glassButton(cornerRadius: 16)  // Glass button styling
         .overlay(
-            RoundedRectangle(cornerRadius: 8)
-                .stroke(isTuned ? Color.green.opacity(0.3) : Color.secondary.opacity(0.2), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(isSelected ? Color.accentColor : Color.clear, lineWidth: 2)
         )
     }
 }
