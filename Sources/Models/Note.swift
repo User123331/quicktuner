@@ -1,4 +1,4 @@
-struct Note: Sendable, Equatable {
+struct Note: Sendable, Equatable, Hashable {
     let name: String
     let octave: Int
     let cents: Double
