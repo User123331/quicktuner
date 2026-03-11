@@ -3,6 +3,7 @@ import Foundation
 
 /// Manages window frame persistence with multi-monitor support
 /// Uses NSKeyedArchiver for reliable NSRect encoding (not @AppStorage)
+@MainActor
 final class WindowManager {
     static let shared = WindowManager()
 
