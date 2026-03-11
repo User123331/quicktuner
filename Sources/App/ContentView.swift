@@ -15,6 +15,7 @@ struct ContentView: View {
                 .padding(24)  // Outer padding from CONTEXT.md
         }
         .frame(width: 440, height: 600)
+        .focusEffectDisabled(true)  // Disable blue focus rings for clean glass aesthetic
     }
 }
 
