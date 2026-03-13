@@ -3,10 +3,10 @@ import SwiftUI
 /// Main tuner view integrating all components with glass styling
 /// Displays note, cents, gauge, tuning selector, string rail, and all-tuned badge with keyboard navigation
 struct TunerView: View {
-    @State private var viewModel: TunerViewModel
+    @Bindable var viewModel: TunerViewModel
     var onSettings: (() -> Void)? = nil
 
-    init(viewModel: TunerViewModel = TunerViewModel(), onSettings: (() -> Void)? = nil) {
+    init(viewModel: TunerViewModel, onSettings: (() -> Void)? = nil) {
         self.viewModel = viewModel
         self.onSettings = onSettings
     }
@@ -73,5 +73,5 @@ struct TunerView: View {
 
 // MARK: - Preview
 #Preview {
-    TunerView()
+    TunerView(viewModel: TunerViewModel())
 }
