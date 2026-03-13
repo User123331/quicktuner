@@ -82,8 +82,6 @@ struct GlassStylesTests {
 
     @Test("glassCard default corner radius is 20")
     func testGlassCardDefaultCornerRadius() {
-        // Verify the default value is documented correctly
-        // The actual default is in the function signature
         let expectedDefault: CGFloat = 20
         #expect(expectedDefault == 20)
     }
@@ -101,31 +99,38 @@ struct GlassStylesTests {
     }
 }
 
-// MARK: - GlassEffectModifier Tests
+// MARK: - Glass Modifier Implementation Tests
 
-@Suite("GlassEffectModifier Tests")
-struct GlassEffectModifierTests {
+@Suite("Glass Modifier Implementation Tests")
+struct GlassModifierImplementationTests {
 
-    @Test("GlassEffectStyle enum has all required cases")
-    func testGlassEffectStyleCases() {
-        // Verify all style cases exist
-        let standard: GlassEffectStyle = .standard
-        let interactive: GlassEffectStyle = .interactive
-        let clear: GlassEffectStyle = .clear
-
-        _ = standard
-        _ = interactive
-        _ = clear
+    @Test("GlassCardModifier can be created")
+    func testGlassCardModifierCreation() {
+        let mod = GlassCardModifier(cornerRadius: 20)
+        _ = mod
     }
 
-    @Test("GlassEffectModifier can be created with each style")
-    func testGlassEffectModifierCreation() {
-        let standardMod = GlassEffectModifier(style: .standard)
-        let interactiveMod = GlassEffectModifier(style: .interactive)
-        let clearMod = GlassEffectModifier(style: .clear)
+    @Test("GlassButtonModifier can be created")
+    func testGlassButtonModifierCreation() {
+        let mod = GlassButtonModifier(cornerRadius: 16)
+        _ = mod
+    }
 
-        _ = standardMod
-        _ = interactiveMod
-        _ = clearMod
+    @Test("GlassSubtleModifier can be created")
+    func testGlassSubtleModifierCreation() {
+        let mod = GlassSubtleModifier(cornerRadius: 12)
+        _ = mod
+    }
+
+    @Test("GlassWindowModifier can be created")
+    func testGlassWindowModifierCreation() {
+        let mod = GlassWindowModifier()
+        _ = mod
+    }
+
+    @Test("GlassCircleButton can be created")
+    func testGlassCircleButtonCreation() {
+        let mod = GlassCircleButton()
+        _ = mod
     }
 }

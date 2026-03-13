@@ -95,6 +95,15 @@ Task 2 is a `checkpoint:human-verify` gate. The visual checkpoint requires openi
 4. Level 0.0 = all dim, level 1.0 = all lit
 5. Total meter width ~200pt, not spanning full window
 
+## Self-Check: PASSED
+
+- `Source/Views/InputLevelMeter.swift` — FOUND
+- `.planning/phases/07-gauge-and-meter-redesign/07-02-SUMMARY.md` — FOUND
+- Commit `8f9f035` — FOUND
+- `private var segmentWidth: CGFloat` in source — FOUND
+- `private let totalMeterWidth: CGFloat = 200` in source — FOUND
+- `.frame(width: segmentWidth, height: 14)` in source — FOUND
+
 ## Next Phase Readiness
 
 - InputLevelMeter fix is complete and committed

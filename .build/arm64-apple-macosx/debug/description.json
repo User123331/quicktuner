@@ -28,171 +28,175 @@
       "inputs" : [
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/AppDelegate.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/AppDelegate.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/ContentView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/ContentView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/QuickTunerApp.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/QuickTunerApp.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioDeviceManager.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioDeviceManager.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngine.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngine.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngineProtocol.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngineProtocol.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/RingBuffer.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/RingBuffer.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/NoteClassifier.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/NoteClassifier.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/PitchDetector.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/PitchDetector.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/YINConfig.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/YINConfig.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/AudioDevice.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/AudioDevice.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/InstrumentType.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/InstrumentType.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Note.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Note.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/PitchResult.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/PitchResult.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/StringInfo.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/StringInfo.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Tuning.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Tuning.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningCategory.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningCategory.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningNote.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningNote.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PersistenceService.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PersistenceService.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PresetTunings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PresetTunings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/TuningLibrary.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/TuningLibrary.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/AnimationStyles.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/AnimationStyles.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/GlassStyles.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/GlassStyles.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/Constants.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/Constants.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/WindowManager.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/WindowManager.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/ViewModels/TunerViewModel.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/ViewModels/TunerViewModel.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AboutSettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AboutSettings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AllTunedBadgeView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AllTunedBadgeView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AudioSettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AudioSettings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CentsReadoutView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CentsReadoutView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CustomTuningCreator.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CustomTuningCreator.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/InstrumentPicker.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InputLevelMeter.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/NoteDisplayView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InstrumentPicker.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchDisplay.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/NoteDisplayView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchSettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchDisplay.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/SettingsView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchSettings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringPill.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/SettingsView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringRailView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringPill.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerGaugeView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringRailView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerGaugeView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningLibrarySettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningSelector.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningLibrarySettings.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningSelector.swift"
         },
         {
           "kind" : "file",
@@ -242,6 +246,7 @@
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/AudioSettings.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/CentsReadoutView.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/CustomTuningCreator.swift.o",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/NoteDisplayView.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchDisplay.swift.o",
@@ -269,11 +274,11 @@
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-Xcc",
-        "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/module.modulemap",
+        "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/module.modulemap",
         "-Xcc",
         "-I",
         "-Xcc",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge",
         "-module-cache-path",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
@@ -443,6 +448,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker.swift.o"
         },
         {
@@ -492,48 +501,49 @@
       ],
       "prepareForIndexing" : false,
       "sources" : [
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/AppDelegate.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/ContentView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/QuickTunerApp.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioDeviceManager.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngine.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngineProtocol.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/RingBuffer.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/NoteClassifier.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/PitchDetector.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/YINConfig.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/AudioDevice.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/InstrumentType.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Note.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/PitchResult.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/StringInfo.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Tuning.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningCategory.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningNote.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PersistenceService.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PresetTunings.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/TuningLibrary.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/AnimationStyles.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/GlassStyles.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/Constants.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/WindowManager.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/ViewModels/TunerViewModel.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AboutSettings.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AllTunedBadgeView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AudioSettings.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CentsReadoutView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CustomTuningCreator.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/InstrumentPicker.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/NoteDisplayView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchDisplay.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchSettings.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/SettingsView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringPill.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringRailView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerGaugeView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerView.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningLibrarySettings.swift",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningSelector.swift"
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/AppDelegate.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/ContentView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/QuickTunerApp.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioDeviceManager.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngine.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngineProtocol.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/RingBuffer.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/NoteClassifier.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/PitchDetector.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/YINConfig.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/AudioDevice.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/InstrumentType.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Note.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/PitchResult.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/StringInfo.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Tuning.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningCategory.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningNote.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PersistenceService.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PresetTunings.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/TuningLibrary.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/AnimationStyles.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/GlassStyles.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/Constants.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/WindowManager.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/ViewModels/TunerViewModel.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AboutSettings.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AllTunedBadgeView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AudioSettings.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CentsReadoutView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CustomTuningCreator.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InputLevelMeter.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InstrumentPicker.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/NoteDisplayView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchDisplay.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchSettings.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/SettingsView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringPill.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringRailView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerGaugeView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerView.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningLibrarySettings.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningSelector.swift"
       ],
       "tempsPath" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build",
       "wholeModuleOptimization" : false
@@ -583,11 +593,11 @@
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-Xcc",
-        "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/module.modulemap",
+        "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/module.modulemap",
         "-Xcc",
         "-I",
         "-Xcc",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge",
         "-module-cache-path",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
@@ -775,11 +785,11 @@
         "-DDEBUG",
         "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
         "-Xcc",
-        "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/module.modulemap",
+        "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/module.modulemap",
         "-Xcc",
         "-I",
         "-Xcc",
-        "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge",
         "-module-cache-path",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/ModuleCache",
         "-parseable-output",
@@ -933,48 +943,49 @@
       "-package-name",
       "quicktuner",
       "-c",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/AppDelegate.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/ContentView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/QuickTunerApp.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioDeviceManager.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngine.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngineProtocol.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/RingBuffer.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/NoteClassifier.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/PitchDetector.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/YINConfig.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/AudioDevice.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/InstrumentType.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Note.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/PitchResult.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/StringInfo.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Tuning.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningCategory.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningNote.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PersistenceService.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PresetTunings.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/TuningLibrary.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/AnimationStyles.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/GlassStyles.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/Constants.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/WindowManager.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/ViewModels/TunerViewModel.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AboutSettings.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AllTunedBadgeView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AudioSettings.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CentsReadoutView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CustomTuningCreator.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/InstrumentPicker.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/NoteDisplayView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchDisplay.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchSettings.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/SettingsView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringPill.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringRailView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerGaugeView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerView.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningLibrarySettings.swift",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningSelector.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/AppDelegate.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/ContentView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/QuickTunerApp.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioDeviceManager.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngine.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngineProtocol.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/RingBuffer.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/NoteClassifier.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/PitchDetector.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/YINConfig.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/AudioDevice.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/InstrumentType.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Note.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/PitchResult.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/StringInfo.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Tuning.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningCategory.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningNote.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PersistenceService.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PresetTunings.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/TuningLibrary.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/AnimationStyles.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/GlassStyles.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/Constants.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/WindowManager.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/ViewModels/TunerViewModel.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AboutSettings.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AllTunedBadgeView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AudioSettings.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CentsReadoutView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CustomTuningCreator.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InputLevelMeter.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InstrumentPicker.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/NoteDisplayView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchDisplay.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchSettings.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/SettingsView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringPill.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringRailView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerGaugeView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerView.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningLibrarySettings.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningSelector.swift",
       "-I",
       "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/Modules",
       "-target",
@@ -991,11 +1002,11 @@
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-Xcc",
-      "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/module.modulemap",
+      "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/module.modulemap",
       "-Xcc",
       "-I",
       "-Xcc",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge",
       "-module-cache-path",
       "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
@@ -1065,11 +1076,11 @@
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-Xcc",
-      "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/module.modulemap",
+      "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/module.modulemap",
       "-Xcc",
       "-I",
       "-Xcc",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge",
       "-module-cache-path",
       "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
@@ -1154,11 +1165,11 @@
       "-DDEBUG",
       "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
       "-Xcc",
-      "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/module.modulemap",
+      "-fmodule-map-file=/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/module.modulemap",
       "-Xcc",
       "-I",
       "-Xcc",
-      "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge",
       "-module-cache-path",
       "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/ModuleCache",
       "-parseable-output",
@@ -1262,171 +1273,175 @@
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/AppDelegate.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/AppDelegate.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/ContentView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/ContentView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/App/QuickTunerApp.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/QuickTunerApp.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioDeviceManager.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioDeviceManager.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngine.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngine.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/AudioEngineProtocol.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngineProtocol.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Audio/RingBuffer.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/RingBuffer.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/NoteClassifier.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/NoteClassifier.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/PitchDetector.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/PitchDetector.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/DSP/YINConfig.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/YINConfig.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/AudioDevice.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/AudioDevice.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/InstrumentType.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/InstrumentType.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Note.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Note.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/PitchResult.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/PitchResult.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/StringInfo.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/StringInfo.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/Tuning.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Tuning.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningCategory.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningCategory.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Models/TuningNote.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningNote.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PersistenceService.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PersistenceService.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/PresetTunings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PresetTunings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Services/TuningLibrary.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/TuningLibrary.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/AnimationStyles.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/AnimationStyles.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Styles/GlassStyles.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/GlassStyles.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/Constants.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/Constants.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Utilities/WindowManager.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/WindowManager.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/ViewModels/TunerViewModel.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/ViewModels/TunerViewModel.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AboutSettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AboutSettings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AllTunedBadgeView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AllTunedBadgeView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/AudioSettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AudioSettings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CentsReadoutView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CentsReadoutView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/CustomTuningCreator.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CustomTuningCreator.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/InstrumentPicker.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InputLevelMeter.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/NoteDisplayView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InstrumentPicker.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchDisplay.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/NoteDisplayView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/ReferencePitchSettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchDisplay.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/SettingsView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchSettings.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringPill.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/SettingsView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/StringRailView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringPill.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerGaugeView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringRailView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TunerView.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerGaugeView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningLibrarySettings.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerView.swift"
         },
         {
           "kind" : "file",
-          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/Views/TuningSelector.swift"
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningLibrarySettings.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningSelector.swift"
         }
       ],
       "outputFilePath" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/sources"
@@ -1497,6 +1512,10 @@
         {
           "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.swift.o"
         },
         {
           "kind" : "file",
@@ -1693,6 +1712,10 @@
         {
           "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.swift.o"
         },
         {
           "kind" : "file",

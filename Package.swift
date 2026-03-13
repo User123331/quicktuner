@@ -16,7 +16,7 @@ let package = Package(
         // Objective-C++ bridge for Core Audio
         .target(
             name: "AudioBridge",
-            path: "Sources/AudioBridge",
+            path: "Source/AudioBridge",
             publicHeadersPath: ".",
             swiftSettings: [
                 .swiftLanguageMode(.v6)
@@ -29,8 +29,8 @@ let package = Package(
         .executableTarget(
             name: "QuickTuner",
             dependencies: ["AudioBridge"],
-            path: "Sources",
-            exclude: ["AudioBridge"],
+            path: "Source",
+            exclude: ["AudioBridge", "Info.plist", "QuickTuner.entitlements"],
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ],

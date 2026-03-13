@@ -1,4 +1,0 @@
-module AudioBridge {
-    umbrella "/Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge"
-    export *
-}

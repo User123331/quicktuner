@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/AudioDeviceManagerBridge.mm \
-  /Users/billyendson/Games/VibeCoding/quicktuner/Sources/AudioBridge/AudioDeviceManagerBridge.h \
+  /Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/AudioDeviceManagerBridge.mm \
+  /Users/billyendson/Games/VibeCoding/quicktuner/Source/AudioBridge/AudioDeviceManagerBridge.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.2.sdk/usr/include/TargetConditionals.h \

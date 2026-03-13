@@ -19,6 +19,25 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Cleanup, Title Bar, and Liquid Glass** - Fix errors/warnings, add macOS title bar, and properly apply visible Liquid Glass effects
 - [x] **Phase 6: Audio Verification and UI Fixes** - Audio device selection, input level meter, and custom tuning creator layout fix
 - [x] **Phase 7: Gauge and Meter Redesign** - 240° speedometer gauge with classic analog needle, trig-based tick marks with labels, and VU meter fix (completed 2026-03-13)
+- [ ] **Phase 8: UI Polish and Bug Fixes** - Fix needle anchoring, research cleaner gauge designs, fix text wrapping issues (in progress)
+
+## Phase Details
+
+### Phase 8: UI Polish and Bug Fixes
+**Goal**: Fix three critical UI issues discovered in Phase 7 verification: needle "flying" effect, gauge artifacts, and awkward text wrapping
+**Depends on**: Phase 7
+**Requirements**: PITCH-02, UI-01
+**Status**: Planning - researching alternative gauge designs
+**Success Criteria** (what must be TRUE):
+  1. Needle clearly rotates around a single pivot point without appearing to "fly"
+  2. Gauge displays cleanly without visual artifacts (radial lines, glitches)
+  3. Custom Tuning Creator text layout is clean with no awkward wrapping
+**Options**:
+  - **A: Linear Gauge (Horizontal)** - Simple horizontal slider with vertical needle indicator
+  - **B: Simplified Circular** - Keep circular concept but use only built-in SwiftUI shapes
+  - **C: Vertical Linear** - Vertical bar gauge, very clean and minimal
+  - **D: Fix Current Design** - Debug and fix the 240° gauge implementation
+**Plans**: To be created after design decision
 
 ## Phase Details
 

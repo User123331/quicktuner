@@ -1,0 +1,306 @@
+{
+  "": {
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/master.swiftdeps"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/AppDelegate.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AppDelegate.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AppDelegate.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AppDelegate.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/ContentView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ContentView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ContentView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ContentView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/App/QuickTunerApp.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/QuickTunerApp.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/QuickTunerApp.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/QuickTunerApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/QuickTunerApp.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/QuickTunerApp.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioDeviceManager.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDeviceManager.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDeviceManager.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDeviceManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDeviceManager.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDeviceManager.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngine.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngine.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngine.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngine~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngine.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngine.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/AudioEngineProtocol.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngineProtocol.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngineProtocol.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngineProtocol~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngineProtocol.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioEngineProtocol.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Audio/RingBuffer.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/RingBuffer.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/RingBuffer.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/RingBuffer~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/RingBuffer.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/RingBuffer.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/NoteClassifier.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteClassifier.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteClassifier.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteClassifier~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteClassifier.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteClassifier.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/PitchDetector.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchDetector.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchDetector.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchDetector~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchDetector.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchDetector.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/DSP/YINConfig.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/YINConfig.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/YINConfig.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/YINConfig~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/YINConfig.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/YINConfig.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/AudioDevice.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDevice.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDevice.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDevice~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDevice.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioDevice.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/InstrumentType.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentType.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentType.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentType~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentType.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentType.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Note.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Note.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Note.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Note~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Note.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Note.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/PitchResult.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchResult.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchResult.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchResult~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchResult.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PitchResult.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/StringInfo.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringInfo.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringInfo.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringInfo~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringInfo.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringInfo.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/Tuning.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Tuning.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Tuning.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Tuning~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Tuning.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Tuning.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningCategory.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningCategory.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningCategory.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningCategory~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningCategory.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningCategory.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Models/TuningNote.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningNote.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningNote.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningNote~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningNote.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningNote.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PersistenceService.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PersistenceService.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PersistenceService.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PersistenceService~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PersistenceService.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PersistenceService.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/PresetTunings.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PresetTunings.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PresetTunings.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PresetTunings~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PresetTunings.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/PresetTunings.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Services/TuningLibrary.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrary.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrary.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrary~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrary.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrary.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/AnimationStyles.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AnimationStyles.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AnimationStyles.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AnimationStyles~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AnimationStyles.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AnimationStyles.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Styles/GlassStyles.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/GlassStyles.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/Constants.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Constants.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Constants.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Constants~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Constants.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/Constants.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Utilities/WindowManager.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/WindowManager.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/WindowManager.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/WindowManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/WindowManager.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/WindowManager.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/ViewModels/TunerViewModel.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerViewModel.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerViewModel.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerViewModel.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerViewModel.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AboutSettings.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AboutSettings.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AboutSettings.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AboutSettings~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AboutSettings.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AboutSettings.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AllTunedBadgeView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AllTunedBadgeView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AllTunedBadgeView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AllTunedBadgeView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AllTunedBadgeView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AllTunedBadgeView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/AudioSettings.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioSettings.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioSettings.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioSettings~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioSettings.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/AudioSettings.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CentsReadoutView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CentsReadoutView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CentsReadoutView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CentsReadoutView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CentsReadoutView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CentsReadoutView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/CustomTuningCreator.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CustomTuningCreator.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CustomTuningCreator.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CustomTuningCreator~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CustomTuningCreator.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/CustomTuningCreator.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InputLevelMeter.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InputLevelMeter.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/InstrumentPicker.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/InstrumentPicker.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/NoteDisplayView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteDisplayView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteDisplayView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteDisplayView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteDisplayView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/NoteDisplayView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchDisplay.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchDisplay.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchDisplay.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchDisplay~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchDisplay.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchDisplay.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/ReferencePitchSettings.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchSettings.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchSettings.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchSettings~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchSettings.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/ReferencePitchSettings.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/SettingsView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/SettingsView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/SettingsView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/SettingsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/SettingsView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/SettingsView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringPill.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringPill.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringPill.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringPill~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringPill.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringPill.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/StringRailView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringRailView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringRailView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringRailView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringRailView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/StringRailView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerGaugeView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerGaugeView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerGaugeView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerGaugeView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerGaugeView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerGaugeView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TunerView.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerView.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerView.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerView~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerView.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TunerView.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningLibrarySettings.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrarySettings.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrarySettings.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrarySettings~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrarySettings.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningLibrarySettings.dia"
+  },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Source/Views/TuningSelector.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningSelector.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningSelector.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningSelector~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningSelector.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/index-build/arm64-apple-macosx/debug/QuickTuner.build/TuningSelector.dia"
+  }
+}
