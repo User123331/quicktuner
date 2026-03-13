@@ -26,7 +26,7 @@ struct TuningSelector: View {
             .foregroundStyle(.primary)
         }
         .padding()
-        .background(.ultraThinMaterial)
+        .glassCard(cornerRadius: 16)
         .sheet(isPresented: $showingCustomCreator) {
             CustomTuningCreator(
                 instrument: viewModel.selectedInstrument,
