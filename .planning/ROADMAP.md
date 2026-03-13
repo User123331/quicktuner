@@ -201,7 +201,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 | 6. Audio Verification and UI Fixes | 4/4 | Complete | 2026-03-13 |
 | 7. Gauge and Meter Redesign | 2/2 | Complete | 2026-03-13 |
 | 8. UI Polish and Bug Fixes | 2/2 | Complete | 2026-03-14 |
-| 9. Window Compactness and Settings Polish | 1/3 | In Progress | 2026-03-14 |
+| 9. Window Compactness and Settings Polish | 2/3 | In Progress | 2026-03-14 |
 
 ### Phase 9: Window Compactness and Settings Polish
 
@@ -219,5 +219,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
 Plans:
 - [x] 09-01-PLAN.md — Window sizing and lock: Update dimensions to 440x480, disable resize and fullscreen
-- [ ] 09-02-PLAN.md — Layout compactness and reference pitch: Remove Spacer, enhance descriptions
+- [x] 09-02-PLAN.md — Layout compactness and reference pitch: Remove Spacer, enhance descriptions
 - [ ] 09-03-PLAN.md — Input level meter dynamic width: GeometryReader for 90% fill, dynamic segments
