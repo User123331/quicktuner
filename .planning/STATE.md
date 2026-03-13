@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** Phase 4 Plan 1 COMPLETE - Window Configuration with floating window and position persistence
+**Current focus:** Phase 5 — Cleanup, Title Bar, and Liquid Glass
 
 ## Current Position
 
-Phase: 4 of 4 (Window, Design Language, and Polish)
-Plan: FIX-02 Complete - glassCard Removal
-Status: **Phase 4 FIX-02 Complete - Gauge needle floats on Liquid Glass background**
-Last activity: 2026-03-12 -- Completed FIX-02, removed glassCard container from TunerGaugeView
+Phase: 5 of 5 (Cleanup, Title Bar, and Liquid Glass)
+Plan: 1 complete, awaiting next plan
+Status: **Phase 5, Plan 01 complete — Zero-warning build achieved**
+Last activity: 2026-03-13 -- Completed 05-01 (build warning cleanup + git index fix)
 
-Progress: [█████████░] 90% (Phase 4)
+Progress: [█░░░░░░░░░] 10% (Phase 5, 1/? plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
+- Total plans completed: 14
 - Average duration: 8 minutes
-- Total execution time: 1.7 hours
+- Total execution time: ~2 hours
 
 **By Phase:**
 
@@ -29,11 +29,9 @@ Progress: [█████████░] 90% (Phase 4)
 |-------|-------|-------|----------|
 | 02-tuner-interface | 5 | 5 | 12 min |
 | 03-tuning-library | 5 | 5 | 10 min |
-| 04-window-design | 5 | 5 | 5 min |
+| 04-window-design | 5+GAP+FIX+COR | All | 5 min |
 
-**Recent Trend:**
-- Last 5 plans: 04-GAP-03 (15 min), 04-GAP-04 (3 min), 04-GAP-02 (1 min), 04-GAP-01 (5 min), 04-01 (3 min)
-- Trend: gauge redesign required more visual polish work
+| 05-cleanup-titlebar-glass | 1 | 8 min | 8 min |
 
 *Updated after each plan completion*
 
@@ -44,53 +42,35 @@ Progress: [█████████░] 90% (Phase 4)
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [Phase 5-01]: MainActor.assumeIsolated is the correct fix for actor isolation in NotificationCenter callbacks on queue:.main
+- [Phase 5-01]: await not needed when calling synchronous actor methods from a Task that inherits the same actor context
+- [Phase 5-01]: Git index cleaned — Sources/ (stale) → Source/ (correct) via git rm --cached
+
+- [Phase 4-COR]: On macOS 26, `.glassEffect()` REPLACES `.background(.material)` — don't combine them
+- [Phase 4-COR]: Window does NOT need `isOpaque = false` or `backgroundColor = .clear` for Liquid Glass
+- [Phase 4-COR]: Use `.glassEffect(.regular, in: .rect(cornerRadius:))` with shape parameter for proper clipping
+- [Phase 4-COR]: Interactive elements use `.glassEffect(.regular.interactive(), in: shape)`
+- [Phase 4-COR]: Version-gate all `.glassEffect()` calls with `if #available(macOS 26.0, *)`
+- [Phase 4-COR]: Package.swift paths must match actual filesystem (`Source/` not `Sources/`)
+
 - [Phase 4-FIX-01]: Horizontal ScrollView with showsIndicators: false for clean aesthetic
-- [Phase 4-FIX-01]: HStack wrapped in ScrollView allows 8+ string instruments without overflow
-
 - [Phase 4-FIX-02]: Canvas as root view enables floating needle without container background panel
-- [Phase 4-FIX-02]: Removing glassCard aligns gauge with Liquid Glass aesthetic
-
 - [Phase 4-FIX-03]: Opacity 0.4 strikes balance between transparency and readability for ultra-thin liquid glass
 
 - [Phase 4-GAP-03]: Triangle needle with shadow creates depth and precision instrument feel
 - [Phase 4-GAP-03]: Multi-layer glow effect (4 rings) creates aura/breathing animation
-- [Phase 4-GAP-03]: Gradient color zones via segmented arcs with varying opacity
-
 - [Phase 4-GAP-04]: Settings button uses overlay approach (toolbar not visible with hidden title bar)
-- [Phase 4-GAP-04]: Separate TunerViewModel instance for SettingsView avoids conflicts with TunerView's @State model
-- [Phase 4-GAP-04]: Glass button styling with .ultraThinMaterial background and circular clip shape
-
-- [Phase 4-GAP-02]: .focusEffectDisabled(true) applied at root (ContentView) and button level (StringPill) to eliminate macOS focus rings
-- [Phase 4-GAP-02]: Modifier propagates down view hierarchy, covers all child views
-- [Phase 4-GAP-01]: Window transparency (isOpaque = false, backgroundColor = .clear) required for material/vibrancy effects
-- [Phase 4-GAP-01]: ignoresSafeArea() required on material background to fill entire window
+- [Phase 4-GAP-02]: .focusEffectDisabled(true) applied at root and button level
+- [Phase 4-GAP-01]: Window transparency required for material/vibrancy effects (SUPERSEDED by COR)
 
 - [Phase 4-01]: @MainActor required on WindowManager for NSWindow concurrency safety (Swift 6)
 - [Phase 4-01]: NSKeyedArchiver used for frame persistence (not @AppStorage - cannot store NSRect)
 
-- [Phase 3-05]: TuningNote properties changed to var to support SwiftUI bindings in CustomTuningCreator
-- [Phase 3-05]: String rail displays low-to-high (standard guitar orientation) by reversing notes array
-- [Phase 3-05]: Frequency calculation uses equal temperament formula with reference pitch
-- [Phase 3]: Used .primary instead of .accent for foregroundStyle (ShapeStyle.accent unavailable in this SwiftUI version)
-- [Phase 3]: Used explicit UserDefaults instead of @AppStorage for more control over persistence timing
-- [Phase 3]: Actor-based PersistenceService for thread-safe file operations
-- [Phase 3]: Atomic file writes (temp then move) to prevent corruption
-- [Phase 2]: EMA smoothing alpha = 0.3 for optimal responsiveness/smoothing balance
-- [Phase 2]: In-tune threshold ±2 cents with 1 cent hysteresis (PITCH-05)
-- [Phase 2]: In-tune requires 200ms hold before confirming
-- [Phase 2]: Checkmarks persist until manual reset
-- [Phase 2]: "All Tuned" badge appears 500ms after last string tuned
-- [Phase 2]: Task-based delay with cancellation for badge timing
-- [Phase 2]: Canvas API chosen for Phase 4 Liquid Glass integration path
-- [Phase 2]: SF Mono for cents readout (numeric stability)
-- [Phase 2]: SF Pro Rounded for note display (modern appearance)
-- [Roadmap]: 4-phase coarse structure -- DSP/Audio first (highest risk), then UI, then tunings/persistence, then visual polish
-
 ### Completed Requirements
 
-- UI-03: Glass effect is subtle and translucent, not cloudy (via opacity 0.4)
+- UI-03: Liquid Glass effect using macOS 26 `.glassEffect()` API with proper shape parameters
 - UI-02: Focus effects disabled (.focusEffectDisabled) for clean glass aesthetic
-- UI-02: Liquid Glass material background with window transparency
+- UI-02: Liquid Glass applied to window container, string buttons, settings gear
 - UI-01: Floating window always on top
 - PITCH-02: EMA smoothing for gauge needle (alpha=0.3)
 - PITCH-03: Note name and octave display
@@ -103,33 +83,11 @@ Recent decisions affecting current work:
 - PREF-01: Reference pitch persistence (420-444 Hz range)
 - PREF-02: Instrument selection persistence
 - PREF-03: Custom tunings persistence to JSON
-- TUNE-01: Tuning data model with notes, instrument, category
-- TUNE-02: TuningLibrary with preset and custom tunings
-- TUNE-03: Reference pitch adjustment UI
-- TUNE-04: Reference pitch presets (440, 432, 420)
-- TUNE-05: Reference pitch display on main UI
-- TUNE-06: Instrument/tuning selection persistence
-- TUNE-07: Custom tuning creation and persistence
-- TUNE-08: Tuning selector always visible on main UI
-- TUNE-09: String rail updates with tuning changes
-
-### Phase 3 Success Criteria Met
-
-All Phase 3 requirements completed:
-- Tuning data models (TuningNote, Tuning, InstrumentType, TuningCategory)
-- TuningLibrary service with 37 preset tunings
-- PersistenceService with atomic JSON writes
-- SettingsView with TabView (Reference Pitch, Tuning Library, Audio, About)
-- TuningSelector always visible on main UI
-- InstrumentPicker with 6 instrument types
-- CustomTuningCreator with note/octave pickers
-- StringRailView with dynamic updates
-- All persistence requirements (PREF-01, PREF-02, PREF-03)
-- 137 tests passing
+- TUNE-01 through TUNE-09: All tuning requirements
 
 ### Pending Todos
 
-Ready for Phase 4 Plan 05: Typography and Animation Polish
+- Visual verification: Run the app and confirm Liquid Glass renders correctly
 
 ### Blockers/Concerns
 
@@ -137,121 +95,29 @@ Ready for Phase 4 Plan 05: Typography and Animation Polish
 
 ## Session Continuity
 
-Last session: 2026-03-12
-Stopped at: Phase 4 FIX-03 COMPLETE -- Ultra-thin liquid glass effect with 0.4 opacity
-Resume file: Phase 4 Plan 05
+Last session: 2026-03-13
+Stopped at: Phase 5 Plan 01 Complete — Zero-warning build, all 173 tests passing, git index cleaned
+Resume file: Ready for next plan in phase 5
 
 ---
 
-## Phase 4 FIX-03 Summary
+## Phase 4 CORRECTION Summary
 
-**Components Modified:**
-- ContentView background layer with `.ultraThinMaterial.opacity(0.4)`
-
-**Files Modified:**
-- Sources/App/ContentView.swift
-
-**Build Status:** Passing
-
-**Key Implementation:**
-- Opacity 0.4 applied to ultraThinMaterial for ultra-thin liquid glass effect
-- Content behind window remains visible through subtle blur
-- UI elements remain readable on both light and dark backgrounds
-
----
-
-## Phase 4 GAP-03 Summary
-
-**Components Enhanced:**
-- Triangle needle with drop shadow (replaces simple line)
-- Multi-layered in-tune glow (4 concentric rings)
-- Gradient-style color zones (segmented with opacity variation)
-- Refined tick marks with opacity gradient
+**Root Causes Fixed:**
+1. Package.swift had wrong paths (`Sources` → `Source`)
+2. Window was transparent due to `isOpaque = false` + `backgroundColor = .clear`
+3. `.glassEffect()` was never applied to ContentView (only material backgrounds)
+4. StringPill/StringButton used manual backgrounds instead of glass modifiers
+5. GlassStyles combined material + glassEffect (wrong pattern for macOS 26)
 
 **Files Modified:**
-- Sources/Views/TunerGaugeView.swift
+- Package.swift (path fix)
+- Source/App/ContentView.swift (glass window + circle button modifiers)
+- Source/App/AppDelegate.swift (removed transparency overrides)
+- Source/Styles/GlassStyles.swift (proper macOS 26 API with version gating)
+- Source/Views/StringRailView.swift (glass button on StringButton)
+- Source/Views/StringPill.swift (glass button on StringPill)
+- Tests/Styles/GlassStylesTests.swift (updated for new modifier types)
 
-**Build Status:** Passing
-
-**Key Implementation:**
-- `drawRefinedNeedle()`: Triangle path with perpendicular angle math for base width
-- `drawInTuneGlow()`: Layer array with radius/width/alpha tuples for glow depth
-- `drawColorZones()`: 5-segment arc for gradient effect in in-tune zone
-
----
-
-## Phase 4 GAP-04 Summary
-
-**Components Added:**
-- Settings gear button in top-right corner using VStack/HStack/Spacer overlay pattern
-- Glass styling: .ultraThinMaterial background with circular clip shape
-- Sheet presentation for SettingsView with separate TunerViewModel instance
-
-**Files Modified:**
-- Sources/App/ContentView.swift
-
-**Build Status:** Passing
-
-## Phase 4 GAP-02 Summary
-
-**Components Fixed:**
-- ContentView root view with .focusEffectDisabled(true)
-- StringPill button with .focusEffectDisabled(true)
-
-**Files Modified:**
-- Sources/App/ContentView.swift
-- Sources/Views/StringPill.swift
-
-**Build Status:** Succeeded
-
----
-
-## Phase 4 GAP-01 Summary
-
-**Components Fixed:**
-- ContentView material background with ignoresSafeArea()
-- AppDelegate window transparency (isOpaque = false, backgroundColor = .clear)
-
-**Files Modified:**
-- Sources/App/ContentView.swift
-- Sources/App/AppDelegate.swift
-
-**Build Status:** Code compiles, changes ready for visual verification
-
----
-
-## Phase 4 Plan 1 Summary
-
-**Components Built:**
-- WindowManager with NSKeyedArchiver frame persistence
-- AppDelegate with NSPanel floating configuration
-- QuickTunerApp updated with hidden title bar and AppDelegate adaptor
-- Multi-monitor support with screen validation
-- Dock restore handling
-- Screen change observer with position clamping
-
-**Build Status:** Passing (137 tests)
-
-**Components Built:**
-- TuningNote, TuningCategory, InstrumentType, Tuning models
-- TuningLibrary service with 37 preset tunings
-- PresetTunings data with comprehensive tuning library
-- Constants.swift with persistence keys and reference pitch constants
-- PersistenceService with atomic JSON writes
-- TunerViewModel persistence integration
-- SettingsView with TabView (Reference Pitch, Tuning Library, Audio, About)
-- ReferencePitchSettings with stepper and preset buttons
-- TuningLibrarySettings with instrument picker and tuning list
-- AudioSettings with noise gate slider
-- AboutSettings with app info
-- ReferencePitchDisplay component for main UI
-- Immediate recalculation on reference pitch change
-- InstrumentPicker component (6 instrument types)
-- TuningSelector component (always visible)
-- CustomTuningCreator form with note/octave pickers
-- StringRailView with dynamic string generation
-- Frequency calculation using equal temperament
-
-**Tests:** 137 total
-**Build Status:** Passing
-**Integration:** Complete
+**Build Status:** ✅ Passing
+**Tests:** ✅ 173/173 passing
