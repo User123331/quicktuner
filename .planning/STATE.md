@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 5 of 5 (Cleanup, Title Bar, and Liquid Glass)
-Plan: 2 complete, awaiting next plan
-Status: **Phase 5, Plan 02 complete — Traffic lights visible, true vibrancy enabled**
-Last activity: 2026-03-13 -- Completed 05-02 (traffic lights, window transparency, layout padding)
+Plan: 3 complete, awaiting next plan
+Status: **Phase 5, Plan 03 complete — Glass architecture cleaned, no glass-on-glass stacking**
+Last activity: 2026-03-13 -- Completed 05-03 (remove GlassWindowModifier, TuningSelector glassCard, StringRailView GlassEffectContainer)
 
-Progress: [██░░░░░░░░] 20% (Phase 5, 2/? plans)
+Progress: [███░░░░░░░] 30% (Phase 5, 3/? plans)
 
 ## Performance Metrics
 
@@ -31,7 +31,7 @@ Progress: [██░░░░░░░░] 20% (Phase 5, 2/? plans)
 | 03-tuning-library | 5 | 5 | 10 min |
 | 04-window-design | 5+GAP+FIX+COR | All | 5 min |
 
-| 05-cleanup-titlebar-glass | 2 | 13 min | 6.5 min |
+| 05-cleanup-titlebar-glass | 3 | 21 min | 7 min |
 
 *Updated after each plan completion*
 
@@ -41,6 +41,10 @@ Progress: [██░░░░░░░░] 20% (Phase 5, 2/? plans)
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [Phase 5-03]: No glass on ContentView root — transparent window backdrop lets glass components refract desktop directly
+- [Phase 5-03]: TuningSelector.glassCard(cornerRadius:16) provides version-gated glass consistent with Phase 4 COR
+- [Phase 5-03]: GlassEffectContainer groups string rail pills into one refractive sampling context on macOS 26+
 
 - [Phase 5-02]: isOpaque=false + backgroundColor=.clear required for true vibrancy — glass must refract desktop, not window background color
 - [Phase 5-02]: Top padding 52pt chosen for traffic light clearance (title bar ~28pt + comfortable spacing)
@@ -100,7 +104,7 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 5 Plan 02 Complete — Traffic lights visible, true vibrancy enabled, layout padded for clearance
+Stopped at: Phase 5 Plan 03 Complete — Glass architecture cleaned, no glass-on-glass stacking, GlassEffectContainer on string rail
 Resume file: Ready for next plan in phase 5
 
 ---
