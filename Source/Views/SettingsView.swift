@@ -18,7 +18,7 @@ struct SettingsView: View {
                 }
                 .tag(SettingsTab.tuningLibrary)
 
-            AudioSettings()
+            AudioSettings(viewModel: viewModel)
                 .tabItem {
                     Label("Audio", systemImage: "mic")
                 }
