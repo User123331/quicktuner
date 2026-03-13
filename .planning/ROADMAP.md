@@ -18,6 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: Window, Design Language, and Polish** - Floating window, Liquid Glass design, spring animations, and typography
 - [x] **Phase 5: Cleanup, Title Bar, and Liquid Glass** - Fix errors/warnings, add macOS title bar, and properly apply visible Liquid Glass effects
 - [x] **Phase 6: Audio Verification and UI Fixes** - Audio device selection, input level meter, and custom tuning creator layout fix
+- [ ] **Phase 7: Gauge and Meter Redesign** - 240° speedometer gauge with classic analog needle, trig-based tick marks with labels, and VU meter fix
 
 ## Phase Details
 
@@ -134,10 +135,26 @@ Plans:
 - [x] 06-GAP-01: Gauge Geometry Fix — Replace Canvas with SwiftUI geometry, fix angle math, adaptive EMA, needle spring tuning
 - [x] 06-GAP-02: Cents & Meter UX — Enhanced CentsReadoutView with unit label and tighter zones, segmented InputLevelMeter with fixed color zones
 
+### Phase 7: Gauge and Meter Redesign
+**Goal**: The tuner gauge is a proper 240° speedometer-style analog gauge with a classic needle and counterweight, trig-based tick marks with numeric labels, and the VU meter renders slim vertical bars
+**Depends on**: Phase 6
+**Requirements**: PITCH-02, AUDIO-02
+**Success Criteria** (what must be TRUE):
+  1. Gauge arc spans 240° (speedometer shape, open at bottom-center) — not a compass or semicircle
+  2. Tick marks are placed on the arc using sin/cos from the gauge pivot — not scattered from wrong anchor rotation
+  3. Major ticks at -50, -25, 0, +25, +50 have numeric labels just outside the arc in SF Mono
+  4. Needle has a thin shaft (pointing up from pivot) and a teardrop counterweight stub (below pivot)
+  5. VU meter segments are slim vertical bars (~8pt wide) — not wide tiles stretching to fill container
+**Plans**: 2 plans in 1 wave
+
+Plans:
+- [ ] 07-01-PLAN.md — Gauge rewrite: 240° arc, trig-based ticks + labels, NeedleShaft + CounterweightShape, updated tests
+- [ ] 07-02-PLAN.md — VU meter fix: explicit segmentWidth per RoundedRectangle segment in InputLevelMeter
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -147,3 +164,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 4. Window, Design Language, and Polish | 9/9 | Complete | 2026-03-13 |
 | 5. Cleanup, Title Bar, and Liquid Glass | 3/3 | Complete | 2026-03-13 |
 | 6. Audio Verification and UI Fixes | 4/4 | Complete | 2026-03-13 |
+| 7. Gauge and Meter Redesign | 0/2 | Pending | — |
