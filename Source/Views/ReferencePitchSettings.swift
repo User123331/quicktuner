@@ -77,22 +77,35 @@ struct ReferencePitchSettings: View {
             }
 
             Section("About Reference Pitch") {
-                VStack(alignment: .leading, spacing: 8) {
-                    Label(
-                        "440 Hz - Modern concert pitch (standard)",
-                        systemImage: "checkmark"
-                    )
-                    Label(
-                        "432 Hz - Alternative tuning community preference",
-                        systemImage: "checkmark"
-                    )
-                    Label(
-                        "420 Hz - Historical Baroque pitch",
-                        systemImage: "checkmark"
-                    )
+                VStack(alignment: .leading, spacing: 12) {
+                    // 440 Hz - Modern Standard
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("440 Hz - Modern Standard")
+                            .fontWeight(.medium)
+                        Text("The ISO standard since 1955. Used by orchestras, recording studios, and electronic tuners worldwide for consistent pitch across instruments and performances.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    // 432 Hz - Alternative Tuning
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("432 Hz - Alternative Tuning")
+                            .fontWeight(.medium)
+                        Text("Popular in ambient, new age, and some classical circles. Some musicians find it warmer or more relaxed, though scientific studies show no consistent perceptual difference.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+
+                    // 420 Hz - Historical Baroque
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("420 Hz - Historical Baroque")
+                            .fontWeight(.medium)
+                        Text("Common pitch in 17th-18th century Europe, particularly for French Baroque music. Many period instrument ensembles tune here for historically informed performances.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .padding(.vertical, 4)
             }
         }
         .formStyle(.grouped)
