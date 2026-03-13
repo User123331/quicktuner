@@ -32,6 +32,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func configureWindow() {
         guard let window = NSApplication.shared.windows.first else { return }
 
+        // Remove resizable style to lock window dimensions
+        // This also disables the zoom/fullscreen button
+        window.styleMask.remove(.resizable)
+
         // Configure as floating panel
         // Cast to NSPanel if possible for additional panel-specific features
         if let panel = window as? NSPanel {
