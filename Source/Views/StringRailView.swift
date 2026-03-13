@@ -8,11 +8,37 @@ struct StringRailView: View {
         let notes = viewModel.tuningLibrary.selectedTuning?.notes ?? []
 
         ScrollView(.horizontal, showsIndicators: false) {
+            stringRailContent(notes: notes)
+                .padding(.horizontal, 24)
+        }
+        .padding(.vertical, 24)  // Spacing above/below rail per CONTEXT.md
+        .animation(AnimationStyles.stringSelection, value: viewModel.selectedStringIndex)
+    }
+
+    @ViewBuilder
+    private func stringRailContent(notes: [TuningNote]) -> some View {
+        let reversedNotes = Array(notes.enumerated().reversed())
+        if #available(macOS 26.0, *) {
+            GlassEffectContainer {
+                HStack(spacing: 8) {
+                    ForEach(reversedNotes, id: \.offset) { index, note in
+                        let displayStringNumber = notes.count - index
+                        let stringIndex = notes.count - index - 1
+                        let isSelected = viewModel.selectedStringIndex == stringIndex
+                        StringButton(
+                            stringNumber: displayStringNumber,
+                            targetNote: note,
+                            isTuned: viewModel.isStringTuned(stringIndex: stringIndex),
+                            isSelected: isSelected
+                        )
+                        .onTapGesture {
+                            viewModel.selectString(at: stringIndex)
+                        }
+                    }
+                }
+            }
+        } else {
             HStack(spacing: 8) {
-                // Display strings from low (right) to high (left) for standard guitar orientation
-                // notes array is [String 1 (high), String 2, ..., String N (low)]
-                // Display reversed: [String N (low), ..., String 2, String 1 (high)]
-                let reversedNotes = Array(notes.enumerated().reversed())
                 ForEach(reversedNotes, id: \.offset) { index, note in
                     let displayStringNumber = notes.count - index
                     let stringIndex = notes.count - index - 1
@@ -28,10 +54,7 @@ struct StringRailView: View {
                     }
                 }
             }
-            .padding(.horizontal, 24)
         }
-        .padding(.vertical, 24)  // Spacing above/below rail per CONTEXT.md
-        .animation(AnimationStyles.stringSelection, value: viewModel.selectedStringIndex)
     }
 }
 
