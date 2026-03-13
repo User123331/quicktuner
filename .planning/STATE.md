@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: completed
-stopped_at: Phase 6 GAP-02 Complete — Cents readout UX and VU meter segmented redesign
-last_updated: "2026-03-13T20:15:00.000Z"
-last_activity: 2026-03-13 -- GAP-02 executed, CentsReadoutView enhanced, InputLevelMeter segmented
+status: in_progress
+stopped_at: Phase 7 Plan 01 Complete — TunerGaugeView 240° speedometer rewrite
+last_updated: "2026-03-14T02:52:29Z"
+last_activity: 2026-03-14 -- 07-01 executed, TunerGaugeView rewritten with 240° arc, trig ticks, labels, two-shape needle
 progress:
-  total_phases: 6
+  total_phases: 7
   completed_phases: 6
-  total_plans: 36
-  completed_plans: 35
-  percent: 100
+  total_plans: 37
+  completed_plans: 36
+  percent: 97
 ---
 
 # Project State
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** Phase 6 — Audio Verification and UI Fixes (GAP-02 closure complete)
+**Current focus:** Phase 7 — Gauge and Meter Redesign (Plan 01 complete)
 
 ## Current Position
 
-Phase: 6 of 6 (Audio Verification and UI Fixes)
-Plan: 06-GAP-02 Complete
-Status: **GAP-02 complete — Cents readout UX and VU meter segmented redesign**
-Last activity: 2026-03-13 -- GAP-02 executed, CentsReadoutView enhanced with unit label, InputLevelMeter segmented
+Phase: 7 of 7 (Gauge and Meter Redesign)
+Plan: 07-01 Complete
+Status: **07-01 complete — TunerGaugeView 240° speedometer rewrite with trig ticks, labels, two-shape needle**
+Last activity: 2026-03-14 -- 07-01 executed, TunerGaugeView rewritten, NeedleShaft+CounterweightShape implemented
 
-Progress: [██████████] 100% (Phase 6: 3/3 plans + GAP-01 + GAP-02)
+Progress: [█████████▉] 97% (Phase 7: 1/1 plans)
 
 ## Performance Metrics
 
@@ -58,6 +58,10 @@ Progress: [██████████] 100% (Phase 6: 3/3 plans + GAP-01 + G
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [Phase 7-01]: 240° arc geometry — trim(from: 0.167, to: 0.833) + rotationEffect(180°) for gap-at-bottom
+- [Phase 7-01]: arcAngle(for:) uses ±120° range for tick/label placement; angle(for:) uses ±90° for needle
+- [Phase 7-01]: Two-shape needle — NeedleShaft(anchor:.bottom) + CounterweightShape(anchor:.top) both rotate around gauge pivot
+- [Phase 7-01]: Path-based trig ticks replace broken offset+rotationEffect(anchor:.center) pattern
 - [Phase 6-GAP-02]: CentsReadoutView green zone tightened to <3 cents — experienced players notice 3+ cents
 - [Phase 6-GAP-02]: InputLevelMeter segmented with 20 discrete blocks — matches pro audio meter conventions
 - [Phase 6-GAP-02]: VU meter animation .linear(duration: 0.08) — meters should snap, not spring
@@ -109,7 +113,7 @@ Recent decisions affecting current work:
 - UI-02: Focus effects disabled (.focusEffectDisabled) for clean glass aesthetic
 - UI-02: Liquid Glass applied to window container, string buttons, settings gear
 - UI-01: Floating window always on top
-- PITCH-02: EMA smoothing for gauge needle (adaptive alpha: 0.10/0.2/0.5)
+- PITCH-02: 240° speedometer TunerGaugeView with trig-based ticks, NeedleShaft+CounterweightShape needle
 - PITCH-03: Note name and octave display
 - AUDIO-02: Live input level meter — segmented 20-block design with fixed green/yellow/red zones at 14pt
 - PITCH-04: Numeric cents offset as integer with "cents" unit label, 28pt font, tighter green zone (<3 cents)
@@ -138,9 +142,9 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-13
-Stopped at: Phase 6 GAP-02 Complete — Cents readout UX and VU meter segmented redesign
-Resume file: All plans + GAP-01 + GAP-02 in Phase 6 complete
+Last session: 2026-03-14
+Stopped at: Phase 7 Plan 01 Complete — TunerGaugeView 240° speedometer rewrite
+Resume file: Phase 7 Plan 01 complete, all tests pass
 
 ---
 
