@@ -1,301 +1,177 @@
 import SwiftUI
 
-/// Canvas-based tuner gauge with needle, tick marks, and color zones
-/// Displays pitch deviation as a semicircular arc with visual feedback
+/// Semicircular tuner gauge with proper geometry, animated needle, and tick marks.
+/// Uses SwiftUI geometry and rotationEffect for correct animation.
 struct TunerGaugeView: View {
     let cents: Double
     let isInTune: Bool
 
-    // Arc spans ±50 cents (one semitone in each direction)
-    private let minCents = -50.0
-    private let maxCents = 50.0
+    // Layout
+    private let gaugeRadius: CGFloat = 110
+    private let needleLength: CGFloat = 95
 
-    // Visual configuration
-    private let arcRadius: CGFloat = 120
-    private let arcLineWidth: CGFloat = 12
-    private let tickLength: CGFloat = 10
-    private let needleLength: CGFloat = 100
-    private let needleLineWidth: CGFloat = 3
+    // Tick definitions
+    private let majorTicks: [Int] = [-50, -30, -10, 0, 10, 30, 50]
+    private let minorTicks: [Int] = [-40, -20, -5, 5, 20, 40]
 
-    // Animation state - use animated values for Canvas rendering
-    @State private var animatedCents: Double = 0
+    // Animation state
     @State private var glowOpacity: Double = 0
 
     var body: some View {
-        // Canvas as root view - no container, floats directly on window background
-        Canvas { context, size in
-            let center = CGPoint(
-                x: size.width / 2,
-                y: size.height - 40  // Position near bottom for semicircle
-            )
+        ZStack {
+            // 1. Background arc (static)
+            arcBackground
 
-            // Draw tick marks at key positions (subtle, no background arc)
-            drawTickMarks(in: &context, center: center)
+            // 2. In-tune zone arc
+            inTuneZoneArc
 
-            // Draw needle based on animated cents value
-            drawNeedle(in: &context, center: center, cents: animatedCents)
+            // 3. Tick marks (static)
+            tickMarksLayer
 
-            // Draw in-tune glow with animated opacity
+            // 4. Animated needle
+            needleLayer
+
+            // 5. Center pivot
+            pivotDot
+
+            // 6. In-tune glow
             if isInTune {
-                drawInTuneGlow(in: &context, center: center, opacity: glowOpacity)
+                inTuneGlow
             }
         }
-        .frame(width: 300, height: 180)
-        .onChange(of: cents) { oldValue, newValue in
-            withAnimation(AnimationStyles.needle) {
-                animatedCents = newValue
-            }
-        }
+        .frame(width: 300, height: 170)
+        // Offset everything so the pivot is near the bottom of the frame
+        .offset(y: 20)
         .onChange(of: isInTune) { _, newValue in
             if newValue {
                 withAnimation(AnimationStyles.inTunePulse) {
                     glowOpacity = 1.0
                 }
             } else {
-                // Stop animation and reset immediately
                 glowOpacity = 0.0
             }
         }
         .onAppear {
-            animatedCents = cents
             glowOpacity = isInTune ? 1.0 : 0.0
         }
     }
 
-    // MARK: - Drawing Functions
+    // MARK: - Angle Conversion
 
-    private func drawBackgroundArc(in context: inout GraphicsContext, center: CGPoint) {
-        let arcPath = Path { path in
-            path.addArc(
-                center: center,
-                radius: arcRadius,
-                startAngle: .degrees(-90),
-                endAngle: .degrees(90),
-                clockwise: false
-            )
-        }
-        context.stroke(
-            arcPath,
-            with: .color(.secondary.opacity(0.3)),
-            lineWidth: arcLineWidth
-        )
+    /// Convert cents to a rotation angle.
+    /// 0 cents = straight up (0 degrees rotation from vertical).
+    /// -50 cents = full left (-90 degrees). +50 cents = full right (+90 degrees).
+    /// Works because the needle starts pointing up, and .rotationEffect rotates CW.
+    private func angle(for cents: Double) -> Angle {
+        let clamped = max(-50, min(50, cents))
+        return .degrees(clamped / 50.0 * 90.0)
     }
 
-    private func drawColorZones(in context: inout GraphicsContext, center: CGPoint) {
-        // In-tune zone with gradient-style effect (multi-segment for smooth appearance)
-        let inTuneAngle = 2.0 / 50.0 * 90.0  // 3.6 degrees from center
+    // MARK: - Sub-views
 
-        // Create multi-segment gradient effect for in-tune zone
-        // Opacity varies from center (bright) to edges (faded)
-        let segments = 5
-        for i in 0..<segments {
-            let t = Double(i) / Double(segments - 1)  // 0 to 1
-            let segmentAngle = inTuneAngle * 2 / Double(segments)
-            let startAngle = Angle.degrees(-inTuneAngle + Double(i) * segmentAngle)
-            let endAngle = Angle.degrees(-inTuneAngle + Double(i + 1) * segmentAngle)
+    /// Thin semicircular arc as the gauge track
+    private var arcBackground: some View {
+        Circle()
+            .trim(from: 0.25, to: 0.75) // Top half of circle
+            .stroke(Color.secondary.opacity(0.2), lineWidth: 3)
+            .frame(width: gaugeRadius * 2, height: gaugeRadius * 2)
+            .rotationEffect(.degrees(180)) // Flip so open side faces down
+    }
 
-            // Opacity varies from center (0.8) to edges (0.4)
-            let opacity = 0.4 + 0.4 * (1 - abs(t - 0.5) * 2)
+    /// Green zone arc near center (+-5 cents)
+    private var inTuneZoneArc: some View {
+        let zoneFraction: CGFloat = 5.0 / 50.0 * 0.25 // 5 cents out of 50 = 10% of semicircle half
+        return Circle()
+            .trim(from: 0.5 - zoneFraction, to: 0.5 + zoneFraction)
+            .stroke(Color("InTuneGreen").opacity(0.4), lineWidth: 6)
+            .frame(width: gaugeRadius * 2, height: gaugeRadius * 2)
+            .rotationEffect(.degrees(180))
+    }
 
-            let segmentPath = Path { path in
-                path.addArc(
-                    center: center,
-                    radius: arcRadius,
-                    startAngle: startAngle,
-                    endAngle: endAngle,
-                    clockwise: false
-                )
+    /// All tick marks rendered as rotated rectangles
+    private var tickMarksLayer: some View {
+        ZStack {
+            ForEach(majorTicks, id: \.self) { tickCents in
+                let isCenter = tickCents == 0
+                Rectangle()
+                    .fill(isCenter ? Color.primary : Color.secondary.opacity(0.7))
+                    .frame(
+                        width: isCenter ? 3 : 2,
+                        height: isCenter ? 16 : 12
+                    )
+                    .offset(y: -(gaugeRadius + 6)) // Place just outside the arc
+                    .rotationEffect(angle(for: Double(tickCents)), anchor: .center)
             }
 
-            context.stroke(
-                segmentPath,
-                with: .color(Color("InTuneGreen").opacity(opacity)),
-                lineWidth: arcLineWidth
-            )
-        }
-
-        // Warning zone markers: ±25 cents - draw as small arc segments
-        for tickCents in [-25, 25] {
-            let angle = angleForCents(Double(tickCents))
-
-            // Draw warning indicator as a small arc segment
-            let warnAngleDegrees = 5.0  // degrees
-            let warnStart = Angle.radians(angle - warnAngleDegrees * .pi / 180)
-            let warnEnd = Angle.radians(angle + warnAngleDegrees * .pi / 180)
-
-            let warnPath = Path { path in
-                path.addArc(
-                    center: center,
-                    radius: arcRadius,
-                    startAngle: warnStart,
-                    endAngle: warnEnd,
-                    clockwise: false
-                )
+            ForEach(minorTicks, id: \.self) { tickCents in
+                Rectangle()
+                    .fill(Color.secondary.opacity(0.35))
+                    .frame(width: 1, height: 8)
+                    .offset(y: -(gaugeRadius + 6))
+                    .rotationEffect(angle(for: Double(tickCents)), anchor: .center)
             }
-
-            // Gradient-style warning indicator
-            context.stroke(
-                warnPath,
-                with: .color(Color("WarningOrange").opacity(0.6)),
-                lineWidth: arcLineWidth
-            )
         }
     }
 
-    private func drawTickMarks(in context: inout GraphicsContext, center: CGPoint) {
-        let tickPositions = [0, -10, -50, 10, 50]
+    /// The needle: a tapered triangle pointing up, rotated by cents
+    private var needleLayer: some View {
+        NeedleShape()
+            .fill(needleColor)
+            .frame(width: 10, height: needleLength)
+            .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 2)
+            .offset(y: -(needleLength / 2)) // Pivot at bottom of needle
+            .rotationEffect(angle(for: cents), anchor: .center)
+            .animation(AnimationStyles.needle, value: cents)
+    }
 
-        for tickCents in tickPositions {
-            let angle = angleForCents(Double(tickCents))
-            let tickPath = tickPath(at: angle, center: center, radius: arcRadius)
-
-            // Center tick is brighter and more prominent, others fade toward edges
-            let isCenter = tickCents == 0
-            let color: Color = isCenter ? .primary : .secondary
-            let lineWidth: CGFloat = isCenter ? 3 : 2
-            let opacity: Double = isCenter ? 1.0 : 0.7
-
-            context.stroke(
-                tickPath,
-                with: .color(color.opacity(opacity)),
-                lineWidth: lineWidth
-            )
+    /// Small circle at the pivot point
+    private var pivotDot: some View {
+        ZStack {
+            Circle()
+                .fill(Color.primary)
+                .frame(width: 12, height: 12)
+            Circle()
+                .stroke(Color.black.opacity(0.2), lineWidth: 2)
+                .frame(width: 16, height: 16)
         }
     }
 
-    private func drawNeedle(in context: inout GraphicsContext, center: CGPoint, cents: Double) {
-        drawRefinedNeedle(in: &context, center: center, cents: cents)
-    }
-
-    private func drawRefinedNeedle(in context: inout GraphicsContext, center: CGPoint, cents: Double) {
-        let clampedCents = max(minCents, min(maxCents, cents))
-        let angle = angleForCents(clampedCents)
-
-        // Triangle needle dimensions
-        let needleBaseWidth: CGFloat = 8
-
-        // Calculate tip position
-        let tipX = center.x + cos(angle) * needleLength
-        let tipY = center.y + sin(angle) * needleLength
-
-        // Perpendicular angle for base width
-        let perpAngle = angle + .pi / 2
-
-        // Base points (at center, perpendicular to needle direction)
-        let baseLeftX = center.x + cos(perpAngle) * (needleBaseWidth / 2)
-        let baseLeftY = center.y + sin(perpAngle) * (needleBaseWidth / 2)
-        let baseRightX = center.x - cos(perpAngle) * (needleBaseWidth / 2)
-        let baseRightY = center.y - sin(perpAngle) * (needleBaseWidth / 2)
-
-        // Create triangle path
-        var needlePath = Path()
-        needlePath.move(to: CGPoint(x: baseLeftX, y: baseLeftY))
-        needlePath.addLine(to: CGPoint(x: tipX, y: tipY))
-        needlePath.addLine(to: CGPoint(x: baseRightX, y: baseRightY))
-        needlePath.closeSubpath()
-
-        // Needle color based on cents deviation
-        let needleColor: Color = {
-            if abs(cents) <= 2 { return Color("InTuneGreen") }
-            if abs(cents) <= 25 { return Color("WarningOrange") }
-            return Color("ErrorRed")
-        }()
-
-        // Draw shadow first (offset slightly for depth)
-        var shadowPath = needlePath
-        shadowPath = shadowPath.offsetBy(dx: 1, dy: 2)
-        context.fill(shadowPath, with: .color(.black.opacity(0.3)))
-
-        // Draw needle
-        context.fill(needlePath, with: .color(needleColor))
-
-        // Draw center pivot
-        let pivotSize: CGFloat = 10
-        let pivotRect = CGRect(
-            x: center.x - pivotSize/2,
-            y: center.y - pivotSize/2,
-            width: pivotSize,
-            height: pivotSize
-        )
-        context.fill(
-            Path(ellipseIn: pivotRect),
-            with: .color(.primary)
-        )
-
-        // Pivot shadow ring for depth
-        context.stroke(
-            Path(ellipseIn: pivotRect.insetBy(dx: -2, dy: -2)),
-            with: .color(.black.opacity(0.2)),
-            lineWidth: 2
-        )
-    }
-
-    private func drawInTuneGlow(in context: inout GraphicsContext, center: CGPoint, opacity: Double) {
-        guard opacity > 0 else { return }
-
-        let glowColor = Color("InTuneGreen")
-
-        // Multiple glow rings for depth - inner bright to outer ambient
-        let glowLayers: [(radius: CGFloat, width: CGFloat, alpha: Double)] = [
-            (arcRadius - 4, arcLineWidth + 8, 0.8),   // Inner bright
-            (arcRadius, arcLineWidth + 16, 0.5),      // Middle glow
-            (arcRadius + 8, arcLineWidth + 24, 0.3),  // Outer aura
-            (arcRadius + 16, arcLineWidth + 40, 0.15) // Ambient
-        ]
-
-        for layer in glowLayers {
-            let arcPath = Path { path in
-                path.addArc(
-                    center: center,
-                    radius: layer.radius,
-                    startAngle: .degrees(-90),
-                    endAngle: .degrees(90),
-                    clockwise: false
-                )
-            }
-
-            context.stroke(
-                arcPath,
-                with: .color(glowColor.opacity(opacity * layer.alpha)),
-                lineWidth: layer.width
+    /// Glow effect when in tune
+    private var inTuneGlow: some View {
+        Circle()
+            .trim(from: 0.25, to: 0.75)
+            .stroke(
+                Color("InTuneGreen").opacity(glowOpacity * 0.6),
+                lineWidth: 20
             )
-        }
-
-        // Add center highlight point for extra glow at the top
-        let highlightRect = CGRect(
-            x: center.x - 20,
-            y: center.y - arcRadius - 10,
-            width: 40,
-            height: 40
-        )
-        context.fill(
-            Path(ellipseIn: highlightRect),
-            with: .color(glowColor.opacity(opacity * 0.4))
-        )
+            .blur(radius: 10)
+            .frame(width: gaugeRadius * 2, height: gaugeRadius * 2)
+            .rotationEffect(.degrees(180))
     }
 
-    // MARK: - Helper Functions
-
-    private func angleForCents(_ cents: Double) -> CGFloat {
-        // Map cents (-50 to +50) to angle (-90° to +90°)
-        // -50 cents = -90° (left), 0 cents = 0° (center), +50 cents = +90° (right)
-        let normalized = cents / 50.0  // -1.0 to 1.0
-        let degrees = normalized * 90.0
-        return CGFloat(degrees * .pi / 180.0)
+    /// Needle color based on deviation
+    private var needleColor: Color {
+        let absCents = abs(cents)
+        if absCents <= 2 { return Color("InTuneGreen") }
+        if absCents <= 25 { return Color("WarningOrange") }
+        return Color("ErrorRed")
     }
+}
 
-    private func tickPath(at angle: CGFloat, center: CGPoint, radius: CGFloat) -> Path {
-        let innerRadius = radius - tickLength
-        let outerRadius = radius + tickLength
-
-        let startX = center.x + cos(angle) * innerRadius
-        let startY = center.y + sin(angle) * innerRadius
-        let endX = center.x + cos(angle) * outerRadius
-        let endY = center.y + sin(angle) * outerRadius
-
+/// Custom triangle shape for the needle (tapered: wide at base, pointed at tip)
+struct NeedleShape: Shape {
+    func path(in rect: CGRect) -> Path {
         var path = Path()
-        path.move(to: CGPoint(x: startX, y: startY))
-        path.addLine(to: CGPoint(x: endX, y: endY))
+        let baseWidth: CGFloat = rect.width
+        let tipWidth: CGFloat = 2 // Pointed tip
+
+        // Triangle: wide base at bottom, narrow tip at top
+        path.move(to: CGPoint(x: rect.midX - baseWidth / 2, y: rect.maxY))
+        path.addLine(to: CGPoint(x: rect.midX - tipWidth / 2, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.midX + tipWidth / 2, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.midX + baseWidth / 2, y: rect.maxY))
+        path.closeSubpath()
+
         return path
     }
 }
