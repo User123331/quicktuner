@@ -170,6 +170,21 @@ Plans:
 - [ ] 07-01-PLAN.md — Gauge rewrite: 240° arc, trig-based ticks + labels, NeedleShaft + CounterweightShape, updated tests
 - [ ] 07-02-PLAN.md — VU meter fix: explicit segmentWidth per RoundedRectangle segment in InputLevelMeter
 
+### Phase 8: UI Polish and Bug Fixes
+**Goal**: Fix three critical UI issues discovered in Phase 7 verification: needle "flying" effect, gauge artifacts, and awkward text wrapping
+**Depends on**: Phase 7
+**Requirements**: PITCH-02, UI-01
+**Status**: In Progress
+**Success Criteria** (what must be TRUE):
+  1. Needle clearly rotates around a single pivot point without appearing to "fly"
+  2. Gauge displays cleanly without visual artifacts (radial lines, glitches)
+  3. Custom Tuning Creator text layout is clean with no awkward wrapping
+**Plans**: 2 plans planned
+
+Plans:
+- [x] 08-01-PLAN.md — Horizontal linear gauge: Replace 240° arc with clean horizontal bar, sliding Capsule needle
+- [ ] 08-02-PLAN.md — Text wrapping fix: Fix "octave" label in CustomTuningCreator
+
 ## Progress
 
 **Execution Order:**
@@ -183,4 +198,5 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 4. Window, Design Language, and Polish | 9/9 | Complete | 2026-03-13 |
 | 5. Cleanup, Title Bar, and Liquid Glass | 3/3 | Complete | 2026-03-13 |
 | 6. Audio Verification and UI Fixes | 4/4 | Complete | 2026-03-13 |
-| 7. Gauge and Meter Redesign | 2/2 | Complete   | 2026-03-13 |
+| 7. Gauge and Meter Redesign | 2/2 | Complete | 2026-03-13 |
+| 8. UI Polish and Bug Fixes | 1/2 | In Progress | 2026-03-14 |

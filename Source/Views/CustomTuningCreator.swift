@@ -187,33 +187,43 @@ struct StringNotePicker: View {
     private let availableOctaves = [0, 1, 2, 3, 4, 5]
 
     var body: some View {
-        HStack {
+        HStack(spacing: 12) {
             Text("String \(stringNumber)")
                 .font(.system(.body, design: .monospaced))
                 .frame(width: 70, alignment: .leading)
 
-            Spacer()
-
-            // Note name picker
-            Picker("Note", selection: $note.name) {
-                ForEach(availableNotes, id: \.self) { noteName in
-                    Text(noteName).tag(noteName)
+            // Note picker with explicit label
+            HStack(spacing: 4) {
+                Text("Note:")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                Picker("Note", selection: $note.name) {
+                    ForEach(availableNotes, id: \.self) { noteName in
+                        Text(noteName).tag(noteName)
+                    }
                 }
+                .pickerStyle(.menu)
+                .labelsHidden()
+                .frame(width: 70)
             }
-            .pickerStyle(.menu)
-            .frame(width: 80)
 
-            // Octave picker
-            Picker("Octave", selection: .init(
-                get: { note.octave },
-                set: { note = TuningNote(name: note.name, octave: $0) }
-            )) {
-                ForEach(availableOctaves, id: \.self) { octave in
-                    Text("\(octave)").tag(octave)
+            // Octave picker with explicit label
+            HStack(spacing: 4) {
+                Text("Octave:")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+                Picker("Octave", selection: .init(
+                    get: { note.octave },
+                    set: { note = TuningNote(name: note.name, octave: $0) }
+                )) {
+                    ForEach(availableOctaves, id: \.self) { octave in
+                        Text("\(octave)").tag(octave)
+                    }
                 }
+                .pickerStyle(.menu)
+                .labelsHidden()
+                .frame(width: 50)
             }
-            .pickerStyle(.menu)
-            .frame(width: 90)
         }
     }
 }
