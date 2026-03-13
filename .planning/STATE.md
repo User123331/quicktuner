@@ -3,9 +3,9 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 7 Plan 02 — awaiting visual checkpoint for InputLevelMeter segment width fix
-last_updated: "2026-03-13T20:00:02.929Z"
-last_activity: 2026-03-14 -- 07-01 executed, TunerGaugeView rewritten, NeedleShaft+CounterweightShape implemented
+stopped_at: Phase 9 Plan 01 complete — Window compactness (440x480, locked dimensions)
+last_updated: "2026-03-14T06:40:00.000Z"
+last_activity: 2026-03-14 -- 09-01 executed, window height reduced to 480px, styleMask.remove(.resizable) added
 progress:
   total_phases: 7
   completed_phases: 6
@@ -25,12 +25,12 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 
 ## Current Position
 
-Phase: 7 of 7 (Gauge and Meter Redesign)
-Plan: 07-01 Complete
-Status: **07-01 complete — TunerGaugeView 240° speedometer rewrite with trig ticks, labels, two-shape needle**
-Last activity: 2026-03-14 -- 07-01 executed, TunerGaugeView rewritten, NeedleShaft+CounterweightShape implemented
+Phase: 9 of 9 (Window Compactness and Settings Polish)
+Plan: 09-01 Complete
+Status: **09-01 complete — Window opens at 440x480, locked dimensions, no fullscreen**
+Last activity: 2026-03-14 -- 09-01 executed, window height reduced to 480px, styleMask.remove(.resizable) added
 
-Progress: [█████████▉] 97% (Phase 7: 1/1 plans)
+Progress: [█████████▉] 97% (Phase 9: 1/3 plans)
 
 ## Performance Metrics
 
@@ -53,6 +53,10 @@ Progress: [█████████▉] 97% (Phase 7: 1/1 plans)
 | Phase 07-gauge-and-meter-redesign P02 | 2 | 1 tasks | 1 files |
 
 ## Accumulated Context
+
+### Roadmap Evolution
+
+- Phase 9 added: Window Compactness and Settings Polish (context defined 2026-03-14)
 
 ### Decisions
 
@@ -109,6 +113,8 @@ Recent decisions affecting current work:
 - [Phase 4-01]: NSKeyedArchiver used for frame persistence (not @AppStorage - cannot store NSRect)
 - [Phase 07-02]: totalMeterWidth: CGFloat = 200 — fixed 200pt total width produces 8.1pt slim vertical bars (not wide tiles)
 - [Phase 07-02]: segmentWidth computed property = (totalMeterWidth - segmentSpacing * CGFloat(segmentCount - 1)) / CGFloat(segmentCount) — single formula, slim VU bar segments
+- [Phase 09-01]: Window height reduced from 600px to 480px for compact tuner UI
+- [Phase 09-01]: styleMask.remove(.resizable) locks dimensions and disables fullscreen button
 
 ### Completed Requirements
 
@@ -145,8 +151,8 @@ Recent decisions affecting current work:
 
 ## Session Continuity
 
-Last session: 2026-03-13T20:00:02.926Z
-Stopped at: Phase 7 Plan 02 — awaiting visual checkpoint for InputLevelMeter segment width fix
+Last session: 2026-03-14T06:40:00.000Z
+Stopped at: Phase 9 Plan 01 complete — Window compactness (440x480, locked dimensions)
 Resume file: None
 
 ---

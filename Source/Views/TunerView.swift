@@ -42,10 +42,10 @@ struct TunerView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 8)
 
-                // String rail — Spacer pushes it to bottom, gap above separates it from TuningSelector
-                Spacer(minLength: 0)
+                // String rail — sits directly below TuningSelector with consistent gap
                 StringRailView(viewModel: viewModel)
                     .padding(.horizontal)
+                    .padding(.top, 16)  // Gap above string rail
                     .padding(.bottom, 10)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
