@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** Phase 5 — Cleanup, Title Bar, and Liquid Glass
+**Current focus:** v1.0 COMPLETE — All 5 phases delivered.
 
 ## Current Position
 
-Phase: 5 of 5 (Cleanup, Title Bar, and Liquid Glass)
-Plan: 3 complete, awaiting next plan
-Status: **Phase 5, Plan 03 complete — Glass architecture cleaned, no glass-on-glass stacking**
-Last activity: 2026-03-13 -- Completed 05-03 (remove GlassWindowModifier, TuningSelector glassCard, StringRailView GlassEffectContainer)
+Phase: 5 of 5 (Cleanup, Title Bar, and Liquid Glass) — COMPLETE
+Plan: 3/3 complete
+Status: **Phase 5 COMPLETE — Zero warnings, traffic lights visible, true vibrancy, correct glass architecture**
+Last activity: 2026-03-13 -- Completed Phase 5 (05-01 warning fixes, 05-02 title bar + vibrancy, 05-03 glass corrections)
 
-Progress: [███░░░░░░░] 30% (Phase 5, 3/? plans)
+Progress: [██████████] 100% (All phases complete)
 
 ## Performance Metrics
 

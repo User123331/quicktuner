@@ -2,7 +2,7 @@
 
 ## Overview
 
-QuickTuner is built bottom-up in four phases: first the real-time audio pipeline (highest risk), then the core tuning interface with string-by-string workflow, then the tuning library and persistence layer, and finally the visual design polish with Liquid Glass and floating window behavior. Each phase delivers a verifiable capability that the next phase builds on.
+QuickTuner is built bottom-up in five phases: first the real-time audio pipeline (highest risk), then the core tuning interface with string-by-string workflow, then the tuning library and persistence layer, then visual design polish with Liquid Glass and floating window behavior, and finally cleanup, title bar, and proper Liquid Glass application. Each phase delivers a verifiable capability that the next phase builds on.
 
 ## Phases
 
@@ -15,7 +15,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Pitch Detection and Audio Engine** - Real-time audio capture and sub-cent pitch detection via YIN + FFT
 - [x] **Phase 2: Tuner Interface and String Workflow** - Circular gauge, string navigation, and in-tune detection UI
 - [x] **Phase 3: Tuning Library, Settings, and Persistence** - Instrument modes, preset/custom tunings, reference pitch, and persistent preferences
-- [ ] **Phase 4: Window, Design Language, and Polish** - Floating window, Liquid Glass design, spring animations, and typography
+- [x] **Phase 4: Window, Design Language, and Polish** - Floating window, Liquid Glass design, spring animations, and typography
+- [x] **Phase 5: Cleanup, Title Bar, and Liquid Glass** - Fix errors/warnings, add macOS title bar, and properly apply visible Liquid Glass effects
 
 ## Phase Details
 
@@ -86,6 +87,7 @@ Plans:
 **Plans**: TBD
 
 Plans:
+- [x] 04-COR: Liquid Glass Correction - Fix transparent window, apply macOS 26 .glassEffect() API correctly, fix Package.swift paths
 - [x] 04-FIX-03: Ultra-Thin Material Opacity - Reduce window background opacity to 0.4 for ultra-thin liquid glass
 - [x] 04-FIX-02: Remove glassCard Container - TunerGaugeView floats directly on window background without panel
 - [x] 04-FIX-01: 8-String Overflow Fix - Horizontal ScrollView wrapper for StringRailView to support multi-string instruments
@@ -95,14 +97,32 @@ Plans:
 - [x] 04-GAP-01: Fix Missing Liquid Glass Effects - Window transparency and ignoresSafeArea for material visibility
 - [x] 04-01: Window Configuration - Floating panel, position persistence, multi-monitor support
 
+### Phase 5: Cleanup, Title Bar, and Liquid Glass
+**Goal**: The app has zero build errors/warnings, a proper macOS title bar, and visually prominent Liquid Glass effects that are clearly visible to the user
+**Depends on**: Phase 4
+**Requirements**: POLISH-01, POLISH-02, POLISH-03
+**Success Criteria** (what must be TRUE):
+  1. Project builds with zero errors and zero warnings (clean build)
+  2. App has a proper macOS title bar (transparent, integrated with Liquid Glass) that provides standard window controls
+  3. Liquid Glass effects are clearly visible — translucent glass panels with blur, refractive highlights, and depth that the user can actually see
+  4. All UI components (gauge container, string pills, settings button, tuning selector) show distinct glass surfaces
+  5. Glass effects respond to content behind the window (true vibrancy, not just tinted backgrounds)
+**Plans**: 3 plans in 3 waves
+
+Plans:
+- [x] 05-01: Build Warning Fixes + Git Cleanup - Fix all compiler/SPM warnings, clean stale git index
+- [x] 05-02: Title Bar + Window Transparency - Show traffic lights, enable true vibrancy
+- [x] 05-03: Glass Layering Corrections - Remove glass stacking anti-pattern, fix TuningSelector, GlassEffectContainer for string rail
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Pitch Detection and Audio Engine | 5/5 | Complete | 2026-03-11 |
 | 2. Tuner Interface and String Workflow | 5/5 | Complete | 2026-03-11 |
 | 3. Tuning Library, Settings, and Persistence | 5/5 | Complete | 2026-03-12 |
-| 4. Window, Design Language, and Polish | 8/? | In Progress | 2026-03-12 |
+| 4. Window, Design Language, and Polish | 9/9 | Complete | 2026-03-13 |
+| 5. Cleanup, Title Bar, and Liquid Glass | 3/3 | Complete | 2026-03-13 |

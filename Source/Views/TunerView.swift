@@ -18,7 +18,7 @@ struct TunerView: View {
                     cents: viewModel.cents,
                     isInTune: viewModel.isInTune
                 )
-                .padding(.top, 40)  // Gauge top to window: 40pt
+                .padding(.top, 8)  // ContentView already provides 52pt for traffic lights
 
                 // Note display below gauge
                 NoteDisplayView(
@@ -40,10 +40,11 @@ struct TunerView: View {
                     .padding(.horizontal)
                     .padding(.vertical, 8)
 
-                // String rail showing target notes for selected tuning
+                // String rail — Spacer pushes it to bottom, gap above separates it from TuningSelector
+                Spacer(minLength: 0)
                 StringRailView(viewModel: viewModel)
                     .padding(.horizontal)
-                    // String rail spacing: 24pt above/below handled in StringRailView
+                    .padding(.bottom, 10)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.horizontal, 24)  // Outer padding from CONTEXT.md

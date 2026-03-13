@@ -1,18 +1,44 @@
 import SwiftUI
 
-/// String rail showing target notes for selected tuning with glass button styling
+/// String rail showing target notes for selected tuning with glass button styling.
+/// Pills scale down automatically to fit 4–8 strings within the fixed 440pt window width.
 struct StringRailView: View {
     @Bindable var viewModel: TunerViewModel
 
+    // MARK: - Layout helpers
+
+    /// Usable width = 440pt window − 24pt outer padding × 2 − 16pt inner padding × 2
+    private let usableRailWidth: CGFloat = 360
+
+    private var stringCount: Int {
+        viewModel.tuningLibrary.selectedTuning?.notes.count ?? 6
+    }
+
+    private var pillSpacing: CGFloat {
+        stringCount >= 7 ? 6 : 8
+    }
+
+    private var pillWidth: CGFloat {
+        let totalSpacing = pillSpacing * CGFloat(max(stringCount - 1, 0))
+        return (usableRailWidth - totalSpacing) / CGFloat(max(stringCount, 1))
+    }
+
+    private var pillFontSize: CGFloat {
+        switch stringCount {
+        case ..<6:  return 14
+        case 6:     return 13
+        default:    return 12
+        }
+    }
+
+    // MARK: - Body
+
     var body: some View {
         let notes = viewModel.tuningLibrary.selectedTuning?.notes ?? []
-
-        ScrollView(.horizontal, showsIndicators: false) {
-            stringRailContent(notes: notes)
-                .padding(.horizontal, 24)
-        }
-        .padding(.vertical, 24)  // Spacing above/below rail per CONTEXT.md
-        .animation(AnimationStyles.stringSelection, value: viewModel.selectedStringIndex)
+        stringRailContent(notes: notes)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 12)
+            .animation(AnimationStyles.stringSelection, value: viewModel.selectedStringIndex)
     }
 
     @ViewBuilder
@@ -20,16 +46,19 @@ struct StringRailView: View {
         let reversedNotes = Array(notes.enumerated().reversed())
         if #available(macOS 26.0, *) {
             GlassEffectContainer {
-                HStack(spacing: 8) {
-                    ForEach(reversedNotes, id: \.offset) { index, note in
-                        let displayStringNumber = notes.count - index
+                HStack(spacing: pillSpacing) {
+                    ForEach(reversedNotes, id: \.offset) { item in
+                        let index = item.offset
+                        let note = item.element
                         let stringIndex = notes.count - index - 1
                         let isSelected = viewModel.selectedStringIndex == stringIndex
                         StringButton(
-                            stringNumber: displayStringNumber,
+                            stringNumber: notes.count - index,
                             targetNote: note,
                             isTuned: viewModel.isStringTuned(stringIndex: stringIndex),
-                            isSelected: isSelected
+                            isSelected: isSelected,
+                            pillWidth: pillWidth,
+                            fontSize: pillFontSize
                         )
                         .onTapGesture {
                             viewModel.selectString(at: stringIndex)
@@ -38,16 +67,19 @@ struct StringRailView: View {
                 }
             }
         } else {
-            HStack(spacing: 8) {
-                ForEach(reversedNotes, id: \.offset) { index, note in
-                    let displayStringNumber = notes.count - index
+            HStack(spacing: pillSpacing) {
+                ForEach(reversedNotes, id: \.offset) { item in
+                    let index = item.offset
+                    let note = item.element
                     let stringIndex = notes.count - index - 1
                     let isSelected = viewModel.selectedStringIndex == stringIndex
                     StringButton(
-                        stringNumber: displayStringNumber,
+                        stringNumber: notes.count - index,
                         targetNote: note,
                         isTuned: viewModel.isStringTuned(stringIndex: stringIndex),
-                        isSelected: isSelected
+                        isSelected: isSelected,
+                        pillWidth: pillWidth,
+                        fontSize: pillFontSize
                     )
                     .onTapGesture {
                         viewModel.selectString(at: stringIndex)
@@ -63,14 +95,14 @@ struct StringButton: View {
     let targetNote: TuningNote
     let isTuned: Bool
     let isSelected: Bool
+    let pillWidth: CGFloat
+    let fontSize: CGFloat
 
     var body: some View {
         Text("\(targetNote.name)\(targetNote.octave)")
-            .font(.system(size: 14, weight: isSelected ? .semibold : .medium, design: .rounded))
+            .font(.system(size: fontSize, weight: isSelected ? .semibold : .medium, design: .rounded))
             .foregroundStyle(isSelected ? .primary : .secondary)
-            .frame(minWidth: 36, minHeight: 36)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 8)
+            .frame(width: pillWidth, height: 44)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(isTuned ? Color("InTuneGreen") : Color.clear, lineWidth: 1.5)

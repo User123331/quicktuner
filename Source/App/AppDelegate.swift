@@ -45,9 +45,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.collectionBehavior = [.fullScreenAuxiliary, .canJoinAllSpaces]
         }
 
+        // .fullSizeContentView makes contentView fill the ENTIRE window frame
+        // including the title bar area. Without this, contentView starts below
+        // the title bar and no glass approach can cover the gap.
+        window.styleMask.insert(.fullSizeContentView)
+
         // Transparent title bar — traffic lights remain visible
         window.titlebarAppearsTransparent = true
         window.titleVisibility = .hidden
+        window.titlebarSeparatorStyle = .none
         // Traffic lights (close/minimize/zoom) are visible by default — do NOT hide them
 
         // Enable true vibrancy — glass refracts against desktop content
@@ -57,10 +63,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Make draggable from anywhere
         window.isMovableByWindowBackground = true
 
-        // Apply rounded corners via layer
-        window.contentView?.wantsLayer = true
-        window.contentView?.layer?.cornerRadius = 24
-        window.contentView?.layer?.masksToBounds = true
+        // Wrap contentView in an NSVisualEffectView that covers the full window
+        // including the title bar area. Now that .fullSizeContentView is set,
+        // contentView.bounds covers the entire window frame — no frame math needed.
+        if let contentView = window.contentView {
+            let visualEffect = NSVisualEffectView()
+            visualEffect.material = .hudWindow
+            visualEffect.blendingMode = .behindWindow
+            visualEffect.state = .active
+            // No cornerRadius or masksToBounds — the window chrome handles the shape.
+            // Adding a clip here creates a hard material boundary line at the arc end.
+            visualEffect.autoresizingMask = [.width, .height]
+
+            window.contentView = visualEffect
+            visualEffect.addSubview(contentView)
+            contentView.frame = visualEffect.bounds
+            contentView.autoresizingMask = [.width, .height]
+        }
 
         // Restore position from previous session
         WindowManager.shared.restoreWindowPosition(for: window)

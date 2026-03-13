@@ -34,9 +34,7 @@ struct ContentView: View {
                 Spacer()
             }
         }
-        .frame(width: 440, height: 600)
-        // No glass on window root — glass only on component containers
-        // Window transparency (isOpaque=false) provides the backdrop for glass refraction
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .focusEffectDisabled(true)
         .sheet(isPresented: $showSettings) {
             SettingsView(viewModel: createSettingsViewModel())
@@ -48,6 +46,23 @@ struct ContentView: View {
     private func createSettingsViewModel() -> TunerViewModel {
         TunerViewModel()
     }
+}
+
+// MARK: - Window Accessor
+
+/// A helper to access the NSWindow and customize its properties.
+struct WindowAccessor: NSViewRepresentable {
+    func makeNSView(context: Context) -> NSView {
+        let view = NSView()
+        DispatchQueue.main.async {
+            if let window = view.window {
+                window.titlebarSeparatorStyle = .none
+            }
+        }
+        return view
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
 }
 
 // MARK: - Version-Gated Glass Modifiers
