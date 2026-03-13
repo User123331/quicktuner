@@ -37,7 +37,7 @@ Requirements for initial release. Each maps to roadmap phases.
 ### Audio Input
 
 - [ ] **AUDIO-01**: User can select from available Core Audio input devices (built-in mic, USB interface, etc.)
-- [ ] **AUDIO-02**: User sees a live input level meter confirming signal presence
+- [x] **AUDIO-02**: User sees a live input level meter confirming signal presence
 - [ ] **AUDIO-03**: Audio input device selection persists between app launches
 - [ ] **AUDIO-04**: App handles audio device hot-plug/unplug gracefully without crashing
 
@@ -113,7 +113,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TUNE-06 | Phase 3 | Pending |
 | TUNE-07 | Phase 3 | Pending |
 | AUDIO-01 | Phase 6 | Pending |
-| AUDIO-02 | Phase 6 | Pending |
+| AUDIO-02 | Phase 6 | Complete |
 | AUDIO-03 | Phase 6 | Pending |
 | AUDIO-04 | Phase 6 | Pending |
 | UI-01 | Phase 4 | Pending |
