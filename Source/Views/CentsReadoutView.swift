@@ -8,9 +8,9 @@ struct CentsReadoutView: View {
     private var centsColor: Color {
         guard let cents = cents else { return .secondary }
         let absCents = abs(cents)
-        if absCents < 3 { return Color("InTuneGreen") }
-        if absCents < 15 { return Color("WarningOrange") }
-        return Color("ErrorRed")
+        if absCents < 3 { return .green }
+        if absCents < 15 { return .orange }
+        return .red
     }
 
     var body: some View {

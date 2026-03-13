@@ -3,14 +3,14 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: completed
-stopped_at: Phase 6 GAP-01 Complete — Gauge rewrite (Canvas->SwiftUI geometry), adaptive EMA, needle spring tuning
-last_updated: "2026-03-13T20:05:00.000Z"
-last_activity: 2026-03-13 -- GAP-01 executed, gauge rewritten with correct angles and smooth animation
+stopped_at: Phase 6 GAP-02 Complete — Cents readout UX and VU meter segmented redesign
+last_updated: "2026-03-13T20:15:00.000Z"
+last_activity: 2026-03-13 -- GAP-02 executed, CentsReadoutView enhanced, InputLevelMeter segmented
 progress:
   total_phases: 6
   completed_phases: 6
-  total_plans: 35
-  completed_plans: 34
+  total_plans: 36
+  completed_plans: 35
   percent: 100
 ---
 
@@ -21,16 +21,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** Phase 6 — Audio Verification and UI Fixes (GAP closure complete)
+**Current focus:** Phase 6 — Audio Verification and UI Fixes (GAP-02 closure complete)
 
 ## Current Position
 
 Phase: 6 of 6 (Audio Verification and UI Fixes)
-Plan: 06-GAP-01 Complete
-Status: **GAP-01 complete — Gauge rewrite, adaptive EMA, needle spring tuning**
-Last activity: 2026-03-13 -- GAP-01 executed, TunerGaugeView rewritten from Canvas to SwiftUI geometry
+Plan: 06-GAP-02 Complete
+Status: **GAP-02 complete — Cents readout UX and VU meter segmented redesign**
+Last activity: 2026-03-13 -- GAP-02 executed, CentsReadoutView enhanced with unit label, InputLevelMeter segmented
 
-Progress: [██████████] 100% (Phase 6: 3/3 plans + GAP-01)
+Progress: [██████████] 100% (Phase 6: 3/3 plans + GAP-01 + GAP-02)
 
 ## Performance Metrics
 
@@ -58,6 +58,9 @@ Progress: [██████████] 100% (Phase 6: 3/3 plans + GAP-01)
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [Phase 6-GAP-02]: CentsReadoutView green zone tightened to <3 cents — experienced players notice 3+ cents
+- [Phase 6-GAP-02]: InputLevelMeter segmented with 20 discrete blocks — matches pro audio meter conventions
+- [Phase 6-GAP-02]: VU meter animation .linear(duration: 0.08) — meters should snap, not spring
 - [Phase 6-GAP-01]: Canvas replaced with SwiftUI geometry — `.rotationEffect` + `.animation` for correct needle animation
 - [Phase 6-GAP-01]: Angle mapping fixed — 0 cents = straight up, -50 = left, +50 = right
 - [Phase 6-GAP-01]: Adaptive EMA smoothing — alpha=0.10 for fine tuning, 0.2 moderate, 0.5 large jumps
@@ -108,7 +111,8 @@ Recent decisions affecting current work:
 - UI-01: Floating window always on top
 - PITCH-02: EMA smoothing for gauge needle (adaptive alpha: 0.10/0.2/0.5)
 - PITCH-03: Note name and octave display
-- PITCH-04: Numeric cents offset as integer
+- AUDIO-02: Live input level meter — segmented 20-block design with fixed green/yellow/red zones at 14pt
+- PITCH-04: Numeric cents offset as integer with "cents" unit label, 28pt font, tighter green zone (<3 cents)
 - PITCH-05: In-tune detection with 2 cent threshold
 - NAV-01: Arrow key navigation (previous/next string)
 - NAV-02: Number keys 1-6 for direct string selection
@@ -135,8 +139,8 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 6 GAP-01 Complete — Gauge rewrite (Canvas->SwiftUI geometry), adaptive EMA, needle spring tuning
-Resume file: All plans + GAP-01 in Phase 6 complete
+Stopped at: Phase 6 GAP-02 Complete — Cents readout UX and VU meter segmented redesign
+Resume file: All plans + GAP-01 + GAP-02 in Phase 6 complete
 
 ---
 

@@ -36,24 +36,21 @@ struct TunerViewModelTests {
     func emaReducesJitterFineTuning() async throws {
         let viewModel = await TunerViewModel()
 
-        // Establish baseline near 10
-        // First call: deviation = |10 - 0| = 10 > 5, alpha = 0.2
-        _ = await viewModel.applyEMA(10.0)
-        // After a few calls, get close to 10
-        _ = await viewModel.applyEMA(10.0)
-        _ = await viewModel.applyEMA(10.0)
-        _ = await viewModel.applyEMA(10.0)
-        _ = await viewModel.applyEMA(10.0)
+        // Establish baseline near 10 — need many iterations to converge
+        // with alpha=0.2 (first call) then alpha=0.1 (subsequent, deviation <5)
+        for _ in 0..<20 {
+            _ = await viewModel.applyEMA(10.0)
+        }
 
-        // Now simulate small jitter around 10 (fine tuning)
-        let jitterValues = [10.5, 9.8, 10.2, 9.9, 10.3]
+        // Now simulate small jitter around 10 (fine tuning, alpha=0.10)
+        let jitterValues = [10.5, 9.8, 10.2, 9.9, 10.3, 10.1, 9.7, 10.4]
         var results: [Double] = []
         for raw in jitterValues {
             let smoothed = await viewModel.applyEMA(raw)
             results.append(smoothed)
         }
 
-        // Smoothed range should be much smaller than raw range
+        // With alpha=0.10, smoothed range should be much smaller than raw range
         let rawRange = jitterValues.max()! - jitterValues.min()!
         let smoothedRange = results.max()! - results.min()!
         #expect(smoothedRange < rawRange)

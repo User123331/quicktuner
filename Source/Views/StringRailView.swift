@@ -105,7 +105,7 @@ struct StringButton: View {
             .frame(width: pillWidth, height: 44)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(isTuned ? Color("InTuneGreen") : Color.clear, lineWidth: 1.5)
+                    .stroke(isTuned ? Color.green : Color.clear, lineWidth: 1.5)
             )
             .glassButton(cornerRadius: 20)
             .scaleEffect(isSelected ? 1.05 : 1.0)

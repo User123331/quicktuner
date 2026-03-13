@@ -11,7 +11,7 @@ struct NoteDisplayView: View {
             if let noteName = noteName, !noteName.isEmpty {
                 Text(noteName)
                     .font(.system(size: 64, weight: .medium, design: .rounded))
-                    .foregroundColor(isInTune ? Color("InTuneGreen") : .primary)
+                    .foregroundColor(isInTune ? Color.green : .primary)
             } else {
                 Text("--")
                     .font(.system(size: 64, weight: .medium, design: .rounded))

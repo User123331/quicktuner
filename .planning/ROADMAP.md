@@ -132,6 +132,7 @@ Plans:
 - [x] 06-02: AudioSettings Rewrite — Device picker, InputLevelMeter component, noise gate binding fix
 - [x] 06-03: Octave Picker Fix — Widen frame from 70 to 90 in CustomTuningCreator
 - [x] 06-GAP-01: Gauge Geometry Fix — Replace Canvas with SwiftUI geometry, fix angle math, adaptive EMA, needle spring tuning
+- [x] 06-GAP-02: Cents & Meter UX — Enhanced CentsReadoutView with unit label and tighter zones, segmented InputLevelMeter with fixed color zones
 
 ## Progress
 

@@ -83,7 +83,7 @@ struct TunerGaugeView: View {
         let zoneFraction: CGFloat = 5.0 / 50.0 * 0.25 // 5 cents out of 50 = 10% of semicircle half
         return Circle()
             .trim(from: 0.5 - zoneFraction, to: 0.5 + zoneFraction)
-            .stroke(Color("InTuneGreen").opacity(0.4), lineWidth: 6)
+            .stroke(Color.green.opacity(0.4), lineWidth: 6)
             .frame(width: gaugeRadius * 2, height: gaugeRadius * 2)
             .rotationEffect(.degrees(180))
     }
@@ -113,14 +113,16 @@ struct TunerGaugeView: View {
         }
     }
 
-    /// The needle: a tapered triangle pointing up, rotated by cents
+    /// The needle: a tapered triangle pointing up, rotated by cents.
+    /// offset(y: -needleLength/2) moves the needle up so its base sits at the ZStack center.
+    /// rotationEffect with .bottom anchor rotates around the needle's base point.
     private var needleLayer: some View {
         NeedleShape()
             .fill(needleColor)
             .frame(width: 10, height: needleLength)
             .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 2)
-            .offset(y: -(needleLength / 2)) // Pivot at bottom of needle
-            .rotationEffect(angle(for: cents), anchor: .center)
+            .rotationEffect(angle(for: cents), anchor: .bottom)
+            .offset(y: -(needleLength / 2))
             .animation(AnimationStyles.needle, value: cents)
     }
 
@@ -141,7 +143,7 @@ struct TunerGaugeView: View {
         Circle()
             .trim(from: 0.25, to: 0.75)
             .stroke(
-                Color("InTuneGreen").opacity(glowOpacity * 0.6),
+                Color.green.opacity(glowOpacity * 0.6),
                 lineWidth: 20
             )
             .blur(radius: 10)
@@ -152,9 +154,9 @@ struct TunerGaugeView: View {
     /// Needle color based on deviation
     private var needleColor: Color {
         let absCents = abs(cents)
-        if absCents <= 2 { return Color("InTuneGreen") }
-        if absCents <= 25 { return Color("WarningOrange") }
-        return Color("ErrorRed")
+        if absCents <= 2 { return .green }
+        if absCents <= 25 { return .orange }
+        return .red
     }
 }
 
