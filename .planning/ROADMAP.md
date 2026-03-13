@@ -19,7 +19,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 5: Cleanup, Title Bar, and Liquid Glass** - Fix errors/warnings, add macOS title bar, and properly apply visible Liquid Glass effects
 - [x] **Phase 6: Audio Verification and UI Fixes** - Audio device selection, input level meter, and custom tuning creator layout fix
 - [x] **Phase 7: Gauge and Meter Redesign** - 240° speedometer gauge with classic analog needle, trig-based tick marks with labels, and VU meter fix (completed 2026-03-13)
-- [ ] **Phase 8: UI Polish and Bug Fixes** - Fix needle anchoring, research cleaner gauge designs, fix text wrapping issues (in progress)
+- [x] **Phase 8: UI Polish and Bug Fixes** - Horizontal linear gauge, text wrapping fix (completed 2026-03-14)
+- [ ] **Phase 9: Window Compactness and Settings Polish** - Smaller window, locked size, enhanced reference pitch content, full-width input meter
 
 ## Phase Details
 
@@ -183,12 +184,12 @@ Plans:
 
 Plans:
 - [x] 08-01-PLAN.md — Horizontal linear gauge: Replace 240° arc with clean horizontal bar, sliding Capsule needle
-- [ ] 08-02-PLAN.md — Text wrapping fix: Fix "octave" label in CustomTuningCreator
+- [x] 08-02-PLAN.md — Text wrapping fix: Fix "octave" label in CustomTuningCreator
 
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -199,4 +200,24 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7
 | 5. Cleanup, Title Bar, and Liquid Glass | 3/3 | Complete | 2026-03-13 |
 | 6. Audio Verification and UI Fixes | 4/4 | Complete | 2026-03-13 |
 | 7. Gauge and Meter Redesign | 2/2 | Complete | 2026-03-13 |
-| 8. UI Polish and Bug Fixes | 1/2 | In Progress | 2026-03-14 |
+| 8. UI Polish and Bug Fixes | 2/2 | Complete | 2026-03-14 |
+| 9. Window Compactness and Settings Polish | 0/3 | Planned | - |
+
+### Phase 9: Window Compactness and Settings Polish
+
+**Goal:** Reduce window size to 440x480, lock window dimensions, remove fullscreen button, enhance Reference Pitch content with brief descriptions, and fix Input Level meter to fill 90% of settings panel width
+**Requirements**: UI-01, UI-05
+**Depends on:** Phase 8
+**Status:** Planned - 3 plans ready for execution
+**Success Criteria** (what must be TRUE):
+  1. Window opens at 440x480 and cannot be resized
+  2. Fullscreen button is removed from title bar
+  3. Layout feels compact without excess vertical space
+  4. Reference Pitch section shows enhanced bullet descriptions (1-2 sentences per frequency)
+  5. Input Level meter extends 90% of settings panel width with dynamic segment scaling
+**Plans:** 3 plans in 1 wave (parallel execution)
+
+Plans:
+- [ ] 09-01-PLAN.md — Window sizing and lock: Update dimensions to 440x480, disable resize and fullscreen
+- [ ] 09-02-PLAN.md — Layout compactness and reference pitch: Remove Spacer, enhance descriptions
+- [ ] 09-03-PLAN.md — Input level meter dynamic width: GeometryReader for 90% fill, dynamic segments

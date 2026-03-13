@@ -105,8 +105,8 @@ final class WindowManager {
         let screen = screen ?? NSScreen.main!
         let screenFrame = screen.visibleFrame
 
-        // Use window's current size or default to 440x600
-        let windowSize = CGSize(width: 440, height: 600)
+        // Use window's current size or default to 440x480
+        let windowSize = CGSize(width: 440, height: 480)
 
         return NSRect(
             x: screenFrame.midX - windowSize.width / 2,

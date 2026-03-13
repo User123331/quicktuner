@@ -7,7 +7,7 @@ struct QuickTunerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .frame(width: 440, height: 600)
+                .frame(width: 440, height: 480)
         }
         .windowStyle(.hiddenTitleBar)
         .windowResizability(.contentSize)
