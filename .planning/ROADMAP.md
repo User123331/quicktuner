@@ -2,7 +2,7 @@
 
 ## Overview
 
-QuickTuner is built bottom-up in five phases: first the real-time audio pipeline (highest risk), then the core tuning interface with string-by-string workflow, then the tuning library and persistence layer, then visual design polish with Liquid Glass and floating window behavior, and finally cleanup, title bar, and proper Liquid Glass application. Each phase delivers a verifiable capability that the next phase builds on.
+QuickTuner is built bottom-up in six phases: first the real-time audio pipeline (highest risk), then the core tuning interface with string-by-string workflow, then the tuning library and persistence layer, then visual design polish with Liquid Glass and floating window behavior, then cleanup, title bar, and proper Liquid Glass application, and finally audio device selection, input level monitoring, and UI bug fixes. Each phase delivers a verifiable capability that the next phase builds on.
 
 ## Phases
 
@@ -17,6 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 3: Tuning Library, Settings, and Persistence** - Instrument modes, preset/custom tunings, reference pitch, and persistent preferences
 - [x] **Phase 4: Window, Design Language, and Polish** - Floating window, Liquid Glass design, spring animations, and typography
 - [x] **Phase 5: Cleanup, Title Bar, and Liquid Glass** - Fix errors/warnings, add macOS title bar, and properly apply visible Liquid Glass effects
+- [ ] **Phase 6: Audio Verification and UI Fixes** - Audio device selection, input level meter, and custom tuning creator layout fix
 
 ## Phase Details
 
@@ -114,10 +115,27 @@ Plans:
 - [x] 05-02: Title Bar + Window Transparency - Show traffic lights, enable true vibrancy
 - [x] 05-03: Glass Layering Corrections - Remove glass stacking anti-pattern, fix TuningSelector, GlassEffectContainer for string rail
 
+### Phase 6: Audio Verification and UI Fixes
+**Goal**: The app correctly captures audio from the system default device (or user-selected device), displays a live input level meter, and all UI forms are visually correct
+**Depends on**: Phase 5
+**Requirements**: AUDIO-01, AUDIO-02, AUDIO-03, AUDIO-04, FIX-01
+**Success Criteria** (what must be TRUE):
+  1. Audio device selection works — user can pick from available Core Audio input devices (replacing the "System Default / Coming in Phase 4" placeholder)
+  2. Audio device selection persists between app launches
+  3. A live input level meter is visible confirming signal presence when audio is being received
+  4. App handles audio device hot-plug/unplug gracefully without crashing
+  5. Custom tuning creator "Octave" picker label is not word-wrapped — displays cleanly on a single line
+**Plans**: 3 plans in 2 waves
+
+Plans:
+- [x] 06-01: ViewModel Sharing — Lift TunerViewModel to ContentView, update TunerView and SettingsView wiring
+- [ ] 06-02: AudioSettings Rewrite — Device picker, InputLevelMeter component, noise gate binding fix
+- [ ] 06-03: Octave Picker Fix — Widen frame from 70 to 90 in CustomTuningCreator
+
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -126,3 +144,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 | 3. Tuning Library, Settings, and Persistence | 5/5 | Complete | 2026-03-12 |
 | 4. Window, Design Language, and Polish | 9/9 | Complete | 2026-03-13 |
 | 5. Cleanup, Title Bar, and Liquid Glass | 3/3 | Complete | 2026-03-13 |
+| 6. Audio Verification and UI Fixes | 1/3 | In Progress | - |

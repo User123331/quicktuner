@@ -213,7 +213,7 @@ struct StringNotePicker: View {
                 }
             }
             .pickerStyle(.menu)
-            .frame(width: 70)
+            .frame(width: 90)
         }
     }
 }

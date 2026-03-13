@@ -5,16 +5,16 @@
 See: .planning/PROJECT.md (updated 2026-03-11)
 
 **Core value:** Real-time, sub-cent-accurate pitch detection with a frictionless string-by-string tuning flow that feels like a precision instrument built into the OS.
-**Current focus:** v1.0 COMPLETE — All 5 phases delivered.
+**Current focus:** Phase 6 — Audio Verification and UI Fixes
 
 ## Current Position
 
-Phase: 5 of 5 (Cleanup, Title Bar, and Liquid Glass) — COMPLETE
-Plan: 3/3 complete
-Status: **Phase 5 COMPLETE — Zero warnings, traffic lights visible, true vibrancy, correct glass architecture**
-Last activity: 2026-03-13 -- Completed Phase 5 (05-01 warning fixes, 05-02 title bar + vibrancy, 05-03 glass corrections)
+Phase: 6 of 6 (Audio Verification and UI Fixes)
+Plan: 06-01 Complete
+Status: **Plan 06-01 complete — ViewModel sharing implemented**
+Last activity: 2026-03-13 -- Plan 06-01 executed, TunerViewModel lifted to ContentView
 
-Progress: [██████████] 100% (All phases complete)
+Progress: [███░░░░░░░] 33% (Phase 6: 1/3 plans)
 
 ## Performance Metrics
 
@@ -42,7 +42,9 @@ Progress: [██████████] 100% (All phases complete)
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- [Phase 5-03]: No glass on ContentView root — transparent window backdrop lets glass components refract desktop directly
+- [Phase 6-01]: TunerViewModel lifted to ContentView as @State — single instance shared between TunerView and SettingsView
+- [Phase 6-01]: TunerView changed from @State to @Bindable for viewModel — accepts external instance, no longer owns its own
+- [Phase 6-01]: createSettingsViewModel() deleted — no more throwaway ViewModel instances for settings sheet
 - [Phase 5-03]: TuningSelector.glassCard(cornerRadius:16) provides version-gated glass consistent with Phase 4 COR
 - [Phase 5-03]: GlassEffectContainer groups string rail pills into one refractive sampling context on macOS 26+
 
@@ -104,8 +106,8 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 5 Plan 03 Complete — Glass architecture cleaned, no glass-on-glass stacking, GlassEffectContainer on string rail
-Resume file: Ready for next plan in phase 5
+Stopped at: Phase 6 Plan 01 Complete — TunerViewModel lifted to ContentView, shared with TunerView and SettingsView
+Resume file: Ready for plan 06-02 in phase 6
 
 ---
 
