@@ -10,16 +10,16 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 6 of 6 (Audio Verification and UI Fixes)
-Plan: 06-01 Complete
-Status: **Plan 06-01 complete — ViewModel sharing implemented**
-Last activity: 2026-03-13 -- Plan 06-01 executed, TunerViewModel lifted to ContentView
+Plan: 06-02 Complete
+Status: **Plan 06-02 complete — AudioSettings rewrite with device picker, level meter, noise gate**
+Last activity: 2026-03-13 -- Plan 06-02 executed, AudioSettings fully wired to live TunerViewModel
 
-Progress: [███░░░░░░░] 33% (Phase 6: 1/3 plans)
+Progress: [██████████] 100% (Phase 6: 3/3 plans)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 14
+- Total plans completed: 16
 - Average duration: 8 minutes
 - Total execution time: ~2 hours
 
@@ -42,6 +42,10 @@ Progress: [███░░░░░░░] 33% (Phase 6: 1/3 plans)
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
+- [Phase 6-02]: InputLevelMeter uses `.smooth(duration: 0.15)` animation — no spring overshoot for VU meters
+- [Phase 6-02]: Device picker uses `AudioDevice?` optional tags — `AudioDevice?.none` for "System Default", `AudioDevice?.some(device)` for real devices
+- [Phase 6-02]: `@AppStorage` for noise gate removed — ViewModel already persists via `setNoiseGateThreshold(_:)` to UserDefaults
+- [Phase 6-03]: Octave picker frame widened from 70pt to 90pt — prevents "Oc-tave" word-wrap without using .fixedSize()
 - [Phase 6-01]: TunerViewModel lifted to ContentView as @State — single instance shared between TunerView and SettingsView
 - [Phase 6-01]: TunerView changed from @State to @Bindable for viewModel — accepts external instance, no longer owns its own
 - [Phase 6-01]: createSettingsViewModel() deleted — no more throwaway ViewModel instances for settings sheet
@@ -94,6 +98,11 @@ Recent decisions affecting current work:
 - PREF-02: Instrument selection persistence
 - PREF-03: Custom tunings persistence to JSON
 - TUNE-01 through TUNE-09: All tuning requirements
+- AUDIO-01: Audio device picker dropdown showing available Core Audio input devices
+- AUDIO-02: Live input level meter with green-yellow-red gradient
+- AUDIO-03: Noise gate slider synced with live ViewModel (not @AppStorage)
+- AUDIO-04: Device list refreshes on AudioSettings appear
+- FIX-01: Octave picker label displays on single line without word-wrap
 
 ### Pending Todos
 
@@ -106,8 +115,8 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 6 Plan 01 Complete — TunerViewModel lifted to ContentView, shared with TunerView and SettingsView
-Resume file: Ready for plan 06-02 in phase 6
+Stopped at: Phase 6 Plan 02 Complete — AudioSettings rewrite with device picker, level meter, noise gate
+Resume file: All plans in Phase 6 complete
 
 ---
 
