@@ -7,40 +7,54 @@ struct TunerViewModelTests {
 
     // MARK: - EMA Smoothing Tests
 
-    @Test("EMA smoothing with alpha=0.3")
-    func emaSmoothing() {
-        // First reading: 10 cents
-        // smoothed = 0.3 * 10 + 0.7 * 0 = 3.0
-        // Second reading: 20 cents
-        // smoothed = 0.3 * 20 + 0.7 * 3.0 = 6 + 2.1 = 8.1
+    @Test("Adaptive EMA uses heavy smoothing for small deviations")
+    func emaHeavySmoothingSmallDeviation() async throws {
+        let viewModel = await TunerViewModel()
 
-        let previous = 0.0
-        let alpha = 0.3
+        // First reading from 0: deviation = |10 - 0| = 10 > 5, so alpha = 0.2
+        let first = await viewModel.applyEMA(10.0)
+        // smoothed = 0.2 * 10 + 0.8 * 0 = 2.0
+        #expect(first.isApproximatelyEqual(to: 2.0, tolerance: 0.001))
 
-        let first = (alpha * 10.0) + ((1 - alpha) * previous)
-        #expect(first == 3.0)
-
-        let second = (alpha * 20.0) + ((1 - alpha) * first)
-        #expect(second.isApproximatelyEqual(to: 8.1, tolerance: 0.001))
+        // Second reading: deviation = |12 - 2| = 10 > 5, so alpha = 0.2
+        let second = await viewModel.applyEMA(12.0)
+        // smoothed = 0.2 * 12 + 0.8 * 2.0 = 2.4 + 1.6 = 4.0
+        #expect(second.isApproximatelyEqual(to: 4.0, tolerance: 0.001))
     }
 
-    @Test("EMA smoothing reduces jitter over multiple samples")
-    func emaSmoothingJitterReduction() {
-        let alpha = 0.3
-        var smoothed = 10.0  // Start at the baseline to avoid startup artifacts
+    @Test("Adaptive EMA uses fast tracking for large jumps")
+    func emaFastTrackingLargeJump() async throws {
+        let viewModel = await TunerViewModel()
 
-        // Simulate jitter around 10: 12, 9, 11, 10, 13, 8
-        let rawValues = [12.0, 9.0, 11.0, 10.0, 13.0, 8.0]
+        // Large jump from 0 to 40: deviation = 40 > 20, alpha = 0.5
+        let result = await viewModel.applyEMA(40.0)
+        // smoothed = 0.5 * 40 + 0.5 * 0 = 20.0
+        #expect(result.isApproximatelyEqual(to: 20.0, tolerance: 0.001))
+    }
+
+    @Test("Adaptive EMA reduces jitter in fine tuning range")
+    func emaReducesJitterFineTuning() async throws {
+        let viewModel = await TunerViewModel()
+
+        // Establish baseline near 10
+        // First call: deviation = |10 - 0| = 10 > 5, alpha = 0.2
+        _ = await viewModel.applyEMA(10.0)
+        // After a few calls, get close to 10
+        _ = await viewModel.applyEMA(10.0)
+        _ = await viewModel.applyEMA(10.0)
+        _ = await viewModel.applyEMA(10.0)
+        _ = await viewModel.applyEMA(10.0)
+
+        // Now simulate small jitter around 10 (fine tuning)
+        let jitterValues = [10.5, 9.8, 10.2, 9.9, 10.3]
         var results: [Double] = []
-
-        for raw in rawValues {
-            smoothed = (alpha * raw) + ((1 - alpha) * smoothed)
+        for raw in jitterValues {
+            let smoothed = await viewModel.applyEMA(raw)
             results.append(smoothed)
         }
 
-        // The smoothed values should vary less than raw values
-        // Check that max-min range of smoothed is less than raw
-        let rawRange = rawValues.max()! - rawValues.min()!
+        // Smoothed range should be much smaller than raw range
+        let rawRange = jitterValues.max()! - jitterValues.min()!
         let smoothedRange = results.max()! - results.min()!
         #expect(smoothedRange < rawRange)
     }
