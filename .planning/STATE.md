@@ -10,11 +10,11 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 5 of 5 (Cleanup, Title Bar, and Liquid Glass)
-Plan: 1 complete, awaiting next plan
-Status: **Phase 5, Plan 01 complete — Zero-warning build achieved**
-Last activity: 2026-03-13 -- Completed 05-01 (build warning cleanup + git index fix)
+Plan: 2 complete, awaiting next plan
+Status: **Phase 5, Plan 02 complete — Traffic lights visible, true vibrancy enabled**
+Last activity: 2026-03-13 -- Completed 05-02 (traffic lights, window transparency, layout padding)
 
-Progress: [█░░░░░░░░░] 10% (Phase 5, 1/? plans)
+Progress: [██░░░░░░░░] 20% (Phase 5, 2/? plans)
 
 ## Performance Metrics
 
@@ -31,7 +31,7 @@ Progress: [█░░░░░░░░░] 10% (Phase 5, 1/? plans)
 | 03-tuning-library | 5 | 5 | 10 min |
 | 04-window-design | 5+GAP+FIX+COR | All | 5 min |
 
-| 05-cleanup-titlebar-glass | 1 | 8 min | 8 min |
+| 05-cleanup-titlebar-glass | 2 | 13 min | 6.5 min |
 
 *Updated after each plan completion*
 
@@ -41,6 +41,10 @@ Progress: [█░░░░░░░░░] 10% (Phase 5, 1/? plans)
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [Phase 5-02]: isOpaque=false + backgroundColor=.clear required for true vibrancy — glass must refract desktop, not window background color
+- [Phase 5-02]: Top padding 52pt chosen for traffic light clearance (title bar ~28pt + comfortable spacing)
+- [Phase 5-02]: Settings gear at 12pt top padding aligns with standard macOS traffic light vertical zone
 
 - [Phase 5-01]: MainActor.assumeIsolated is the correct fix for actor isolation in NotificationCenter callbacks on queue:.main
 - [Phase 5-01]: await not needed when calling synchronous actor methods from a Task that inherits the same actor context
@@ -96,7 +100,7 @@ Recent decisions affecting current work:
 ## Session Continuity
 
 Last session: 2026-03-13
-Stopped at: Phase 5 Plan 01 Complete — Zero-warning build, all 173 tests passing, git index cleaned
+Stopped at: Phase 5 Plan 02 Complete — Traffic lights visible, true vibrancy enabled, layout padded for clearance
 Resume file: Ready for next plan in phase 5
 
 ---
