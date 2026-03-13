@@ -29,17 +29,17 @@ import SwiftUI
 /// ```
 enum AnimationStyles {
 
-    /// Fast, subtle spring for needle movement.
+    /// Damped spring for tuner needle — nearly critically damped for precision feel.
     ///
     /// Parameters tuned for a precision instrument feel:
-    /// - Duration: 0.3s (quick response)
-    /// - Bounce: 0.1 (minimal overshoot)
+    /// - Duration: 0.4s (smooth response)
+    /// - Bounce: 0.05 (near-critically damped, minimal overshoot)
     /// - Initial velocity: 0.0 (starts from rest)
     ///
     /// Use for: Tuner needle, gauge indicators, any precision instrument display.
     static let needle: Animation = .interpolatingSpring(
-        duration: 0.3,
-        bounce: 0.1,
+        duration: 0.4,
+        bounce: 0.05,
         initialVelocity: 0.0
     )
 
@@ -123,7 +123,7 @@ extension AnimationStyles {
             VStack(spacing: 40) {
                 // Needle Animation Demo
                 VStack {
-                    Text("Needle (0.3s, 0.1 bounce)")
+                    Text("Needle (0.4s, 0.05 bounce)")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                     Circle()
