@@ -4,9 +4,11 @@ import SwiftUI
 /// Displays note, cents, gauge, tuning selector, string rail, and all-tuned badge with keyboard navigation
 struct TunerView: View {
     @State private var viewModel: TunerViewModel
+    var onSettings: (() -> Void)? = nil
 
-    init(viewModel: TunerViewModel = TunerViewModel()) {
+    init(viewModel: TunerViewModel = TunerViewModel(), onSettings: (() -> Void)? = nil) {
         self.viewModel = viewModel
+        self.onSettings = onSettings
     }
 
     var body: some View {
@@ -36,7 +38,7 @@ struct TunerView: View {
                 .padding(.top, 12)  // Reference pitch below cents: 12pt
 
                 // Tuning selector (always visible - Phase 3 requirement)
-                TuningSelector(viewModel: viewModel)
+                TuningSelector(viewModel: viewModel, onSettings: onSettings)
                     .padding(.horizontal)
                     .padding(.vertical, 8)
 

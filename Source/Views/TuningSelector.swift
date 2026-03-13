@@ -2,28 +2,41 @@ import SwiftUI
 
 struct TuningSelector: View {
     @Bindable var viewModel: TunerViewModel
+    var onSettings: (() -> Void)? = nil
     @State private var showingCustomCreator = false
 
     var body: some View {
         VStack(spacing: 12) {
             // Instrument and Tuning pickers
             HStack(spacing: 12) {
-                // Instrument picker
                 InstrumentPicker(
                     selectedInstrument: $viewModel.selectedInstrument
                 )
-
-                // Tuning picker
                 tuningPicker
             }
 
-            // Create custom tuning button
-            Button(action: { showingCustomCreator = true }) {
-                Label("Create Custom Tuning", systemImage: "plus.circle")
-                    .font(.caption)
+            // Bottom row: Create Custom Tuning centered, Settings gear trailing
+            ZStack {
+                Button(action: { showingCustomCreator = true }) {
+                    Label("Create Custom Tuning", systemImage: "plus.circle")
+                        .font(.caption)
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.primary)
+
+                if let onSettings {
+                    HStack {
+                        Spacer()
+                        Button(action: onSettings) {
+                            Image(systemName: "gear")
+                                .font(.system(size: 14))
+                                .foregroundStyle(.secondary)
+                        }
+                        .buttonStyle(.plain)
+                        .focusEffectDisabled(true)
+                    }
+                }
             }
-            .buttonStyle(.plain)
-            .foregroundStyle(.primary)
         }
         .padding()
         .glassCard(cornerRadius: 16)

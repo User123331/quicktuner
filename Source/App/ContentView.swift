@@ -8,31 +8,10 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             // Main content
-            TunerView()
+            TunerView(onSettings: { showSettings = true })
                 .padding(.top, 52)        // Clear traffic light buttons
                 .padding(.horizontal, 24)
                 .padding(.bottom, 24)
-
-            // Settings button overlay - positioned in top-right corner
-            VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        showSettings = true
-                    } label: {
-                        Image(systemName: "gear")
-                            .font(.title2)
-                            .foregroundStyle(.secondary)
-                            .padding(12)
-                            .modifier(GlassCircleButton())
-                    }
-                    .buttonStyle(.plain)
-                    .focusEffectDisabled(true)
-                    .padding(.top, 12)
-                    .padding(.trailing, 16)
-                }
-                Spacer()
-            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .focusEffectDisabled(true)
