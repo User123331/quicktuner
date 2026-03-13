@@ -144,11 +144,8 @@ final class TunerViewModel {
 
     // MARK: - EMA Smoothing State (PITCH-02)
 
-    /// Previous smoothed cents value for EMA calculation
+    /// Previous smoothed cents value for adaptive EMA calculation
     private var previousCents: Double = 0
-
-    /// EMA smoothing factor (alpha = 0.3 per Phase 2 context)
-    private let alpha = 0.3
 
     // MARK: - Initialization
 
@@ -329,12 +326,22 @@ final class TunerViewModel {
 
     // MARK: - EMA Smoothing (PITCH-02)
 
-    /// Apply Exponential Moving Average smoothing to raw cents value
-    /// Formula: smoothed = (alpha * current) + ((1 - alpha) * previous)
-    /// - Parameter rawCents: The raw cents value from pitch detection
-    /// - Returns: The smoothed cents value
+    /// Apply adaptive EMA smoothing to raw cents value.
+    /// Uses different alpha values based on deviation magnitude:
+    /// - Large jumps (>20 cents): alpha=0.5 for fast tracking of note changes
+    /// - Moderate changes (>5 cents): alpha=0.2 for balanced tracking
+    /// - Fine tuning (<= 5 cents): alpha=0.10 for heavy smoothing and stability
     func applyEMA(_ rawCents: Double) -> Double {
-        let smoothed = (alpha * rawCents) + ((1 - alpha) * previousCents)
+        let deviation = abs(rawCents - previousCents)
+        let adaptiveAlpha: Double
+        if deviation > 20 {
+            adaptiveAlpha = 0.5
+        } else if deviation > 5 {
+            adaptiveAlpha = 0.2
+        } else {
+            adaptiveAlpha = 0.10
+        }
+        let smoothed = (adaptiveAlpha * rawCents) + ((1 - adaptiveAlpha) * previousCents)
         previousCents = smoothed
         return smoothed
     }
