@@ -67,8 +67,6 @@ extension RingBuffer {
     /// - Returns: AsyncStream of Float arrays
     func analysisStream(windowSize: Int = YINConfig.analysisWindowSize,
                         overlap: Double = YINConfig.overlapRatio) -> AsyncStream<[Float]> {
-        let stepSize = Int(Double(windowSize) * (1.0 - overlap))
-
         return AsyncStream { continuation in
             Task { @Sendable in
                 var buffer = [Float](repeating: 0, count: windowSize)

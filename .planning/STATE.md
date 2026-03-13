@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-03-11)
 ## Current Position
 
 Phase: 4 of 4 (Window, Design Language, and Polish)
-Plan: GAP-03 Complete - Tuner Gauge Redesign
-Status: **Phase 4 GAP-03 Complete - Triangle needle, multi-layer glow, gradient color zones**
-Last activity: 2026-03-12 -- Completed GAP-03 with enhanced gauge visuals
+Plan: FIX-02 Complete - glassCard Removal
+Status: **Phase 4 FIX-02 Complete - Gauge needle floats on Liquid Glass background**
+Last activity: 2026-03-12 -- Completed FIX-02, removed glassCard container from TunerGaugeView
 
-Progress: [████████░░] 80% (Phase 4)
+Progress: [█████████░] 90% (Phase 4)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
+- Total plans completed: 13
 - Average duration: 8 minutes
-- Total execution time: 1.6 hours
+- Total execution time: 1.7 hours
 
 **By Phase:**
 
@@ -43,6 +43,14 @@ Progress: [████████░░] 80% (Phase 4)
 
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
+
+- [Phase 4-FIX-01]: Horizontal ScrollView with showsIndicators: false for clean aesthetic
+- [Phase 4-FIX-01]: HStack wrapped in ScrollView allows 8+ string instruments without overflow
+
+- [Phase 4-FIX-02]: Canvas as root view enables floating needle without container background panel
+- [Phase 4-FIX-02]: Removing glassCard aligns gauge with Liquid Glass aesthetic
+
+- [Phase 4-FIX-03]: Opacity 0.4 strikes balance between transparency and readability for ultra-thin liquid glass
 
 - [Phase 4-GAP-03]: Triangle needle with shadow creates depth and precision instrument feel
 - [Phase 4-GAP-03]: Multi-layer glow effect (4 rings) creates aura/breathing animation
@@ -80,6 +88,7 @@ Recent decisions affecting current work:
 
 ### Completed Requirements
 
+- UI-03: Glass effect is subtle and translucent, not cloudy (via opacity 0.4)
 - UI-02: Focus effects disabled (.focusEffectDisabled) for clean glass aesthetic
 - UI-02: Liquid Glass material background with window transparency
 - UI-01: Floating window always on top
@@ -120,7 +129,7 @@ All Phase 3 requirements completed:
 
 ### Pending Todos
 
-Ready for Phase 4 Plan 04: Typography and Animation Polish
+Ready for Phase 4 Plan 05: Typography and Animation Polish
 
 ### Blockers/Concerns
 
@@ -129,8 +138,25 @@ Ready for Phase 4 Plan 04: Typography and Animation Polish
 ## Session Continuity
 
 Last session: 2026-03-12
-Stopped at: Phase 4 GAP-03 COMPLETE -- TunerGaugeView redesigned with Liquid Glass aesthetic
-Resume file: Phase 4 Plan 04
+Stopped at: Phase 4 FIX-03 COMPLETE -- Ultra-thin liquid glass effect with 0.4 opacity
+Resume file: Phase 4 Plan 05
+
+---
+
+## Phase 4 FIX-03 Summary
+
+**Components Modified:**
+- ContentView background layer with `.ultraThinMaterial.opacity(0.4)`
+
+**Files Modified:**
+- Sources/App/ContentView.swift
+
+**Build Status:** Passing
+
+**Key Implementation:**
+- Opacity 0.4 applied to ultraThinMaterial for ultra-thin liquid glass effect
+- Content behind window remains visible through subtle blur
+- UI elements remain readable on both light and dark backgrounds
 
 ---
 

@@ -1,20 +1,12 @@
 import SwiftUI
 
-/// Root view for the QuickTuner app with glass material background
-/// Wraps the main TunerView in a glass-styled container
+/// Root view for the QuickTuner app with Liquid Glass styling
+/// Wraps the main TunerView in a glass-styled floating window
 struct ContentView: View {
     @State private var showSettings = false
 
     var body: some View {
         ZStack {
-            // Material background layer - ultra thin for subtle effect
-            Color.clear
-                .background(
-                    .ultraThinMaterial
-                        .opacity(0.4)  // Ultra-thin liquid glass
-                )
-                .ignoresSafeArea()
-
             // Main content
             TunerView()
                 .padding(24)  // Outer padding from CONTEXT.md
@@ -30,8 +22,7 @@ struct ContentView: View {
                             .font(.title2)
                             .foregroundStyle(.secondary)
                             .padding(12)
-                            .background(.ultraThinMaterial)
-                            .clipShape(Circle())
+                            .modifier(GlassCircleButton())
                     }
                     .buttonStyle(.plain)
                     .focusEffectDisabled(true)
@@ -42,6 +33,7 @@ struct ContentView: View {
             }
         }
         .frame(width: 440, height: 600)
+        .modifier(GlassWindowModifier())
         .focusEffectDisabled(true)
         .sheet(isPresented: $showSettings) {
             SettingsView(viewModel: createSettingsViewModel())
@@ -52,6 +44,35 @@ struct ContentView: View {
     /// This is separate from the one in TunerView to avoid conflicts
     private func createSettingsViewModel() -> TunerViewModel {
         TunerViewModel()
+    }
+}
+
+// MARK: - Version-Gated Glass Modifiers
+
+/// Glass effect for the main window container
+struct GlassWindowModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 26.0, *) {
+            content
+                .glassEffect(.regular, in: .rect(cornerRadius: 24))
+        } else {
+            content
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 24))
+        }
+    }
+}
+
+/// Glass effect for circular buttons (e.g., settings gear)
+struct GlassCircleButton: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(macOS 26.0, *) {
+            content
+                .glassEffect(.regular.interactive(), in: .circle)
+        } else {
+            content
+                .background(.ultraThinMaterial)
+                .clipShape(Circle())
+        }
     }
 }
 

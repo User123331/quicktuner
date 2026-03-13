@@ -86,6 +86,9 @@ Plans:
 **Plans**: TBD
 
 Plans:
+- [x] 04-FIX-03: Ultra-Thin Material Opacity - Reduce window background opacity to 0.4 for ultra-thin liquid glass
+- [x] 04-FIX-02: Remove glassCard Container - TunerGaugeView floats directly on window background without panel
+- [x] 04-FIX-01: 8-String Overflow Fix - Horizontal ScrollView wrapper for StringRailView to support multi-string instruments
 - [x] 04-GAP-03: Tuner Gauge Redesign - Triangle needle with shadow, multi-layer glow, gradient color zones
 - [x] 04-GAP-04: Settings Button - Gear icon overlay in top-right with glass styling and sheet presentation
 - [x] 04-GAP-02: Remove Focus Rings - .focusEffectDisabled on ContentView and StringPill for clean glass aesthetic
@@ -102,4 +105,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Pitch Detection and Audio Engine | 5/5 | Complete | 2026-03-11 |
 | 2. Tuner Interface and String Workflow | 5/5 | Complete | 2026-03-11 |
 | 3. Tuning Library, Settings, and Persistence | 5/5 | Complete | 2026-03-12 |
-| 4. Window, Design Language, and Polish | 5/? | In Progress | 2026-03-12 |
+| 4. Window, Design Language, and Polish | 8/? | In Progress | 2026-03-12 |

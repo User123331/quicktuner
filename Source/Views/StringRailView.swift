@@ -48,15 +48,13 @@ struct StringButton: View {
             .frame(minWidth: 36, minHeight: 36)
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
-            .background(
-                RoundedRectangle(cornerRadius: 20)
-                    .fill(isSelected ? Color.primary.opacity(0.15) : Color.primary.opacity(0.05))
-            )
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
-                    .stroke(isTuned ? Color("InTuneGreen") : (isSelected ? Color.primary.opacity(0.3) : Color.clear), lineWidth: 1.5)
+                    .stroke(isTuned ? Color("InTuneGreen") : Color.clear, lineWidth: 1.5)
             )
+            .glassButton(cornerRadius: 20)
             .scaleEffect(isSelected ? 1.05 : 1.0)
+            .opacity(isSelected ? 1.0 : 0.7)
     }
 }
 

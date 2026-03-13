@@ -22,7 +22,7 @@ actor AudioDeviceManager {
 
             // Initial enumeration
             Task {
-                let devices = await self.enumerateDevices()
+                let devices = self.enumerateDevices()
                 continuation.yield(devices)
             }
         }

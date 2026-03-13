@@ -38,17 +38,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             panel.level = .floating
             panel.hidesOnDeactivate = false
             panel.collectionBehavior = [.fullScreenAuxiliary, .canJoinAllSpaces]
-            // Enable transparency for vibrancy/material effects
-            panel.isOpaque = false
-            panel.backgroundColor = .clear
         } else {
             // Fallback: configure NSWindow properties
             window.level = .floating
             window.hidesOnDeactivate = false
             window.collectionBehavior = [.fullScreenAuxiliary, .canJoinAllSpaces]
-            // Enable transparency for vibrancy/material effects
-            window.isOpaque = false
-            window.backgroundColor = .clear
         }
 
         // Hide title bar completely
@@ -77,7 +71,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             object: nil,
             queue: .main
         ) { [weak self] _ in
-            self?.validateWindowPosition()
+            MainActor.assumeIsolated {
+                self?.validateWindowPosition()
+            }
         }
     }
 
