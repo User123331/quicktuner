@@ -131,6 +131,7 @@ Plans:
 - [x] 06-01: ViewModel Sharing — Lift TunerViewModel to ContentView, update TunerView and SettingsView wiring
 - [x] 06-02: AudioSettings Rewrite — Device picker, InputLevelMeter component, noise gate binding fix
 - [x] 06-03: Octave Picker Fix — Widen frame from 70 to 90 in CustomTuningCreator
+- [x] 06-GAP-01: Gauge Geometry Fix — Replace Canvas with SwiftUI geometry, fix angle math, adaptive EMA, needle spring tuning
 
 ## Progress
 
@@ -144,4 +145,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5 -> 6
 | 3. Tuning Library, Settings, and Persistence | 5/5 | Complete | 2026-03-12 |
 | 4. Window, Design Language, and Polish | 9/9 | Complete | 2026-03-13 |
 | 5. Cleanup, Title Bar, and Liquid Glass | 3/3 | Complete | 2026-03-13 |
-| 6. Audio Verification and UI Fixes | 3/3 | Complete | 2026-03-13 |
+| 6. Audio Verification and UI Fixes | 4/4 | Complete | 2026-03-13 |
