@@ -3,12 +3,13 @@ import SwiftUI
 /// Root view for the QuickTuner app with Liquid Glass styling
 /// Wraps the main TunerView in a glass-styled floating window
 struct ContentView: View {
+    @State private var viewModel = TunerViewModel()
     @State private var showSettings = false
 
     var body: some View {
         ZStack {
             // Main content
-            TunerView(onSettings: { showSettings = true })
+            TunerView(viewModel: viewModel, onSettings: { showSettings = true })
                 .padding(.top, 52)        // Clear traffic light buttons
                 .padding(.horizontal, 24)
                 .padding(.bottom, 24)
@@ -16,14 +17,8 @@ struct ContentView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .focusEffectDisabled(true)
         .sheet(isPresented: $showSettings) {
-            SettingsView(viewModel: createSettingsViewModel())
+            SettingsView(viewModel: viewModel)
         }
-    }
-
-    /// Creates a standalone TunerViewModel for SettingsView
-    /// This is separate from the one in TunerView to avoid conflicts
-    private func createSettingsViewModel() -> TunerViewModel {
-        TunerViewModel()
     }
 }
 
