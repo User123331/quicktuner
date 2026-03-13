@@ -3,7 +3,7 @@ import SwiftUI
 import Foundation
 @testable import QuickTuner
 
-/// Tests for TunerGaugeView Canvas-based rendering
+/// Tests for TunerGaugeView SwiftUI geometry-based rendering
 @Suite("TunerGaugeView Tests")
 struct TunerGaugeViewTests {
 
@@ -12,7 +12,6 @@ struct TunerGaugeViewTests {
     @Test("Gauge initializes with cents and isInTune values")
     func testInitialization() {
         let view = TunerGaugeView(cents: -15.0, isInTune: false)
-        // View should compile and instantiate
         #expect(view != nil)
     }
 
@@ -39,14 +38,12 @@ struct TunerGaugeViewTests {
     @Test("Gauge clamps cents at -50 minimum")
     func testClampMinimum() {
         let view = TunerGaugeView(cents: -100.0, isInTune: false)
-        // View should handle out-of-range values
         #expect(view != nil)
     }
 
     @Test("Gauge clamps cents at +50 maximum")
     func testClampMaximum() {
         let view = TunerGaugeView(cents: 75.0, isInTune: false)
-        // View should handle out-of-range values
         #expect(view != nil)
     }
 
@@ -64,13 +61,35 @@ struct TunerGaugeViewTests {
         #expect(view != nil)
     }
 
+    // MARK: - NeedleShape Tests
+
+    @Test("NeedleShape creates valid path")
+    func testNeedleShapePath() {
+        let shape = NeedleShape()
+        let rect = CGRect(x: 0, y: 0, width: 10, height: 95)
+        let path = shape.path(in: rect)
+        #expect(!path.isEmpty)
+    }
+
+    @Test("NeedleShape path is contained within rect bounds")
+    func testNeedleShapeBounds() {
+        let shape = NeedleShape()
+        let rect = CGRect(x: 0, y: 0, width: 10, height: 95)
+        let path = shape.path(in: rect)
+        let bounds = path.boundingRect
+        // Path should be within or equal to the given rect
+        #expect(bounds.minX >= rect.minX - 1)
+        #expect(bounds.maxX <= rect.maxX + 1)
+        #expect(bounds.minY >= rect.minY - 1)
+        #expect(bounds.maxY <= rect.maxY + 1)
+    }
+
     // MARK: - Visual Configuration Tests
 
-    @Test("Gauge has expected frame size")
+    @Test("Gauge has expected frame dimensions")
     func testFrameSize() {
         let view = TunerGaugeView(cents: 0.0, isInTune: false)
         let body = view.body
-        // Frame should be 300x180
         #expect(body != nil)
     }
 
@@ -78,21 +97,18 @@ struct TunerGaugeViewTests {
 
     @Test("Gauge renders green zone for in-tune range")
     func testGreenZoneRendering() {
-        // ±2 cents should show green
         let view = TunerGaugeView(cents: 1.0, isInTune: false)
         #expect(view != nil)
     }
 
     @Test("Gauge renders yellow zone for moderate deviation")
     func testYellowZoneRendering() {
-        // ±25 cents should show yellow
         let view = TunerGaugeView(cents: 20.0, isInTune: false)
         #expect(view != nil)
     }
 
     @Test("Gauge renders red zone for large deviation")
     func testRedZoneRendering() {
-        // Beyond ±25 cents should show red
         let view = TunerGaugeView(cents: 40.0, isInTune: false)
         #expect(view != nil)
     }
