@@ -187,16 +187,17 @@ struct StringNotePicker: View {
     private let availableOctaves = [0, 1, 2, 3, 4, 5]
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 0) {
+            // String label - far left
             Text("String \(stringNumber)")
-                .font(.system(.body, design: .monospaced))
-                .frame(width: 70, alignment: .leading)
+                .frame(width: 80, alignment: .leading)
 
-            // Note picker with explicit label
-            HStack(spacing: 4) {
+            Spacer()
+
+            // Note picker - far right side
+            HStack(spacing: 6) {
                 Text("Note:")
                     .foregroundStyle(.secondary)
-                    .font(.caption)
                 Picker("Note", selection: $note.name) {
                     ForEach(availableNotes, id: \.self) { noteName in
                         Text(noteName).tag(noteName)
@@ -204,14 +205,13 @@ struct StringNotePicker: View {
                 }
                 .pickerStyle(.menu)
                 .labelsHidden()
-                .frame(width: 70)
+                .frame(width: 60)
             }
 
-            // Octave picker with explicit label
-            HStack(spacing: 4) {
+            // Octave picker - far right
+            HStack(spacing: 6) {
                 Text("Octave:")
                     .foregroundStyle(.secondary)
-                    .font(.caption)
                 Picker("Octave", selection: .init(
                     get: { note.octave },
                     set: { note = TuningNote(name: note.name, octave: $0) }
