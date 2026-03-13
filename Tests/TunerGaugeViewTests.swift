@@ -61,23 +61,23 @@ struct TunerGaugeViewTests {
         #expect(view != nil)
     }
 
-    // MARK: - NeedleShape Tests
+    // MARK: - NeedleShaft Tests
 
-    @Test("NeedleShape creates valid path")
-    func testNeedleShapePath() {
-        let shape = NeedleShape()
-        let rect = CGRect(x: 0, y: 0, width: 10, height: 95)
+    @Test("NeedleShaft creates valid path")
+    func testNeedleShaftPath() {
+        let shape = NeedleShaft()
+        let rect = CGRect(x: 0, y: 0, width: 6, height: 90)
         let path = shape.path(in: rect)
         #expect(!path.isEmpty)
     }
 
-    @Test("NeedleShape path is contained within rect bounds")
-    func testNeedleShapeBounds() {
-        let shape = NeedleShape()
-        let rect = CGRect(x: 0, y: 0, width: 10, height: 95)
+    @Test("NeedleShaft path is contained within rect bounds")
+    func testNeedleShaftBounds() {
+        let shape = NeedleShaft()
+        let rect = CGRect(x: 0, y: 0, width: 6, height: 90)
         let path = shape.path(in: rect)
         let bounds = path.boundingRect
-        // Path should be within or equal to the given rect
+        // Path should be within or equal to the given rect (±1pt tolerance)
         #expect(bounds.minX >= rect.minX - 1)
         #expect(bounds.maxX <= rect.maxX + 1)
         #expect(bounds.minY >= rect.minY - 1)
@@ -111,5 +111,69 @@ struct TunerGaugeViewTests {
     func testRedZoneRendering() {
         let view = TunerGaugeView(cents: 40.0, isInTune: false)
         #expect(view != nil)
+    }
+
+    // MARK: - Math Function Tests
+
+    @Test("angle(for:) maps cents to correct rotation angles")
+    func testAngleMapping() {
+        let view = TunerGaugeView(cents: 0.0, isInTune: false)
+        // 0 cents = 0 degrees (center)
+        let centerAngle = view.angle(for: 0.0)
+        #expect(abs(centerAngle.degrees - 0.0) < 0.001)
+        // +50 cents = +90 degrees (full right)
+        let rightAngle = view.angle(for: 50.0)
+        #expect(abs(rightAngle.degrees - 90.0) < 0.001)
+        // -50 cents = -90 degrees (full left)
+        let leftAngle = view.angle(for: -50.0)
+        #expect(abs(leftAngle.degrees - (-90.0)) < 0.001)
+        // Beyond 50 is clamped: 100 cents -> still 90 degrees
+        let clampedAngle = view.angle(for: 100.0)
+        #expect(abs(clampedAngle.degrees - 90.0) < 0.001)
+    }
+
+    @Test("arcAngle(for:) maps cents to arc degree positions")
+    func testTickAngleMapping() {
+        let view = TunerGaugeView(cents: 0.0, isInTune: false)
+        // 0 cents = 0 degrees (top of arc)
+        #expect(abs(view.arcAngle(for: 0.0) - 0.0) < 0.001)
+        // +50 cents = +120 degrees (right endpoint of 240° arc)
+        #expect(abs(view.arcAngle(for: 50.0) - 120.0) < 0.001)
+        // -50 cents = -120 degrees (left endpoint)
+        #expect(abs(view.arcAngle(for: -50.0) - (-120.0)) < 0.001)
+        // +25 cents = +60 degrees
+        #expect(abs(view.arcAngle(for: 25.0) - 60.0) < 0.001)
+    }
+
+    @Test("tickPosition(cents:radius:) returns correct position for center tick")
+    func testTickPositionCenter() {
+        let view = TunerGaugeView(cents: 0.0, isInTune: false)
+        let pos = view.tickPosition(cents: 0.0, radius: 110)
+        // Center tick (0 cents) should be straight up from pivot: x ≈ 0, y ≈ -110
+        #expect(abs(pos.x) < 0.001)
+        #expect(abs(pos.y + 110) < 0.001)
+    }
+
+    @Test("tickPosition(cents:radius:) for +50 cents is lower-right quadrant")
+    func testTickPositionRight() {
+        let view = TunerGaugeView(cents: 0.0, isInTune: false)
+        let pos = view.tickPosition(cents: 50.0, radius: 110)
+        // +50 cents = 120° from vertical — this reaches below horizontal (sin(120°)>0, cos(120°)<0 → y>0)
+        #expect(pos.x > 0)  // right side
+        #expect(pos.y > 0)  // below pivot (positive y in SwiftUI)
+    }
+
+    // MARK: - CounterweightShape Tests
+
+    @Test("CounterweightShape path is within expected bounds")
+    func testCounterweightBounds() {
+        let shape = CounterweightShape()
+        let rect = CGRect(x: 0, y: 0, width: 10, height: 18)
+        let path = shape.path(in: rect)
+        let bounds = path.boundingRect
+        // minY may start above rect.minY by a small amount (slight curve)
+        #expect(bounds.minY >= -3)
+        // maxY may extend slightly below rect.maxY due to quadratic control point
+        #expect(bounds.maxY <= rect.maxY + 3)
     }
 }
