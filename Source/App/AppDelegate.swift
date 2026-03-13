@@ -45,12 +45,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             window.collectionBehavior = [.fullScreenAuxiliary, .canJoinAllSpaces]
         }
 
-        // Hide title bar completely
+        // Transparent title bar — traffic lights remain visible
         window.titlebarAppearsTransparent = true
         window.titleVisibility = .hidden
-        window.standardWindowButton(.closeButton)?.isHidden = true
-        window.standardWindowButton(.miniaturizeButton)?.isHidden = true
-        window.standardWindowButton(.zoomButton)?.isHidden = true
+        // Traffic lights (close/minimize/zoom) are visible by default — do NOT hide them
+
+        // Enable true vibrancy — glass refracts against desktop content
+        window.isOpaque = false
+        window.backgroundColor = .clear
 
         // Make draggable from anywhere
         window.isMovableByWindowBackground = true

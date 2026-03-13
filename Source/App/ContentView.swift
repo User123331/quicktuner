@@ -9,7 +9,9 @@ struct ContentView: View {
         ZStack {
             // Main content
             TunerView()
-                .padding(24)  // Outer padding from CONTEXT.md
+                .padding(.top, 52)        // Clear traffic light buttons
+                .padding(.horizontal, 24)
+                .padding(.bottom, 24)
 
             // Settings button overlay - positioned in top-right corner
             VStack {
@@ -26,7 +28,7 @@ struct ContentView: View {
                     }
                     .buttonStyle(.plain)
                     .focusEffectDisabled(true)
-                    .padding(.top, 16)
+                    .padding(.top, 12)
                     .padding(.trailing, 16)
                 }
                 Spacer()
