@@ -35,7 +35,8 @@ struct ContentView: View {
             }
         }
         .frame(width: 440, height: 600)
-        .modifier(GlassWindowModifier())
+        // No glass on window root — glass only on component containers
+        // Window transparency (isOpaque=false) provides the backdrop for glass refraction
         .focusEffectDisabled(true)
         .sheet(isPresented: $showSettings) {
             SettingsView(viewModel: createSettingsViewModel())
