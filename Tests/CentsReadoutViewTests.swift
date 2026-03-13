@@ -84,21 +84,21 @@ struct CentsReadoutViewTests {
     @Test("Readout shows green for in-tune range")
     func testGreenColor() {
         let view = CentsReadoutView(cents: 1.5)
-        // ±2 cents should be green
+        // 1.5 cents should be green (threshold: <3)
         #expect(view != nil)
     }
 
     @Test("Readout shows yellow for moderate deviation")
     func testYellowColor() {
-        let view = CentsReadoutView(cents: 15.0)
-        // ±3-25 cents should be yellow
+        let view = CentsReadoutView(cents: 8.0)
+        // 8 cents should be orange (threshold: 3-15)
         #expect(view != nil)
     }
 
     @Test("Readout shows red for large deviation")
     func testRedColor() {
         let view = CentsReadoutView(cents: 35.0)
-        // Beyond ±25 cents should be red
+        // 35 cents should be red (threshold: >=15)
         #expect(view != nil)
     }
 
@@ -114,21 +114,35 @@ struct CentsReadoutViewTests {
     @Test("Readout handles exactly -2 cents")
     func testExactlyMinusTwo() {
         let view = CentsReadoutView(cents: -2.0)
-        // Boundary of green zone
+        // Within green zone (|2| < 3)
         #expect(view != nil)
     }
 
     @Test("Readout handles exactly +2 cents")
     func testExactlyPlusTwo() {
         let view = CentsReadoutView(cents: 2.0)
-        // Boundary of green zone
+        // Within green zone (|2| < 3)
         #expect(view != nil)
     }
 
     @Test("Readout handles exactly ±25 cents")
     func testExactlyTwentyFive() {
         let view = CentsReadoutView(cents: 25.0)
-        // Boundary of yellow zone
+        // In red zone (|25| >= 15)
+        #expect(view != nil)
+    }
+
+    @Test("Readout handles boundary at 3 cents")
+    func testBoundaryThreeCents() {
+        let view = CentsReadoutView(cents: 3.0)
+        // |3| >= 3, so should be orange (not green)
+        #expect(view != nil)
+    }
+
+    @Test("Readout handles boundary at 15 cents")
+    func testBoundaryFifteenCents() {
+        let view = CentsReadoutView(cents: 15.0)
+        // |15| >= 15, so should be red (not orange)
         #expect(view != nil)
     }
 }
