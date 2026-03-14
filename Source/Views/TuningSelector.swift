@@ -15,8 +15,19 @@ struct TuningSelector: View {
                 tuningPicker
             }
 
-            // Bottom row: Create Custom Tuning centered, Settings gear trailing
+            // Bottom row: Restart leading, Create Custom Tuning centered, Settings gear trailing
             ZStack {
+                // LEADING — Restart button
+                HStack {
+                    Button(action: { viewModel.resetTunedStrings() }) {
+                        Label("Restart", systemImage: "arrow.counterclockwise")
+                            .font(.caption)
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.primary)
+                    Spacer()
+                }
+
                 Button(action: { showingCustomCreator = true }) {
                     Label("Create Custom Tuning", systemImage: "plus.circle")
                         .font(.caption)
