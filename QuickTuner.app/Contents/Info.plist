@@ -7,7 +7,7 @@
     <key>CFBundleExecutable</key>
     <string>QuickTuner</string>
     <key>CFBundleIdentifier</key>
-    <string>com.quicktuner.app</string>
+    <string>com.billyendson.quicktuner</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -18,13 +18,15 @@
     <string>1.0</string>
     <key>CFBundleVersion</key>
     <string>1</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>CFBundleIconName</key>
+    <string>AppIcon</string>
     <key>LSMinimumSystemVersion</key>
     <string>15.0</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>QuickTuner needs microphone access to detect pitch from your instrument.</string>
     <key>NSPrincipalClass</key>
     <string>NSApplication</string>
-    <key>LSUIElement</key>
-    <false/>
 </dict>
 </plist>
