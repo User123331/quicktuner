@@ -34,3 +34,9 @@ DerivedData/
 
 # Release artifacts
 dist/
+
+# Compiled app bundle (distributed via GitHub Releases)
+QuickTuner.app/
+
+# macOS metadata
+.DS_Store
