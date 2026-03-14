@@ -17,10 +17,18 @@ struct AboutSettings: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
-                    Text("A fast, accurate chromatic tuner for macOS")
+                    Text("Fast, multi-scale guitar/bass chromatic tuner for macOS")
                         .font(.body)
                         .foregroundStyle(.secondary)
                         .multilineTextAlignment(.center)
+
+                    Text("Created by Billy Endson")
+                        .font(.body)
+                        .foregroundStyle(.primary)
+
+                    Text("\u{00A9} 2026 Billy Endson")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 20)
