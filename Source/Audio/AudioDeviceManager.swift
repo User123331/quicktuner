@@ -1,13 +1,11 @@
 import Foundation
-import AudioBridge
+import CoreAudio
 
 /// Actor managing audio device enumeration and selection
-/// Wraps Objective-C++ bridge with Swift-friendly AsyncStream API
+/// Pure Swift implementation using CoreAudio HAL C API directly
 actor AudioDeviceManager {
 
     // MARK: - Properties
-
-    private let bridge = AudioDeviceManagerBridge()
 
     /// Currently selected device
     private(set) var selectedDevice: AudioDevice?
@@ -33,14 +31,14 @@ actor AudioDeviceManager {
     /// Enumerate all available input devices
     /// - Returns: Array of AudioDevice structs
     func enumerateDevices() -> [AudioDevice] {
-        let deviceInfos = bridge.enumerateInputDevices()
+        let deviceInfos = enumerateAllInputDevices()
 
         return deviceInfos.map { info in
             AudioDevice(
-                id: info.deviceID,
+                id: info.id,
                 name: info.name,
                 uid: info.uid,
-                isInput: info.hasInput
+                isInput: true
             )
         }
     }
@@ -58,7 +56,7 @@ actor AudioDeviceManager {
     /// - Throws: Error if device cannot be selected
     func selectDevice(id deviceID: UInt32) async throws {
         do {
-            try bridge.selectInputDevice(deviceID)
+            try setDefaultInputDevice(deviceID)
 
             // Update selected device
             let devices = enumerateDevices()
@@ -96,7 +94,7 @@ actor AudioDeviceManager {
 
     /// Select the system default input device
     func selectDefaultDevice() async {
-        let defaultID = bridge.defaultInputDeviceID()
+        let defaultID = getDefaultInputDeviceID()
         if defaultID != 0 {
             try? await selectDevice(id: defaultID)
         }
@@ -117,23 +115,124 @@ actor AudioDeviceManager {
 
     /// Get the default input device ID
     var defaultDeviceID: UInt32 {
-        bridge.defaultInputDeviceID()
+        getDefaultInputDeviceID()
     }
 
     /// Get device name by ID
     func nameForDevice(id: UInt32) -> String? {
-        bridge.name(forDevice: id)
+        getDeviceName(AudioDeviceID(id))
     }
 
     /// Get device UID by ID
     func uidForDevice(id: UInt32) -> String? {
-        bridge.uid(forDevice: id)
+        getDeviceUID(AudioDeviceID(id))
     }
 
     // MARK: - UserDefaults Keys
 
     private enum Keys {
         static let selectedDeviceUID = "SelectedAudioDeviceUID"
+    }
+
+    // MARK: - CoreAudio Helpers
+
+    private func getDeviceName(_ deviceID: AudioDeviceID) -> String? {
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioObjectPropertyName,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var cfStr: CFString?
+        var dataSize = UInt32(MemoryLayout<CFString?>.size)
+        let status = withUnsafeMutablePointer(to: &cfStr) { ptr in
+            AudioObjectGetPropertyData(deviceID, &address, 0, nil, &dataSize, ptr)
+        }
+        guard status == noErr, let result = cfStr else { return nil }
+        return result as String
+    }
+
+    private func getDeviceUID(_ deviceID: AudioDeviceID) -> String? {
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyDeviceUID,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var cfStr: CFString?
+        var dataSize = UInt32(MemoryLayout<CFString?>.size)
+        let status = withUnsafeMutablePointer(to: &cfStr) { ptr in
+            AudioObjectGetPropertyData(deviceID, &address, 0, nil, &dataSize, ptr)
+        }
+        guard status == noErr, let result = cfStr else { return nil }
+        return result as String
+    }
+
+    private func deviceHasInput(_ deviceID: AudioDeviceID) -> Bool {
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioDevicePropertyStreamConfiguration,
+            mScope: kAudioDevicePropertyScopeInput,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var dataSize: UInt32 = 0
+        guard AudioObjectGetPropertyDataSize(deviceID, &address, 0, nil, &dataSize) == noErr,
+              dataSize > 0 else { return false }
+        return withUnsafeTemporaryAllocation(byteCount: Int(dataSize),
+                                              alignment: MemoryLayout<AudioBufferList>.alignment) { buf in
+            let ptr = buf.baseAddress!
+            var sz = dataSize
+            guard AudioObjectGetPropertyData(deviceID, &address, 0, nil, &sz, ptr) == noErr else { return false }
+            let list = ptr.assumingMemoryBound(to: AudioBufferList.self)
+            let bufferList = UnsafeMutableAudioBufferListPointer(list)
+            return bufferList.contains { $0.mNumberChannels > 0 }
+        }
+    }
+
+    private func enumerateAllInputDevices() -> [(id: UInt32, name: String, uid: String)] {
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwarePropertyDevices,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var dataSize: UInt32 = 0
+        guard AudioObjectGetPropertyDataSize(AudioObjectID(kAudioObjectSystemObject),
+                                             &address, 0, nil, &dataSize) == noErr else { return [] }
+        let count = Int(dataSize) / MemoryLayout<AudioDeviceID>.size
+        var deviceIDs = [AudioDeviceID](repeating: 0, count: count)
+        guard AudioObjectGetPropertyData(AudioObjectID(kAudioObjectSystemObject),
+                                         &address, 0, nil, &dataSize, &deviceIDs) == noErr else { return [] }
+
+        return deviceIDs.compactMap { id -> (UInt32, String, String)? in
+            guard deviceHasInput(id),
+                  let name = getDeviceName(id),
+                  let uid = getDeviceUID(id) else { return nil }
+            return (id, name, uid)
+        }
+    }
+
+    private func setDefaultInputDevice(_ deviceID: AudioDeviceID) throws {
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwarePropertyDefaultInputDevice,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var mutableID = deviceID
+        let status = AudioObjectSetPropertyData(AudioObjectID(kAudioObjectSystemObject),
+                                                &address, 0, nil,
+                                                UInt32(MemoryLayout<AudioDeviceID>.size),
+                                                &mutableID)
+        guard status == noErr else { throw AudioDeviceError.selectionFailed }
+    }
+
+    private func getDefaultInputDeviceID() -> UInt32 {
+        var address = AudioObjectPropertyAddress(
+            mSelector: kAudioHardwarePropertyDefaultInputDevice,
+            mScope: kAudioObjectPropertyScopeGlobal,
+            mElement: kAudioObjectPropertyElementMain
+        )
+        var deviceID: AudioDeviceID = 0
+        var dataSize = UInt32(MemoryLayout<AudioDeviceID>.size)
+        AudioObjectGetPropertyData(AudioObjectID(kAudioObjectSystemObject),
+                                   &address, 0, nil, &dataSize, &deviceID)
+        return deviceID
     }
 }
 
