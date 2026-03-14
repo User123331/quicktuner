@@ -674,6 +674,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/InputLevelMeterTests.swift"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/IntegrationTests.swift"
         },
         {
@@ -752,6 +756,7 @@
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/AudioDeviceManagerTests.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/CentsReadoutViewTests.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/ConstantsTests.swift.o",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/IntegrationTests.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/MockAudioEngine.swift.o",
         "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/NoteClassifierTests.swift.o",
@@ -844,6 +849,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/IntegrationTests.swift.o"
         },
         {
@@ -912,6 +921,7 @@
         "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/AudioDeviceManagerTests.swift",
         "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/CentsReadoutViewTests.swift",
         "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/ConstantsTests.swift",
+        "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/InputLevelMeterTests.swift",
         "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/IntegrationTests.swift",
         "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/MockAudioEngine.swift",
         "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/NoteClassifierTests.swift",
@@ -1132,6 +1142,7 @@
       "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/AudioDeviceManagerTests.swift",
       "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/CentsReadoutViewTests.swift",
       "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/ConstantsTests.swift",
+      "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/InputLevelMeterTests.swift",
       "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/IntegrationTests.swift",
       "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/MockAudioEngine.swift",
       "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/NoteClassifierTests.swift",
@@ -1855,6 +1866,10 @@
         },
         {
           "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.swift.o"
+        },
+        {
+          "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/IntegrationTests.swift.o"
         },
         {
@@ -1926,6 +1941,10 @@
         {
           "kind" : "file",
           "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/ConstantsTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/InputLevelMeterTests.swift"
         },
         {
           "kind" : "file",

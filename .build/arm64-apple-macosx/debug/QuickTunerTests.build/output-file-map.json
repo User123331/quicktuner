@@ -23,6 +23,13 @@
     "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/ConstantsTests.swiftdeps",
     "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/ConstantsTests.dia"
   },
+  "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/InputLevelMeterTests.swift": {
+    "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.d",
+    "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.swift.o",
+    "swiftmodule": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.swiftdeps",
+    "diagnostics": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/InputLevelMeterTests.dia"
+  },
   "/Users/billyendson/Games/VibeCoding/quicktuner/Tests/IntegrationTests.swift": {
     "dependencies": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/IntegrationTests.d",
     "object": "/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTunerTests.build/IntegrationTests.swift.o",

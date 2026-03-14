@@ -1,6 +1,7 @@
 /Users/billyendson/Games/VibeCoding/quicktuner/Tests/AudioDeviceManagerTests.swift
 /Users/billyendson/Games/VibeCoding/quicktuner/Tests/CentsReadoutViewTests.swift
 /Users/billyendson/Games/VibeCoding/quicktuner/Tests/ConstantsTests.swift
+/Users/billyendson/Games/VibeCoding/quicktuner/Tests/InputLevelMeterTests.swift
 /Users/billyendson/Games/VibeCoding/quicktuner/Tests/IntegrationTests.swift
 /Users/billyendson/Games/VibeCoding/quicktuner/Tests/MockAudioEngine.swift
 /Users/billyendson/Games/VibeCoding/quicktuner/Tests/NoteClassifierTests.swift

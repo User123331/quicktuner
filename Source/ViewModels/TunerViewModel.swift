@@ -183,6 +183,12 @@ final class TunerViewModel {
         }
         self.tuningLibrary.selectedInstrument = self.selectedInstrument
 
+        // Ensure default tuning is selected and strings are populated
+        if tuningLibrary.selectedTuning == nil {
+            tuningLibrary.selectTuning(tuningLibrary.availableTunings.first!)
+        }
+        updateStringsFromTuning()
+
         // Load custom tunings and restore selected tuning
         Task {
             await loadCustomTunings()
@@ -539,10 +545,13 @@ final class TunerViewModel {
     /// Restore selected tuning from saved ID
     private func restoreSelectedTuning() async {
         if let savedTuningId = UserDefaults.standard.string(forKey: PersistenceKeys.selectedTuningId),
-           let uuid = UUID(uuidString: savedTuningId) {
-            tuningLibrary.selectTuning(id: uuid)
+           let uuid = UUID(uuidString: savedTuningId),
+           let tuning = tuningLibrary.availableTunings.first(where: { $0.id == uuid }) {
+            tuningLibrary.selectTuning(tuning)
             selectedTuningId = savedTuningId
+            updateStringsFromTuning()
         }
+        // If no valid saved tuning, keep the default that was set in init
     }
 
     /// Select a tuning and persist the selection
