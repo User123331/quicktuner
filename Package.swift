@@ -18,6 +18,7 @@ let package = Package(
             name: "QuickTuner",
             path: "Source",
             exclude: ["Info.plist", "QuickTuner.entitlements"],
+            resources: [.process("Resources")],
             swiftSettings: [
                 .swiftLanguageMode(.v6)
             ],
