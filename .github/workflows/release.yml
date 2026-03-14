@@ -6,53 +6,11 @@ on:
       - 'v*'
 
 jobs:
-  build:
-    name: Build & Release
-    runs-on: macos-latest
+  publish:
+    name: Create Release
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode.app
-
-      - name: Import signing certificate
-        env:
-          CERTIFICATE_P12_BASE64: ${{ secrets.CERTIFICATE_P12_BASE64 }}
-          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
-        run: |
-          # Write cert to disk
-          echo "$CERTIFICATE_P12_BASE64" | base64 --decode -o /tmp/certificate.p12
-
-          # Create temporary keychain
-          KEYCHAIN_PATH=$RUNNER_TEMP/build.keychain
-          KEYCHAIN_PASSWORD=$(uuidgen)
-          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
-          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
-          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
-
-          # Import cert into temp keychain
-          security import /tmp/certificate.p12 \
-            -k "$KEYCHAIN_PATH" \
-            -P "$CERTIFICATE_PASSWORD" \
-            -T /usr/bin/codesign
-          security set-key-partition-list \
-            -S apple-tool:,apple: \
-            -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
-
-          # Make temp keychain the default for this job
-          security list-keychains -d user -s "$KEYCHAIN_PATH" $(security list-keychains -d user | tr -d '"')
-
-          # Export identity name for use in build script
-          IDENTITY=$(security find-identity -v -p codesigning "$KEYCHAIN_PATH" | grep -o '"[^"]*"' | head -1 | tr -d '"')
-          echo "SIGNING_IDENTITY=$IDENTITY" >> "$GITHUB_ENV"
-
-          rm /tmp/certificate.p12
-
-      - name: Build release DMGs
-        run: bash scripts/build-release.sh
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -73,7 +31,6 @@ jobs:
 
             ### Requirements
             - macOS 15.0 or later
-          files: dist/*.dmg
           generate_release_notes: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
