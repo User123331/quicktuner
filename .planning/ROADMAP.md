@@ -41,7 +41,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 ## v1.1 Phases
 
 - [x] **Phase 10: Swift Rewrite and App Icon** - Eliminate the Obj-C++ AudioBridge SPM target, rewrite AudioDeviceManager in pure Swift, and wire AppIcon asset catalog into the SPM build
-- [ ] **Phase 11: About Credits and Restart Button** - Add author credits and version bump to the About tab; add Restart button to the main tuner UI
+- [x] **Phase 11: About Credits and Restart Button** - Add author credits and version bump to the About tab; add Restart button to the main tuner UI (completed 2026-03-14)
 
 ---
 
@@ -247,7 +247,7 @@ Plans:
   4. Tapping Restart clears all string check marks and moves focus to String 1 — no confirmation dialog
   5. "All Tuned" badge dismisses immediately on Restart
   6. 440x480 window has no layout overflow after the Restart button row is added
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] 11-01-PLAN.md — Version bump, About credits, and Restart button
@@ -281,7 +281,7 @@ Plans:
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 10. Swift Rewrite and App Icon | 2/2 | Complete    | 2026-03-14 |
-| 11. About Credits and Restart Button | 0/1 | Not started | - |
+| 11. About Credits and Restart Button | 1/1 | Complete   | 2026-03-14 |
 
 ---
 
