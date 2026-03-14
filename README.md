@@ -18,7 +18,7 @@
 
 ---
 
-QuickTuner is a lightweight, always-ready instrument tuner that lives on your Mac. It guides you string-by-string through standard and alternate tunings with a focused, single-string workflow. Navigate between strings with arrow keys, tune each one, move on. Designed with Apple's Liquid Glass aesthetic: translucent panels, vibrancy blur, and spring-driven animations that feel physically weighted.
+QuickTuner is a lightweight, always-ready instrument tuner that lives on your Mac. Designed with Apple's Liquid Glass aesthetic: translucent panels, vibrancy blur, and spring-driven animations that feel physically weighted.
 
 ---
 
@@ -115,6 +115,8 @@ swift test
 Open Settings (`⌘,`) to adjust the A4 reference frequency. Presets for 440, 432, and 443 Hz are one click away.
 
 ---
+
+## Architecture
 
 | Layer | Technology |
 |---|---|
