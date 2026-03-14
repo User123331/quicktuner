@@ -10,6 +10,10 @@
 [![Architecture](https://img.shields.io/badge/arch-Universal%20(arm64%20%2B%20x86__64)-lightgrey)](https://developer.apple.com/documentation/apple-silicon/building-a-universal-macos-binary)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
+<br>
+
+<img src="Screenshots/screenshot.png" alt="QuickTuner screenshot" width="600">
+
 </div>
 
 ---
