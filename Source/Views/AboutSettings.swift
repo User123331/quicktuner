@@ -35,15 +35,6 @@ struct AboutSettings: View {
                 }
                 .font(.body)
             }
-
-            Section("Acknowledgments") {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Built with SwiftUI and Swift Testing")
-                    Text("Uses scientific pitch notation (A4 = 440 Hz)")
-                }
-                .font(.caption)
-                .foregroundStyle(.secondary)
-            }
         }
         .formStyle(.grouped)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)

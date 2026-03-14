@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import Observation
+import AVFoundation
 
 /// MainActor-isolated view model for tuner UI
 /// Bridges AudioEngine AsyncStream to SwiftUI via @Observable
@@ -610,10 +611,21 @@ final class TunerViewModel {
     // MARK: - Private Methods
 
     private func checkMicrophonePermission() async -> Bool {
-        // For macOS, AVAudioSession is iOS-only
-        // On macOS, permission is handled via entitlements + Info.plist
-        // Return true for now; actual permission prompt happens on first mic access
-        return true
+        // On macOS, use AVCaptureDevice to check/request microphone permission
+        let status = AVCaptureDevice.authorizationStatus(for: .audio)
+
+        switch status {
+        case .authorized:
+            return true
+        case .notDetermined:
+            // Request permission
+            return await AVCaptureDevice.requestAccess(for: .audio)
+        case .denied, .restricted:
+            print("Microphone permission denied")
+            return false
+        @unknown default:
+            return false
+        }
     }
 }
 
