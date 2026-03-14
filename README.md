@@ -18,9 +18,7 @@
 
 ---
 
-QuickTuner is a lightweight, always-ready instrument tuner that lives on your Mac. It guides you string-by-string through standard and alternate tunings with a focused, single-string workflow — navigate between strings with arrow keys, tune each one, move on. Designed with Apple's Liquid Glass aesthetic: translucent panels, vibrancy blur, and spring-driven animations that feel physically weighted.
-
-No subscriptions. No clutter. Just tune.
+QuickTuner is a lightweight, always-ready instrument tuner that lives on your Mac. It guides you string-by-string through standard and alternate tunings with a focused, single-string workflow. Navigate between strings with arrow keys, tune each one, move on. Designed with Apple's Liquid Glass aesthetic: translucent panels, vibrancy blur, and spring-driven animations that feel physically weighted.
 
 ---
 
@@ -28,7 +26,7 @@ No subscriptions. No clutter. Just tune.
 
 - **String-by-String Workflow** — One active string at a time. Navigate with `←` `→` arrow keys, click a string pill, or swipe. Zero friction.
 - **Chromatic Needle + Cents Readout** — Large circular gauge with a floating glass needle. Locks center with a satisfying pulse animation when in tune (±2 cents).
-- **Adjustable Reference Pitch** — Set A4 from 420–444 Hz. One-click presets for 440 Hz (standard), 432 Hz, and 443 Hz (orchestral).
+- **Adjustable Reference Pitch** — Set A4 from 420–444 Hz. One-click presets for 440 Hz, 432 Hz, and 420 Hz.
 - **Multi-Instrument Support** — 6, 7, and 8-string guitar; 4, 5, and 6-string bass.
 - **30+ Preset Tunings** — Standard, drop, open, and modal tunings. DADGAD, Drop D, Half-Step Down, and many more.
 - **Custom Tuning Creator** — Build and save your own tunings. Persisted between launches.
@@ -117,36 +115,6 @@ swift test
 Open Settings (`⌘,`) to adjust the A4 reference frequency. Presets for 440, 432, and 443 Hz are one click away.
 
 ---
-
-## Architecture
-
-```
-┌─────────────────────────────────────────────┐
-│                  SwiftUI View               │
-│  ┌──────────┐  ┌──────────┐  ┌───────────┐ │
-│  │  Gauge   │  │  String  │  │ Settings  │ │
-│  │  Needle  │  │  Rail    │  │  Sheet    │ │
-│  └────┬─────┘  └────┬─────┘  └─────┬─────┘ │
-│       └──────────────┴──────────────┘       │
-│                      │                      │
-│        ┌─────────────▼──────────────┐       │
-│        │       TunerViewModel        │       │
-│        │  pitch / cents / inTune     │       │
-│        │  selectedString, refHz      │       │
-│        └─────────────┬──────────────┘       │
-│                      │                      │
-│        ┌─────────────▼──────────────┐       │
-│        │     AudioEngine (actor)     │       │
-│        │  AVAudioEngine → ring buf   │       │
-│        │  device enumeration         │       │
-│        └─────────────┬──────────────┘       │
-│                      │                      │
-│        ┌─────────────▼──────────────┐       │
-│        │  PitchDetector (Accelerate) │       │
-│        │  FFT → YIN → Hz → note      │       │
-│        └────────────────────────────┘       │
-└─────────────────────────────────────────────┘
-```
 
 | Layer | Technology |
 |---|---|
