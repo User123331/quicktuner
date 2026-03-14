@@ -1,5 +1,0 @@
----
-triple:          'arm64-apple-darwin'
-binary-path:     '/Users/billyendson/Games/VibeCoding/quicktuner/.build/arm64-apple-macosx/debug/QuickTuner'
-relocations:     []
-...
