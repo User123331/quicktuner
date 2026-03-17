@@ -423,7 +423,7 @@ let presetTunings: [Tuning] = [
         isPreset: true
     ),
 
-    // MARK: - 4-String Bass (4 tunings)
+    // MARK: - 4-String Bass (8 tunings)
 
     Tuning(
         name: "E Standard (Bass)",
@@ -473,8 +473,56 @@ let presetTunings: [Tuning] = [
         ],
         isPreset: true
     ),
+    Tuning(
+        name: "Eb Standard (Bass)",
+        instrument: .bass4,
+        category: .standard,
+        notes: [
+            TuningNote(name: "Gb", octave: 2),
+            TuningNote(name: "Db", octave: 2),
+            TuningNote(name: "Ab", octave: 1),
+            TuningNote(name: "Eb", octave: 1)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "C# Standard (Bass)",
+        instrument: .bass4,
+        category: .standard,
+        notes: [
+            TuningNote(name: "F", octave: 2),
+            TuningNote(name: "C", octave: 2),
+            TuningNote(name: "G", octave: 1),
+            TuningNote(name: "C#", octave: 1)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "BEAD Tuning",
+        instrument: .bass4,
+        category: .alternative,
+        notes: [
+            TuningNote(name: "G", octave: 2),
+            TuningNote(name: "D", octave: 2),
+            TuningNote(name: "A", octave: 1),
+            TuningNote(name: "B", octave: 0)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Drop B (Bass)",
+        instrument: .bass4,
+        category: .drop,
+        notes: [
+            TuningNote(name: "G", octave: 2),
+            TuningNote(name: "D", octave: 2),
+            TuningNote(name: "A", octave: 1),
+            TuningNote(name: "B", octave: 0)
+        ],
+        isPreset: true
+    ),
 
-    // MARK: - 5-String Bass (3 tunings)
+    // MARK: - 5-String Bass (6 tunings)
 
     Tuning(
         name: "B Standard (Bass)",
@@ -515,8 +563,47 @@ let presetTunings: [Tuning] = [
         ],
         isPreset: true
     ),
+    Tuning(
+        name: "Eb Standard (5-String Bass)",
+        instrument: .bass5,
+        category: .standard,
+        notes: [
+            TuningNote(name: "Gb", octave: 2),
+            TuningNote(name: "Db", octave: 2),
+            TuningNote(name: "Ab", octave: 1),
+            TuningNote(name: "Eb", octave: 1),
+            TuningNote(name: "Bb", octave: 0)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Drop G# (5-String Bass)",
+        instrument: .bass5,
+        category: .drop,
+        notes: [
+            TuningNote(name: "G", octave: 2),
+            TuningNote(name: "D", octave: 2),
+            TuningNote(name: "A", octave: 1),
+            TuningNote(name: "E", octave: 1),
+            TuningNote(name: "G#", octave: 0)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Drop G (5-String Bass)",
+        instrument: .bass5,
+        category: .drop,
+        notes: [
+            TuningNote(name: "G", octave: 2),
+            TuningNote(name: "D", octave: 2),
+            TuningNote(name: "A", octave: 1),
+            TuningNote(name: "E", octave: 1),
+            TuningNote(name: "G", octave: 0)
+        ],
+        isPreset: true
+    ),
 
-    // MARK: - 6-String Bass (2 tunings)
+    // MARK: - 6-String Bass (3 tunings)
 
     Tuning(
         name: "Standard 6-String Bass",
@@ -543,6 +630,47 @@ let presetTunings: [Tuning] = [
             TuningNote(name: "E", octave: 1),
             TuningNote(name: "B", octave: 0),
             TuningNote(name: "F#", octave: 0)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Eb Standard (6-String Bass)",
+        instrument: .bass6,
+        category: .standard,
+        notes: [
+            TuningNote(name: "B", octave: 2),
+            TuningNote(name: "Gb", octave: 2),
+            TuningNote(name: "Db", octave: 2),
+            TuningNote(name: "Ab", octave: 1),
+            TuningNote(name: "Eb", octave: 1),
+            TuningNote(name: "Bb", octave: 0)
+        ],
+        isPreset: true
+    ),
+
+    // MARK: - Extended Range Bass (2 tunings)
+
+    Tuning(
+        name: "Tenor Bass",
+        instrument: .bass4,
+        category: .extended,
+        notes: [
+            TuningNote(name: "A", octave: 2),
+            TuningNote(name: "E", octave: 2),
+            TuningNote(name: "B", octave: 1),
+            TuningNote(name: "F#", octave: 1)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Piccolo Bass",
+        instrument: .bass4,
+        category: .extended,
+        notes: [
+            TuningNote(name: "E", octave: 3),
+            TuningNote(name: "B", octave: 2),
+            TuningNote(name: "G", octave: 2),
+            TuningNote(name: "D", octave: 2)
         ],
         isPreset: true
     )
