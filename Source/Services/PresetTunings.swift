@@ -1,7 +1,7 @@
 import Foundation
 
 let presetTunings: [Tuning] = [
-    // MARK: - 6-String Guitar (19 tunings)
+    // MARK: - 6-String Guitar (24 tunings)
 
     // Standard Tunings
     Tuning(
@@ -220,6 +220,34 @@ let presetTunings: [Tuning] = [
         ],
         isPreset: true
     ),
+    Tuning(
+        name: "Open B",
+        instrument: .guitar6,
+        category: .open,
+        notes: [
+            TuningNote(name: "B", octave: 3),
+            TuningNote(name: "F#", octave: 3),
+            TuningNote(name: "D#", octave: 3),
+            TuningNote(name: "B", octave: 2),
+            TuningNote(name: "F#", octave: 2),
+            TuningNote(name: "B", octave: 1)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Open F",
+        instrument: .guitar6,
+        category: .open,
+        notes: [
+            TuningNote(name: "F", octave: 4),
+            TuningNote(name: "C", octave: 4),
+            TuningNote(name: "F", octave: 3),
+            TuningNote(name: "C", octave: 3),
+            TuningNote(name: "F", octave: 2),
+            TuningNote(name: "C", octave: 2)
+        ],
+        isPreset: true
+    ),
 
     // Modal/Alternative Tunings
     Tuning(
@@ -275,6 +303,52 @@ let presetTunings: [Tuning] = [
             TuningNote(name: "D", octave: 3),
             TuningNote(name: "G", octave: 2),
             TuningNote(name: "C", octave: 2)
+        ],
+        isPreset: true
+    ),
+
+    // Baritone Tunings
+    Tuning(
+        name: "Baritone B Standard",
+        instrument: .guitar6,
+        category: .baritone,
+        notes: [
+            TuningNote(name: "B", octave: 3),
+            TuningNote(name: "F#", octave: 3),
+            TuningNote(name: "D", octave: 3),
+            TuningNote(name: "A", octave: 2),
+            TuningNote(name: "E", octave: 2),
+            TuningNote(name: "B", octave: 1)
+        ],
+        isPreset: true
+    ),
+    Tuning(
+        name: "Baritone A Standard",
+        instrument: .guitar6,
+        category: .baritone,
+        notes: [
+            TuningNote(name: "A", octave: 3),
+            TuningNote(name: "E", octave: 3),
+            TuningNote(name: "C", octave: 3),
+            TuningNote(name: "G", octave: 2),
+            TuningNote(name: "D", octave: 2),
+            TuningNote(name: "A", octave: 1)
+        ],
+        isPreset: true
+    ),
+
+    // Extended Range
+    Tuning(
+        name: "Nashville Tuning",
+        instrument: .guitar6,
+        category: .extended,
+        notes: [
+            TuningNote(name: "E", octave: 4),
+            TuningNote(name: "B", octave: 3),
+            TuningNote(name: "G", octave: 4),
+            TuningNote(name: "D", octave: 4),
+            TuningNote(name: "A", octave: 3),
+            TuningNote(name: "E", octave: 3)
         ],
         isPreset: true
     ),
